@@ -84,27 +84,24 @@ footer { padding: 50px 0; text-align: center; border-top: 1px solid #334155; }
    RESPONSIVE DESIGN (CELULARES)
    ========================================= */
 @media (max-width: 768px) {
-    /* Ajustamos el padding a 15px (más angosto) para que todo se acerque más al borde */
     .container {
         padding: 0 15px;
     }
 
-    /* Ajuste de título */
     .hero h2 {
         font-size: clamp(2rem, 9vw, 2.5rem);
     }
     
     .hero p {
         font-size: 1rem;
-        padding: 0; /* Quitamos el padding extra del texto */
+        padding: 0;
     }
 
-    /* Botones full width sin restricciones extra */
     .hero-btns {
         flex-direction: column;
         gap: 12px;
         width: 100%;
-        max-width: 100%; /* Ahora ocupan TODO el ancho disponible */
+        max-width: 100%;
     }
 
     .btn {

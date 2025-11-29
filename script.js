@@ -1,6 +1,13 @@
 // LISTA DE PROYECTOS
 const projects = [
     {
+        title: "Personal Finance Analyzer",
+        description: "Herramienta de Data Science que procesa CSVs de gastos, genera estadísticas con Pandas y exporta reportes PDF automáticos con gráficos de Matplotlib.",
+        tags: ["Python", "Pandas", "Matplotlib", "Data Analysis"],
+        github: "https://github.com/ryakimovicz/finance-analyzer",
+        demo: "#" 
+    },
+    {
         title: "MercadoLibre Price Tracker",
         description: "Bot de monitoreo de precios en tiempo real. Web scraping automatizado con BeautifulSoup, evasión de bloqueos y sistema de alertas por email vía SMTP.",
         tags: ["Python", "Web Scraping", "Automation", "SMTP"],

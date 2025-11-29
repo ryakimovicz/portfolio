@@ -1,0 +1,72 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent: #38bdf8;
+    --tag-bg: #334155;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+body { background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+/* Navegación */
+nav { padding: 20px 0; position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); z-index: 100; border-bottom: 1px solid #334155; }
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { color: var(--accent); font-weight: 700; font-size: 1.5rem; }
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a:hover { color: var(--accent); }
+.btn-contact { border: 1px solid var(--accent); padding: 5px 15px; border-radius: 5px; color: var(--accent); }
+.btn-contact:hover { background: var(--accent); color: var(--bg-color); }
+
+/* Hero */
+.hero { padding: 80px 0; text-align: center; }
+.badge { background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+.hero h2 { font-size: 3rem; margin: 20px 0; }
+.accent { color: var(--accent); }
+.hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
+.hero-btns { display: flex; gap: 15px; justify-content: center; }
+.btn { padding: 10px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.primary { background: var(--accent); color: var(--bg-color); }
+.primary:hover { opacity: 0.9; }
+.secondary { background: var(--tag-bg); }
+.secondary:hover { background: #475569; }
+
+/* Sobre Mi */
+.about-section { padding: 60px 0; background: #162032; text-align: center; }
+.about-content h3 { font-size: 2rem; margin-bottom: 20px; }
+.tech-stack { margin-top: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.tech-stack span { background: var(--tag-bg); padding: 5px 12px; border-radius: 4px; font-size: 0.9rem; border: 1px solid #475569; }
+
+/* Proyectos */
+.projects-section { padding: 60px 0; }
+.section-title { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+
+/* Buscador y Filtros */
+.filter-container { margin-bottom: 40px; text-align: center; }
+.search-bar { width: 100%; max-width: 400px; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: var(--card-bg); color: white; margin-bottom: 20px; font-size: 1rem; }
+.tags-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.filter-tag { background: transparent; border: 1px solid #334155; color: var(--text-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+.filter-tag:hover, .filter-tag.active { background: var(--accent); color: var(--bg-color); border-color: var(--accent); font-weight: 600; }
+
+/* Cards */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.project-card { background: var(--card-bg); border-radius: 12px; padding: 25px; border: 1px solid #334155; transition: transform 0.3s; display: flex; flex-direction: column; }
+.project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.card-header { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 1.5rem; color: var(--accent); }
+.project-title { font-size: 1.25rem; margin-bottom: 10px; }
+.project-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.tech-tag { font-size: 0.75rem; color: var(--accent); font-family: monospace; }
+.links a { color: var(--text-secondary); margin-left: 10px; font-size: 1.2rem; }
+.links a:hover { color: white; }
+
+/* Footer */
+footer { padding: 50px 0; text-align: center; border-top: 1px solid #334155; }
+.email-link { font-size: 1.2rem; color: var(--accent); font-weight: bold; }
+
+#sobre-mi, #proyectos, #contacto {
+    scroll-margin-top: 50px;
+}

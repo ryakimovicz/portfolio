@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Román Yakimovicz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <h1 class="logo">
+                <a href="#">RY.</a>
+            </h1>
+            <ul class="nav-links">
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto" class="btn-contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Backend Developer</span>
+            <h2>Hola, soy <span class="accent">Román Yakimovicz</span></h2>
+            <p>Técnico Universitario en Programación (UTN). Especialista en <strong>Python, C#, Java, .Net y SQL</strong>.</p>
+            <div class="hero-btns">
+                <a href="#proyectos" class="btn primary">Ver Mis Proyectos</a>
+                <a href="https://github.com/ryakimovicz" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/ryakimovicz/" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="sobre-mi" class="about-section">
+        <div class="container about-content">
+            <h3 class="section-title">Sobre Mí</h3>
+            <p>Soy un apasionado por la lógica y la ingeniería de software. Recientemente graduado de la <strong>UTN Facultad Regional Delta</strong>, cuento con una base sólida en algoritmos, estructuras de datos y arquitectura de software.</p>
+            <p>Mi enfoque está en el <strong>Backend</strong>, donde disfruto construyendo APIs robustas, diseñando bases de datos eficientes y resolviendo problemas complejos con código limpio.</p>
+            
+            <div class="tech-stack">
+                <span>Python</span> <span>C#</span> <span>Java</span> <span>.NET Core</span> <span>SQL</span> <span>Git</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="projects-section">
+        <div class="container">
+            <h3 class="section-title">Mis Proyectos</h3>
+            
+            <div class="filter-container">
+                <input type="text" id="searchInput" placeholder="🔍 Buscar proyecto..." class="search-bar">
+                
+                <div class="tags-filter">
+                    <button class="filter-tag active" data-filter="all">Todos</button>
+                    <button class="filter-tag" data-filter="Python">Python</button>
+                    <button class="filter-tag" data-filter="C#">C#</button>
+                    <button class="filter-tag" data-filter="Java">Java</button>
+                    <button class="filter-tag" data-filter=".NET">.NET</button>
+                    <button class="filter-tag" data-filter="API">API</button>
+                    <button class="filter-tag" data-filter="SQL">SQL</button>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <p>¿Te interesa mi perfil?</p>
+            <a href="mailto:ryakimovicz@gmail.com" class="email-link">ryakimovicz@gmail.com</a>
+            <p class="copyright">© 2025 Román Yakimovicz</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

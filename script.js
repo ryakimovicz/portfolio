@@ -223,3 +223,50 @@ filterButtons.forEach(btn => {
 });
 
 renderProjects(projects);
+
+/* =========================================
+   EFECTO TYPEWRITER (MÁQUINA DE ESCRIBIR)
+   ========================================= */
+const words = ["Python", "Java", "C#", ".NET", "APIs REST", "Base de Datos", "Automatización"];
+let i = 0;
+let timer;
+
+function typingEffect() {
+    const word = words[i].split("");
+    const loopTyping = function() {
+        if (word.length > 0) {
+            document.getElementById('typewriter').innerHTML += word.shift();
+        } else {
+            // Espera 2 segundos antes de borrar
+            setTimeout(deletingEffect, 2000);
+            return false;
+        }
+        timer = setTimeout(loopTyping, 100); // Velocidad de escritura
+    };
+    loopTyping();
+}
+
+function deletingEffect() {
+    const word = document.getElementById('typewriter').innerHTML.split("");
+    const loopDeleting = function() {
+        if (word.length > 0) {
+            word.pop();
+            document.getElementById('typewriter').innerHTML = word.join("");
+        } else {
+            if (words.length > (i + 1)) {
+                i++;
+            } else {
+                i = 0;
+            }
+            typingEffect();
+            return false;
+        }
+        timer = setTimeout(loopDeleting, 50); // Velocidad de borrado (más rápido)
+    };
+    loopDeleting();
+}
+
+// Iniciar el efecto cuando carga la página
+document.addEventListener('DOMContentLoaded', () => {
+    typingEffect();
+});

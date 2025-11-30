@@ -227,7 +227,7 @@ renderProjects(projects);
 /* =========================================
    EFECTO TYPEWRITER (MÁQUINA DE ESCRIBIR)
    ========================================= */
-const words = ["Python", "Java", "C#", ".NET", "APIs REST", "Base de Datos", "Automatización"];
+const words = ["Python", "Java", "C#", ".NET", "APIs REST", "SQL"];
 let i = 0;
 let timer;
 

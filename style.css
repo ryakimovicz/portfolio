@@ -15,13 +15,38 @@ body { background-color: var(--bg-color); color: var(--text-primary); line-heigh
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 
 /* Navegación */
-nav { padding: 20px 0; position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); z-index: 100; border-bottom: 1px solid #334155; }
+nav { 
+    padding: 10px 0; 
+    position: sticky; 
+    top: 0; 
+    background: rgba(15, 23, 42, 0.95); 
+    z-index: 100; 
+    border-bottom: 1px solid #334155;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-hidden {
+    transform: translateY(-100%);
+}
+
 .nav-content { display: flex; justify-content: space-between; align-items: center; }
 .logo { color: var(--accent); font-weight: 700; font-size: 1.5rem; }
-.nav-links { list-style: none; display: flex; gap: 20px; }
-.nav-links a:hover { color: var(--accent); }
-.btn-contact { border: 1px solid var(--accent); padding: 5px 15px; border-radius: 5px; color: var(--accent); }
-.btn-contact:hover { background: var(--accent); color: var(--bg-color); }
+.nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
+.nav-links a:hover {
+    color: var(--accent);
+}
+.btn-contact {
+    border: 1px solid var(--accent);
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: var(--accent);
+    transition: 0.3s;
+}
+.nav-links .btn-contact:hover {
+    background-color: var(--accent) !important; /* Fuerza el fondo celeste */
+    color: var(--bg-color) !important;          /* Fuerza el texto oscuro */
+    font-weight: 600;
+}
 
 /* Hero */
 .hero { padding: 80px 0; text-align: center; }
@@ -32,6 +57,45 @@ nav { padding: 20px 0; position: sticky; top: 0; background: rgba(15, 23, 42, 0.
     font-size: 3rem; 
     margin: 20px 0; 
     line-height: 1.2;
+}
+
+/* Efectos visuales */
+.gradient-text {
+    background: linear-gradient(45deg, #38bdf8, #818cf8, #38bdf8);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+.typewriter-container {
+    font-size: 1.5rem;
+    min-height: 1.6em;
+    color: var(--text-secondary);
+}
+
+#typewriter {
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--text-primary);
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .accent { color: var(--accent); }
@@ -68,6 +132,10 @@ nav { padding: 20px 0; position: sticky; top: 0; background: rgba(15, 23, 42, 0.
 .project-title { font-size: 1.25rem; margin-bottom: 10px; }
 .project-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.links a { color: var(--text-secondary); margin-left: 10px; font-size: 1.2rem; }
+.links a:hover { color: white; }
+
+/* Estilo para los Tags */
 .tech-tag {
     font-size: 0.75rem;
     color: var(--accent);
@@ -77,57 +145,15 @@ nav { padding: 20px 0; position: sticky; top: 0; background: rgba(15, 23, 42, 0.
     border-radius: 15px;
     background-color: rgba(56, 189, 248, 0.1);
     display: inline-block;
+    cursor: default;
 }
-
-.links a { color: var(--text-secondary); margin-left: 10px; font-size: 1.2rem; }
-.links a:hover { color: white; }
 
 /* Footer */
 footer { padding: 50px 0; text-align: center; border-top: 1px solid #334155; }
 .email-link { font-size: 1.2rem; color: var(--accent); font-weight: bold; }
 
 #sobre-mi, #proyectos, #contacto {
-    scroll-margin-top: 50px;
-}
-
-/* =========================================
-   RESPONSIVE DESIGN (CELULARES)
-   ========================================= */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    .hero h2 {
-        font-size: clamp(2rem, 9vw, 2.5rem);
-    }
-    
-    .hero p {
-        font-size: 1rem;
-        padding: 0;
-    }
-
-    .hero-btns {
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    /* Ajuste de navegación */
-    .nav-content {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .nav-links {
-        font-size: 0.9rem;
-        gap: 15px;
-    }
+    scroll-margin-top: 80px; /* Aumentado para compensar el header */
 }
 
 /* =========================================
@@ -164,7 +190,6 @@ footer { padding: 50px 0; text-align: center; border-top: 1px solid #334155; }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Botón de cerrar (X) */
 .close-btn {
     color: var(--text-secondary);
     float: right;
@@ -174,85 +199,65 @@ footer { padding: 50px 0; text-align: center; border-top: 1px solid #334155; }
     transition: 0.3s;
 }
 
-.close-btn:hover {
-    color: var(--accent);
-}
+.close-btn:hover { color: var(--accent); }
 
-/* Estilos para el contenido dentro del modal */
 .modal-header h2 { color: var(--accent); margin-bottom: 10px; }
 .modal-body h3 { color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
 .modal-body p { margin-bottom: 10px; color: var(--text-secondary); }
 .modal-body ul { margin-left: 20px; margin-bottom: 15px; color: var(--text-secondary); }
 .modal-body li { margin-bottom: 5px; }
 .modal-body img { width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #334155; }
-.modal-body code { background: #0f172a; padding: 2px 5px; border-radius: 4px; font-family: monospace; color: var(--accent); }
-
-/* Tablas dentro del modal (para endpoints) */
 .modal-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; }
 .modal-table th, .modal-table td { border: 1px solid #334155; padding: 8px; text-align: left; }
 .modal-table th { background-color: var(--tag-bg); color: var(--accent); }
 .modal-table td { color: var(--text-secondary); }
 
-/* Ajuste móvil para modal */
+/* =========================================
+   RESPONSIVE DESIGN (CELULARES)
+   ========================================= */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .nav-content {
+        flex-direction: row; /* Forzamos la fila */
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-links {
+        font-size: 0.85rem;
+        gap: 10px; 
+    }
+
+    .typewriter-container {
+        font-size: 1.2rem;
+    }
+
+    .hero h2 {
+        font-size: clamp(2rem, 9vw, 2.5rem);
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn { width: 100%; }
+
+    /* Ajuste de modal para móvil */
     .modal-content {
         margin: 10% auto;
         width: 95%;
         padding: 20px;
     }
-    .modal-table { display: block; overflow-x: auto; } /* Scroll horizontal para tablas en celular */
-}
-
-/* =========================================
-   EFECTOS VISUALES DE IMPACTO
-   ========================================= */
-
-/* 1. Nombre con Gradiente Animado */
-.gradient-text {
-    background: linear-gradient(45deg, #38bdf8, #818cf8, #38bdf8);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: shine 3s linear infinite;
-}
-
-@keyframes shine {
-    to {
-        background-position: 200% center;
-    }
-}
-
-/* 2. Estilo para el Typewriter */
-.typewriter-container {
-    font-size: 1.5rem;
-    min-height: 1.6em;
-    color: var(--text-secondary);
-}
-
-#typewriter {
-    font-weight: bold;
-    color: var(--accent);
-}
-
-/* El cursor que parpadea como en la terminal */
-.cursor {
-    display: inline-block;
-    width: 3px;
-    background-color: var(--text-primary);
-    animation: blink 1s infinite;
-    margin-left: 2px;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Ajuste móvil para el texto grande */
-@media (max-width: 768px) {
-    .typewriter-container {
-        font-size: 1.2rem;
-    }
+    .modal-table { display: block; overflow-x: auto; }
 }

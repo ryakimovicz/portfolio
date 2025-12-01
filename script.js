@@ -288,4 +288,32 @@ document.addEventListener('DOMContentLoaded', () => {
     typingEffect();
 });
 
+/* =========================================
+   NAVBAR INTELEGENTE (OCULTAR AL SCROLLEAR)
+   ========================================= */
+let lastScrollTop = 0;
+const navbar = document.querySelector('nav');
+
+window.addEventListener('scroll', function() {
+    // Obtenemos la posición actual del scroll
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Validamos que sea en móvil (ancho menor a 768px)
+    // Si prefieres que funcione también en PC, borra el "if (window.innerWidth..."
+    if (window.innerWidth <= 768) {
+        if (scrollTop > lastScrollTop && scrollTop > 80) {
+            // Si baja y ya pasó el header -> Ocultar
+            navbar.classList.add('nav-hidden');
+        } else {
+            // Si sube -> Mostrar
+            navbar.classList.remove('nav-hidden');
+        }
+    } else {
+        // En PC siempre visible por seguridad (opcional)
+        navbar.classList.remove('nav-hidden');
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
 renderProjects(projects);

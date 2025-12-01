@@ -15,7 +15,7 @@ const projects = [
                 <li><strong>Reporte:</strong> Generación de PDF listo para imprimir con <code>FPDF</code>.</li>
             </ul>
             <h3>📸 Demostración</h3>
-            <p><em>Reporte PDF generado:</em></p>
+            <p><em>Output en consola y Reporte PDF generado:</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/finance-analyzer/main/img/pdf_preview.png" alt="Reporte PDF">
         `
     },
@@ -56,12 +56,14 @@ const projects = [
             <h3>📸 Capturas</h3>
             <p><em>Cliente de Consola (CLI):</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/consola.png" alt="CLI">
+            <p style="margin-top:15px"><em>Documentación Automática (Swagger UI):</em></p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/swagger_response.png" alt="Swagger">
         `
     },
     {
         title: "Inventory Management API",
-        description: "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite. Arquitectura en capas y documentación Swagger.",
-        tags: ["C#", ".NET", "API", "SQL", "Entity Framework"],
+        description: "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite.",
+        tags: ["C#", ".NET Core", "API REST", "SQL", "Entity Framework"],
         github: "https://github.com/ryakimovicz/inventory-api",
         details: `
             <h3>📦 Descripción</h3>
@@ -75,9 +77,10 @@ const projects = [
             </ul>
             <h3>📸 Demostración</h3>
             <p><em>Documentación interactiva con Swagger UI:</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/main/img/swagger_search_demo.png" alt="Swagger Search">
-            <p style="margin-top:10px"><em>Respuesta JSON estructurada:</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/main/img/swagger_demo.png" alt="Swagger Response">
+            <p style="margin-top:10px"><em>Ejemplo de petición <code>GET</code> estándar recuperando todo el inventario disponible.</em></p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_demo.png" alt="Swagger Response">
+            <p style="margin-top:10px"><em>Ejemplo consultando <code>/api/Products?search=laptop</code>.</em></p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_search_demo.png" alt="Swagger Search">
         `
     },
     {
@@ -158,14 +161,12 @@ function renderProjects(data) {
     }
 
     data.forEach(project => {
-        const tagsHtml = project.tags.map(tag => `<span class="tech-tag">#${tag}</span>`).join('');
+        // --- CAMBIO: Quitamos el '#' antes del ${tag} ---
+        const tagsHtml = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
+        
         const card = document.createElement('div');
         card.className = 'project-card';
-
-        // --- CAMBIO: Cambiamos el cursor a "pointer" (manito) ---
         card.style.cursor = 'pointer';
-
-        // Agregamos el evento onclick para abrir el modal
         card.onclick = () => openModal(project);
         
         card.innerHTML = `
@@ -183,13 +184,13 @@ function renderProjects(data) {
     });
 }
 
-// Lógica del Modal
 function openModal(project) {
     const content = `
         <div class="modal-header">
             <h2>${project.title}</h2>
             <div class="project-tags" style="margin-bottom: 15px;">
-                ${project.tags.map(tag => `<span class="tech-tag" style="border: 1px solid #38bdf8;">#${tag}</span>`).join('')}
+                <!-- CAMBIO: Quitamos el '#' y el style inline, ahora usa el CSS global -->
+                ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
             </div>
         </div>
         <div class="modal-body">
@@ -203,18 +204,16 @@ function openModal(project) {
     `;
     modalBody.innerHTML = content;
     modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // Evitar scroll de fondo
+    document.body.style.overflow = "hidden"; 
 }
 
 function closeModal() {
     modal.style.display = "none";
-    document.body.style.overflow = "auto"; // Restaurar scroll
+    document.body.style.overflow = "auto"; 
 }
 
-// Cerrar modal con la X
 closeBtn.onclick = closeModal;
 
-// Cerrar modal clicando fuera
 window.onclick = function(event) {
     if (event.target == modal) {
         closeModal();
@@ -244,12 +243,10 @@ filterButtons.forEach(btn => {
     });
 });
 
-renderProjects(projects);
-
 /* =========================================
    EFECTO TYPEWRITER (MÁQUINA DE ESCRIBIR)
    ========================================= */
-const words = ["Python", "Java", "C#", ".NET", "APIs REST", "SQL"];
+const words = ["Python", "Java", "C#", "ASP.NET Core", "APIs REST", "SQL"];
 let i = 0;
 let timer;
 
@@ -259,11 +256,10 @@ function typingEffect() {
         if (word.length > 0) {
             document.getElementById('typewriter').innerHTML += word.shift();
         } else {
-            // Espera 2 segundos antes de borrar
             setTimeout(deletingEffect, 2000);
             return false;
         }
-        timer = setTimeout(loopTyping, 100); // Velocidad de escritura
+        timer = setTimeout(loopTyping, 100); 
     };
     loopTyping();
 }
@@ -283,12 +279,13 @@ function deletingEffect() {
             typingEffect();
             return false;
         }
-        timer = setTimeout(loopDeleting, 50); // Velocidad de borrado (más rápido)
+        timer = setTimeout(loopDeleting, 50); 
     };
     loopDeleting();
 }
 
-// Iniciar el efecto cuando carga la página
 document.addEventListener('DOMContentLoaded', () => {
     typingEffect();
 });
+
+renderProjects(projects);

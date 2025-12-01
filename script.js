@@ -59,6 +59,28 @@ const projects = [
         `
     },
     {
+        title: "Inventory Management API",
+        description: "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite. Arquitectura en capas y documentación Swagger.",
+        tags: ["C#", ".NET", "API", "SQL", "Entity Framework"],
+        github: "https://github.com/ryakimovicz/inventory-api",
+        details: `
+            <h3>📦 Descripción</h3>
+            <p>Una API RESTful profesional diseñada para la gestión eficiente de productos. Implementa patrones de diseño modernos, validaciones de negocio y una arquitectura limpia separada en capas (Controllers, Services, Repositories).</p>
+            <h3>✨ Características Clave</h3>
+            <ul>
+                <li><strong>CRUD Completo:</strong> Gestión total de productos con verbos HTTP correctos.</li>
+                <li><strong>Arquitectura Sólida:</strong> Uso de <strong>DTOs</strong> para seguridad y desacoplamiento.</li>
+                <li><strong>Búsqueda Avanzada:</strong> Filtrado dinámico con LINQ (Case Insensitive).</li>
+                <li><strong>Base de Datos:</strong> Persistencia con <strong>SQLite</strong> y migraciones de EF Core.</li>
+            </ul>
+            <h3>📸 Demostración</h3>
+            <p><em>Documentación interactiva con Swagger UI:</em></p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/main/img/swagger_search_demo.png" alt="Swagger Search">
+            <p style="margin-top:10px"><em>Respuesta JSON estructurada:</em></p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/main/img/swagger_demo.png" alt="Swagger Response">
+        `
+    },
+    {
         title: "Foro Hub (API REST)",
         description: "Backend para un foro con autenticación JWT, CRUD de tópicos y persistencia en MySQL.",
         tags: ["Java", "Spring Boot", "JWT", "API REST", "MySQL"],

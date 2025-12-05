@@ -61,6 +61,25 @@ const projects = [
         `
     },
     {
+        title: "Portfolio Personal (Web SPA)",
+        description: "Single Page Application desarrollada desde cero. Diseño totalmente responsivo, modo oscuro y renderizado dinámico con JavaScript.",
+        tags: ["JavaScript", "CSS3", "HTML5", "Web", "Frontend"],
+        github: "https://github.com/ryakimovicz/portfolio",
+        details: `
+            <h3>🎨 Descripción</h3>
+            <p>Este mismo sitio web es un proyecto técnico. Fue diseñado como una <strong>SPA (Single Page Application)</strong> sin dependencias externas (No Bootstrap, No jQuery) para demostrar dominio de los estándares web modernos.</p>
+            <h3>✨ Características Técnicas</h3>
+            <ul>
+                <li><strong>Arquitectura:</strong> Renderizado dinámico de proyectos mediante inyección de DOM con JavaScript (JSON).</li>
+                <li><strong>UX/UI:</strong> Diseño <em>Dark Mode</em> nativo con variables CSS (<code>:root</code>) y animaciones fluidas.</li>
+                <li><strong>Responsive:</strong> Maquetado adaptable utilizando <strong>CSS Grid</strong> y <strong>Flexbox</strong>.</li>
+                <li><strong>Performance:</strong> Carga optimizada y puntaje alto en Lighthouse al no utilizar librerías pesadas.</li>
+            </ul>
+            <h3>🛠️ Stack</h3>
+            <p>HTML5 Semántico, CSS3 Moderno, JavaScript ES6+.</p>
+        `
+    },
+    {
         title: "Inventory Management API",
         description: "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite.",
         tags: ["C#", ".NET Core", "API REST", "SQL", "Entity Framework"],
@@ -161,7 +180,6 @@ function renderProjects(data) {
     }
 
     data.forEach(project => {
-        // --- CAMBIO: Quitamos el '#' antes del ${tag} ---
         const tagsHtml = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
         
         const card = document.createElement('div');
@@ -246,7 +264,7 @@ filterButtons.forEach(btn => {
 /* =========================================
    EFECTO TYPEWRITER (MÁQUINA DE ESCRIBIR)
    ========================================= */
-const words = ["Python", "Java", "C#", "ASP.NET Core", "APIs REST", "SQL"];
+const words = ["Full Stack", "Python & Django", "Java Spring", "C# .NET", "Desarrollo Web", "SQL & Datos"];
 let i = 0;
 let timer;
 
@@ -295,21 +313,15 @@ let lastScrollTop = 0;
 const navbar = document.querySelector('nav');
 
 window.addEventListener('scroll', function() {
-    // Obtenemos la posición actual del scroll
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Validamos que sea en móvil (ancho menor a 768px)
-    // Si prefieres que funcione también en PC, borra el "if (window.innerWidth..."
     if (window.innerWidth <= 768) {
         if (scrollTop > lastScrollTop && scrollTop > 80) {
-            // Si baja y ya pasó el header -> Ocultar
             navbar.classList.add('nav-hidden');
         } else {
-            // Si sube -> Mostrar
             navbar.classList.remove('nav-hidden');
         }
     } else {
-        // En PC siempre visible por seguridad (opcional)
         navbar.classList.remove('nav-hidden');
     }
     

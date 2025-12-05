@@ -261,10 +261,16 @@ filterButtons.forEach(btn => {
     });
 });
 
-/* =========================================
-   EFECTO TYPEWRITER (MÁQUINA DE ESCRIBIR)
-   ========================================= */
-const words = ["Full Stack", "Python & Django", "Java Spring", "C# .NET", "Desarrollo Web", "SQL & Datos"];
+/* ====================
+   EFECTO TYPEWRITER
+   ==================== */
+const words = [
+    "Python y FastAPI", 
+    "Java Spring Boot", 
+    "C# .NET Core", 
+    "HTML, CSS y JS", 
+    "SQL y Datos"
+];
 let i = 0;
 let timer;
 
@@ -272,7 +278,7 @@ function typingEffect() {
     const word = words[i].split("");
     const loopTyping = function() {
         if (word.length > 0) {
-            document.getElementById('typewriter').innerHTML += word.shift();
+            document.getElementById('typewriter').textContent += word.shift();
         } else {
             setTimeout(deletingEffect, 2000);
             return false;
@@ -283,11 +289,11 @@ function typingEffect() {
 }
 
 function deletingEffect() {
-    const word = document.getElementById('typewriter').innerHTML.split("");
+    const word = document.getElementById('typewriter').textContent.split("");
     const loopDeleting = function() {
         if (word.length > 0) {
             word.pop();
-            document.getElementById('typewriter').innerHTML = word.join("");
+            document.getElementById('typewriter').textContent = word.join("");
         } else {
             if (words.length > (i + 1)) {
                 i++;

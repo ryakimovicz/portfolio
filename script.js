@@ -3,7 +3,7 @@ const projects = [
     {
         title: "Flask Expense Tracker",
         description: "Aplicación Web Full Stack para gestión de gastos. Dashboard con gráficos interactivos (Chart.js), presupuestos y exportación a CSV.",
-        tags: ["Python", "Flask", "SQL", "Chart.js", "Full Stack"],
+        tags: ["Web", "Python", "Flask", "SQL", "Chart.js", "Full Stack"],
         github: "https://github.com/ryakimovicz/flask-expense-tracker",
         details: `
             <h3>📊 Descripción</h3>

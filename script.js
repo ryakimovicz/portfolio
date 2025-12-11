@@ -1,6 +1,26 @@
 // LISTA DE PROYECTOS CON DETALLES
 const projects = [
     {
+        title: "Flask Expense Tracker",
+        description: "Aplicación Web Full Stack para gestión de gastos. Dashboard con gráficos interactivos (Chart.js), presupuestos y exportación a CSV.",
+        tags: ["Python", "Flask", "SQL", "Chart.js", "Full Stack"],
+        github: "https://github.com/ryakimovicz/flask-expense-tracker",
+        details: `
+            <h3>📊 Descripción</h3>
+            <p>Una aplicación web completa que lleva el análisis de finanzas al navegador. A diferencia de los scripts de consola, este proyecto ofrece una interfaz gráfica interactiva donde el usuario puede administrar su economía en tiempo real.</p>
+            <h3>✨ Características Clave</h3>
+            <ul>
+                <li><strong>Dashboard Visual:</strong> Gráficos dinámicos con <code>Chart.js</code> que reaccionan a los datos.</li>
+                <li><strong>Presupuestos:</strong> Lógica de negocio para calcular metas mensuales y alertas visuales de gasto.</li>
+                <li><strong>Persistencia:</strong> Uso de <strong>SQLAlchemy</strong> y SQLite para guardar datos y configuraciones.</li>
+                <li><strong>Reportes:</strong> Filtrado por fecha y descarga de datos en CSV.</li>
+            </ul>
+            <h3>📸 Demo</h3>
+            <p><em>Vista del Dashboard con Presupuesto y Gráficos:</em></p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/flask-expense-tracker/main/img/dashboard.png" alt="Dashboard Flask">
+        `
+    },
+    {
         title: "Personal Finance Analyzer",
         description: "Herramienta de Data Science que procesa CSVs de gastos, genera estadísticas y exporta reportes PDF.",
         tags: ["Python", "Pandas", "Matplotlib", "Data Analysis"],

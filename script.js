@@ -1,11 +1,32 @@
 // LISTA DE PROYECTOS CON DETALLES
 const projects = [
-    {
-        title: "Flask Expense Tracker",
-        description: "Aplicación Web Full Stack para gestión de gastos. Dashboard con gráficos interactivos (Chart.js), presupuestos y exportación a CSV.",
-        tags: ["Web", "Python", "Flask", "SQL", "Chart.js", "Full Stack"],
-        github: "https://github.com/ryakimovicz/flask-expense-tracker",
-        details: `
+  {
+    title: "Decoparque Rework",
+    description:
+      "Rediseño moderno del sitio web de Decoparque. Enfoque en performance, SEO y buenas prácticas de desarrollo responsivo.",
+    tags: ["HTML5", "CSS3", "JavaScript", "Web", "Frontend"],
+    demo: "https://ryakimovicz.github.io/decoparque-rework/",
+    github: "https://github.com/ryakimovicz/decoparque-rework",
+    details: `
+            <h3>🎨 Descripción</h3>
+            <p>Versión optimizada y modernizada del sitio web de Decoparque. Este proyecto personal busca mejorar la experiencia de usuario y la identidad visual de la marca utilizando tecnologías web nativas.</p>
+            <h3>✨ Características Clave</h3>
+            <ul>
+                <li><strong>UI/UX Moderno:</strong> Interfaz limpia y atractiva diseñada desde cero.</li>
+                <li><strong>Responsive Design:</strong> Adaptación fluida a móviles y escritorio sin frameworks pesados.</li>
+                <li><strong>Optimización:</strong> Mejores tiempos de carga y estructura semántica para SEO.</li>
+            </ul>
+            <h3>📸 Stack</h3>
+            <p>HTML5, CSS3 y JavaScript puro.</p>
+        `,
+  },
+  {
+    title: "Flask Expense Tracker",
+    description:
+      "Aplicación Web Full Stack para gestión de gastos. Dashboard con gráficos interactivos (Chart.js), presupuestos y exportación a CSV.",
+    tags: ["Web", "Python", "Flask", "SQL", "Chart.js", "Full Stack"],
+    github: "https://github.com/ryakimovicz/flask-expense-tracker",
+    details: `
             <h3>📊 Descripción</h3>
             <p>Una aplicación web completa que lleva el análisis de finanzas al navegador. A diferencia de los scripts de consola, este proyecto ofrece una interfaz gráfica interactiva donde el usuario puede administrar su economía en tiempo real.</p>
             <h3>✨ Características Clave</h3>
@@ -18,14 +39,15 @@ const projects = [
             <h3>📸 Demo</h3>
             <p><em>Vista del Dashboard con Presupuesto y Gráficos:</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/flask-expense-tracker/main/img/dashboard.png" alt="Dashboard Flask">
-        `
-    },
-    {
-        title: "Personal Finance Analyzer",
-        description: "Herramienta de Data Science que procesa CSVs de gastos, genera estadísticas y exporta reportes PDF.",
-        tags: ["Python", "Pandas", "Matplotlib", "Data Analysis"],
-        github: "https://github.com/ryakimovicz/finance-analyzer",
-        details: `
+        `,
+  },
+  {
+    title: "Personal Finance Analyzer",
+    description:
+      "Herramienta de Data Science que procesa CSVs de gastos, genera estadísticas y exporta reportes PDF.",
+    tags: ["Python", "Pandas", "Matplotlib", "Data Analysis"],
+    github: "https://github.com/ryakimovicz/finance-analyzer",
+    details: `
             <h3>📊 Descripción</h3>
             <p>Una herramienta de análisis de datos desarrollada en Python que procesa archivos de gastos (CSV), realiza cálculos estadísticos y genera automáticamente un reporte financiero en formato PDF con gráficos visuales.</p>
             <h3>✨ Características</h3>
@@ -37,14 +59,15 @@ const projects = [
             <h3>📸 Demostración</h3>
             <p><em>Output en consola y Reporte PDF generado:</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/finance-analyzer/main/img/pdf_preview.png" alt="Reporte PDF">
-        `
-    },
-    {
-        title: "MercadoLibre Price Tracker",
-        description: "Bot de monitoreo de precios en tiempo real. Web scraping automatizado y alertas por email.",
-        tags: ["Python", "Web Scraping", "Automation", "SMTP"],
-        github: "https://github.com/ryakimovicz/ml-price-tracker",
-        details: `
+        `,
+  },
+  {
+    title: "MercadoLibre Price Tracker",
+    description:
+      "Bot de monitoreo de precios en tiempo real. Web scraping automatizado y alertas por email.",
+    tags: ["Python", "Web Scraping", "Automation", "SMTP"],
+    github: "https://github.com/ryakimovicz/ml-price-tracker",
+    details: `
             <h3>📉 Descripción</h3>
             <p>Script de automatización que monitorea el precio de productos en MercadoLibre Argentina. Extrae la información del producto y envía una notificación por correo electrónico si el precio baja del objetivo establecido.</p>
             <h3>✨ Características</h3>
@@ -57,14 +80,15 @@ const projects = [
             <p><em>Detección en consola y Alerta real recibida por Email:</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/ml-price-tracker/main/img/console_output.png" alt="Consola">
             <img src="https://raw.githubusercontent.com/ryakimovicz/ml-price-tracker/main/img/email_alert.png" alt="Email" style="margin-top:10px">
-        `
-    },
-    {
-        title: "URL Shortener API",
-        description: "Servicio de acortamiento de URLs con Python. Redirección eficiente y base de datos SQLite.",
-        tags: ["Python", "FastAPI", "SQLite", "Backend"],
-        github: "https://github.com/ryakimovicz/url-shortener",
-        details: `
+        `,
+  },
+  {
+    title: "URL Shortener API",
+    description:
+      "Servicio de acortamiento de URLs con Python. Redirección eficiente y base de datos SQLite.",
+    tags: ["Python", "FastAPI", "SQLite", "Backend"],
+    github: "https://github.com/ryakimovicz/url-shortener",
+    details: `
             <h3>🚀 Descripción</h3>
             <p>Sistema completo de acortamiento de URLs con arquitectura Cliente-Servidor. Incluye una REST API robusta con <strong>FastAPI</strong> y un cliente CLI interactivo.</p>
             <h3>✨ Características</h3>
@@ -78,14 +102,15 @@ const projects = [
             <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/consola.png" alt="CLI">
             <p style="margin-top:15px"><em>Documentación Automática (Swagger UI):</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/swagger_response.png" alt="Swagger">
-        `
-    },
-    {
-        title: "Portfolio Personal (Web SPA)",
-        description: "Single Page Application desarrollada desde cero. Diseño totalmente responsivo, modo oscuro y renderizado dinámico con JavaScript.",
-        tags: ["JavaScript", "CSS3", "HTML5", "Web", "Frontend"],
-        github: "https://github.com/ryakimovicz/portfolio",
-        details: `
+        `,
+  },
+  {
+    title: "Portfolio Personal (Web SPA)",
+    description:
+      "Single Page Application desarrollada desde cero. Diseño totalmente responsivo, modo oscuro y renderizado dinámico con JavaScript.",
+    tags: ["JavaScript", "CSS3", "HTML5", "Web", "Frontend"],
+    github: "https://github.com/ryakimovicz/portfolio",
+    details: `
             <h3>🎨 Descripción</h3>
             <p>Este mismo sitio web es un proyecto técnico. Fue diseñado como una <strong>SPA (Single Page Application)</strong> sin dependencias externas (No Bootstrap, No jQuery) para demostrar dominio de los estándares web modernos.</p>
             <h3>✨ Características Técnicas</h3>
@@ -97,14 +122,15 @@ const projects = [
             </ul>
             <h3>🛠️ Stack</h3>
             <p>HTML5 Semántico, CSS3 Moderno, JavaScript ES6+.</p>
-        `
-    },
-    {
-        title: "Inventory Management API",
-        description: "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite.",
-        tags: ["C#", ".NET Core", "API REST", "SQL", "Entity Framework"],
-        github: "https://github.com/ryakimovicz/inventory-api",
-        details: `
+        `,
+  },
+  {
+    title: "Inventory Management API",
+    description:
+      "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite.",
+    tags: ["C#", ".NET Core", "API REST", "SQL", "Entity Framework"],
+    github: "https://github.com/ryakimovicz/inventory-api",
+    details: `
             <h3>📦 Descripción</h3>
             <p>Una API RESTful profesional diseñada para la gestión eficiente de productos. Implementa patrones de diseño modernos, validaciones de negocio y una arquitectura limpia separada en capas (Controllers, Services, Repositories).</p>
             <h3>✨ Características Clave</h3>
@@ -120,14 +146,15 @@ const projects = [
             <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_demo.png" alt="Swagger Response">
             <p style="margin-top:10px"><em>Ejemplo consultando <code>/api/Products?search=laptop</code>.</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_search_demo.png" alt="Swagger Search">
-        `
-    },
-    {
-        title: "Foro Hub (API REST)",
-        description: "Backend para un foro con autenticación JWT, CRUD de tópicos y persistencia en MySQL.",
-        tags: ["Java", "Spring Boot", "JWT", "API REST", "MySQL"],
-        github: "https://github.com/ryakimovicz/foro-hub-ONE",
-        details: `
+        `,
+  },
+  {
+    title: "Foro Hub (API REST)",
+    description:
+      "Backend para un foro con autenticación JWT, CRUD de tópicos y persistencia en MySQL.",
+    tags: ["Java", "Spring Boot", "JWT", "API REST", "MySQL"],
+    github: "https://github.com/ryakimovicz/foro-hub-ONE",
+    details: `
             <h3>🚀 Descripción</h3>
             <p>API REST que simula un foro de discusión. Gestiona tópicos, usuarios y respuestas, asegurando el acceso mediante tokens JWT.</p>
             <h3>✨ Funcionalidades</h3>
@@ -146,14 +173,15 @@ const projects = [
                     <tr><td>DELETE</td><td>/topicos/{id}</td><td>Protegido</td></tr>
                 </tbody>
             </table>
-        `
-    },
-    {
-        title: "Literalura: Catálogo",
-        description: "Aplicación de consola que consume la API de Gutendex y guarda libros en PostgreSQL.",
-        tags: ["Java", "Spring Data JPA", "PostgreSQL", "API Integration"],
-        github: "https://github.com/ryakimovicz/literalura-ONE",
-        details: `
+        `,
+  },
+  {
+    title: "Literalura: Catálogo",
+    description:
+      "Aplicación de consola que consume la API de Gutendex y guarda libros en PostgreSQL.",
+    tags: ["Java", "Spring Data JPA", "PostgreSQL", "API Integration"],
+    github: "https://github.com/ryakimovicz/literalura-ONE",
+    details: `
             <h3>📚 Descripción</h3>
             <p>Catálogo de libros interactivo que consume la API de <strong>Gutendex</strong>. Permite buscar libros, listar autores y filtrar por idiomas, persistiendo todo en PostgreSQL.</p>
             <h3>✨ Funcionalidades</h3>
@@ -162,14 +190,15 @@ const projects = [
                 <li><strong>Estadísticas:</strong> Listado de autores vivos en determinado año.</li>
                 <li><strong>Filtros:</strong> Búsqueda por idioma (ES, EN, FR, PT).</li>
             </ul>
-        `
-    },
-    {
-        title: "Conversor de Monedas",
-        description: "Conversión de divisas en tiempo real consumiendo Exchange Rate API.",
-        tags: ["Java", "API Integration", "JSON"],
-        github: "https://github.com/ryakimovicz/conversor-monedas-java-ONE",
-        details: `
+        `,
+  },
+  {
+    title: "Conversor de Monedas",
+    description:
+      "Conversión de divisas en tiempo real consumiendo Exchange Rate API.",
+    tags: ["Java", "API Integration", "JSON"],
+    github: "https://github.com/ryakimovicz/conversor-monedas-java-ONE",
+    details: `
             <h3>💱 Descripción</h3>
             <p>Proyecto de consola que permite convertir montos entre diferentes monedas (USD, ARS, BRL) utilizando tasas de cambio en tiempo real.</p>
             <h3>⚙️ Tecnologías</h3>
@@ -178,180 +207,199 @@ const projects = [
                 <li><strong>Http Client:</strong> Uso de <code>Java.net.http</code>.</li>
                 <li><strong>JSON:</strong> Parseo de respuestas con <code>Gson</code>.</li>
             </ul>
-        `
-    },
+        `,
+  },
 ];
 
 // LÓGICA DEL DOM
-const projectsGrid = document.getElementById('projectsGrid');
-const searchInput = document.getElementById('searchInput');
-const filterButtons = document.querySelectorAll('.filter-tag');
+const projectsGrid = document.getElementById("projectsGrid");
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-tag");
 
 // Elementos del Modal
-const modal = document.getElementById('projectModal');
-const modalBody = document.getElementById('modalBody');
-const closeBtn = document.querySelector('.close-btn');
+const modal = document.getElementById("projectModal");
+const modalBody = document.getElementById("modalBody");
+const closeBtn = document.querySelector(".close-btn");
 
 function renderProjects(data) {
-    projectsGrid.innerHTML = ''; 
-    if (data.length === 0) {
-        projectsGrid.innerHTML = '<p style="text-align:center; color:#94a3b8; grid-column:1/-1;">No se encontraron proyectos.</p>';
-        return;
-    }
+  projectsGrid.innerHTML = "";
+  if (data.length === 0) {
+    projectsGrid.innerHTML =
+      '<p style="text-align:center; color:#94a3b8; grid-column:1/-1;">No se encontraron proyectos.</p>';
+    return;
+  }
 
-    data.forEach(project => {
-        const tagsHtml = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
-        
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.style.cursor = 'pointer';
-        card.onclick = () => openModal(project);
-        
-        card.innerHTML = `
+  data.forEach((project) => {
+    const tagsHtml = project.tags
+      .map((tag) => `<span class="tech-tag">${tag}</span>`)
+      .join("");
+
+    const card = document.createElement("div");
+    card.className = "project-card";
+    card.style.cursor = "pointer";
+    card.onclick = () => openModal(project);
+
+    card.innerHTML = `
             <div class="card-header">
                 <i class="far fa-folder"></i>
                 <div class="links">
-                    ${project.github !== '#' ? `<a href="${project.github}" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>` : ''}
+                    ${
+                      project.github !== "#"
+                        ? `<a href="${project.github}" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
+                        : ""
+                    }
                 </div>
             </div>
             <h3 class="project-title">${project.title}</h3>
             <p class="project-desc">${project.description}</p>
             <div class="project-tags">${tagsHtml}</div>
         `;
-        projectsGrid.appendChild(card);
-    });
+    projectsGrid.appendChild(card);
+  });
 }
 
 function openModal(project) {
-    const content = `
+  const content = `
         <div class="modal-header">
             <h2>${project.title}</h2>
             <div class="project-tags" style="margin-bottom: 15px;">
                 <!-- CAMBIO: Quitamos el '#' y el style inline, ahora usa el CSS global -->
-                ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                ${project.tags
+                  .map((tag) => `<span class="tech-tag">${tag}</span>`)
+                  .join("")}
             </div>
         </div>
         <div class="modal-body">
             ${project.details}
         </div>
-        <div style="margin-top: 30px; text-align: center;">
+        <div style="margin-top: 30px; text-align: center; display: flex; justify-content: center; gap: 15px;">
+            ${project.demo ? `
+            <a href="${project.demo}" target="_blank" class="btn secondary">
+                <i class="fas fa-external-link-alt"></i> Ver Demo
+            </a>` : ''}
             <a href="${project.github}" target="_blank" class="btn primary">
                 <i class="fab fa-github"></i> Ver en GitHub
             </a>
         </div>
     `;
-    modalBody.innerHTML = content;
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden"; 
+  modalBody.innerHTML = content;
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
-    modal.style.display = "none";
-    document.body.style.overflow = "auto"; 
+  modal.style.display = "none";
+  document.body.style.overflow = "auto";
 }
 
 closeBtn.onclick = closeModal;
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeModal();
-    }
-}
+window.onclick = function (event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+};
 
 function filterProjects() {
-    const searchText = searchInput.value.toLowerCase();
-    const activeCategory = document.querySelector('.filter-tag.active').getAttribute('data-filter');
+  const searchText = searchInput.value.toLowerCase();
+  const activeCategory = document
+    .querySelector(".filter-tag.active")
+    .getAttribute("data-filter");
 
-    const filtered = projects.filter(p => {
-        const matchesSearch = p.title.toLowerCase().includes(searchText) || 
-                              p.tags.some(t => t.toLowerCase().includes(searchText));
-        const matchesCategory = activeCategory === 'all' || 
-                        p.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase()));
-        return matchesSearch && matchesCategory;
-    });
-    renderProjects(filtered);
+  const filtered = projects.filter((p) => {
+    const matchesSearch =
+      p.title.toLowerCase().includes(searchText) ||
+      p.tags.some((t) => t.toLowerCase().includes(searchText));
+    const matchesCategory =
+      activeCategory === "all" ||
+      p.tags.some((tag) =>
+        tag.toLowerCase().includes(activeCategory.toLowerCase())
+      );
+    return matchesSearch && matchesCategory;
+  });
+  renderProjects(filtered);
 }
 
-searchInput.addEventListener('input', filterProjects);
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filterProjects();
-    });
+searchInput.addEventListener("input", filterProjects);
+filterButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    filterProjects();
+  });
 });
 
 /* ====================
    EFECTO TYPEWRITER
    ==================== */
 const words = [
-    "Python y FastAPI", 
-    "Java Spring Boot", 
-    "C# .NET Core", 
-    "HTML, CSS y JS", 
-    "SQL y Datos"
+  "Python y FastAPI",
+  "Java Spring Boot",
+  "C# .NET Core",
+  "HTML, CSS y JS",
+  "SQL y Datos",
 ];
 let i = 0;
 let timer;
 
 function typingEffect() {
-    const word = words[i].split("");
-    const loopTyping = function() {
-        if (word.length > 0) {
-            document.getElementById('typewriter').textContent += word.shift();
-        } else {
-            setTimeout(deletingEffect, 2000);
-            return false;
-        }
-        timer = setTimeout(loopTyping, 100); 
-    };
-    loopTyping();
+  const word = words[i].split("");
+  const loopTyping = function () {
+    if (word.length > 0) {
+      document.getElementById("typewriter").textContent += word.shift();
+    } else {
+      setTimeout(deletingEffect, 2000);
+      return false;
+    }
+    timer = setTimeout(loopTyping, 100);
+  };
+  loopTyping();
 }
 
 function deletingEffect() {
-    const word = document.getElementById('typewriter').textContent.split("");
-    const loopDeleting = function() {
-        if (word.length > 0) {
-            word.pop();
-            document.getElementById('typewriter').textContent = word.join("");
-        } else {
-            if (words.length > (i + 1)) {
-                i++;
-            } else {
-                i = 0;
-            }
-            typingEffect();
-            return false;
-        }
-        timer = setTimeout(loopDeleting, 50); 
-    };
-    loopDeleting();
+  const word = document.getElementById("typewriter").textContent.split("");
+  const loopDeleting = function () {
+    if (word.length > 0) {
+      word.pop();
+      document.getElementById("typewriter").textContent = word.join("");
+    } else {
+      if (words.length > i + 1) {
+        i++;
+      } else {
+        i = 0;
+      }
+      typingEffect();
+      return false;
+    }
+    timer = setTimeout(loopDeleting, 50);
+  };
+  loopDeleting();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    typingEffect();
+document.addEventListener("DOMContentLoaded", () => {
+  typingEffect();
 });
 
 /* =========================================
    NAVBAR INTELEGENTE (OCULTAR AL SCROLLEAR)
    ========================================= */
 let lastScrollTop = 0;
-const navbar = document.querySelector('nav');
+const navbar = document.querySelector("nav");
 
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (window.innerWidth <= 768) {
-        if (scrollTop > lastScrollTop && scrollTop > 80) {
-            navbar.classList.add('nav-hidden');
-        } else {
-            navbar.classList.remove('nav-hidden');
-        }
+window.addEventListener("scroll", function () {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (window.innerWidth <= 768) {
+    if (scrollTop > lastScrollTop && scrollTop > 80) {
+      navbar.classList.add("nav-hidden");
     } else {
-        navbar.classList.remove('nav-hidden');
+      navbar.classList.remove("nav-hidden");
     }
-    
-    lastScrollTop = scrollTop;
+  } else {
+    navbar.classList.remove("nav-hidden");
+  }
+
+  lastScrollTop = scrollTop;
 });
 
 renderProjects(projects);

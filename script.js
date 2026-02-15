@@ -1,6 +1,37 @@
 // LISTA DE PROYECTOS CON DETALLES
 const projects = [
   {
+    title: "Jigsudo",
+    description:
+      "Experiencia de acertijos lógicos diarios. Seis desafíos interconectados (Memoria, Rompecabezas, Sudoku, Secuencias, Búsqueda, Código) en un solo tablero.",
+    tags: ["JavaScript", "Firebase", "Web", "Logic Game", "Full Stack"],
+    demo: "https://jigsudo.com/",
+    demoLabel: "Ver Beta",
+    github: "https://github.com/ryakimovicz/jigsudo",
+    details: `
+            <h3>🧩 Descripción</h3>
+            <p><strong>Jigsudo</strong> es una experiencia única de acertijos lógicos diarios. No es solo un juego, es un viaje a través de seis desafíos interconectados donde tu progreso en una etapa afecta directamente a la siguiente.</p>
+            <h3>🎮 Las Seis Etapas</h3>
+            <ul>
+                <li><strong>Memoria:</strong> Encuentra bloques de Sudoku para desbloquear piezas.</li>
+                <li><strong>Rompecabezas:</strong> Arma el tablero con las piezas recolectadas.</li>
+                <li><strong>Sudoku Central:</strong> Resuelve el puzzle sobre tu tablero personalizado.</li>
+                <li><strong>Picos y Valles:</strong> Domina las secuencias numéricas.</li>
+                <li><strong>Sopa de Números:</strong> Encuentra patrones en la cuadrícula.</li>
+                <li><strong>El Código:</strong> Descifra la secuencia final para ganar.</li>
+            </ul>
+            <h3>🚀 Características Clave</h3>
+            <ul>
+                <li><strong>Desafíos Diarios:</strong> Un puzzle nuevo, generado de forma única, cada día.</li>
+                <li><strong>Clasificación Global:</strong> Compite por los mejores tiempos (Diario, Mensual e Histórico).</li>
+                <li><strong>Sistema de Progresión:</strong> Gana RP (Puntos de Rango) y sube a través de 15 rangos únicos.</li>
+                <li><strong>Interfaz Dinámica:</strong> UI tipo glassmorphism con soporte para Modo Oscuro/Claro.</li>
+            </ul>
+            <h3>🛠️ Tecnologías</h3>
+            <p>Vanilla JavaScript (Módulos ES), HTML5, CSS3, Firebase (Auth & Firestore), GitHub Actions (CI/CD).</p>
+        `,
+  },
+  {
     title: "Decoparque Rework",
     description:
       "Rediseño moderno del sitio web de Decoparque. Enfoque en performance, SEO y buenas prácticas de desarrollo responsivo.",
@@ -273,10 +304,14 @@ function openModal(project) {
             ${project.details}
         </div>
         <div style="margin-top: 30px; text-align: center; display: flex; justify-content: center; gap: 15px;">
-            ${project.demo ? `
+            ${
+              project.demo
+                ? `
             <a href="${project.demo}" target="_blank" class="btn secondary">
-                <i class="fas fa-external-link-alt"></i> Ver Demo
-            </a>` : ''}
+                <i class="fas fa-external-link-alt"></i> ${project.demoLabel || "Ver Demo"}
+            </a>`
+                : ""
+            }
             <a href="${project.github}" target="_blank" class="btn primary">
                 <i class="fab fa-github"></i> Ver en GitHub
             </a>
@@ -313,7 +348,7 @@ function filterProjects() {
     const matchesCategory =
       activeCategory === "all" ||
       p.tags.some((tag) =>
-        tag.toLowerCase().includes(activeCategory.toLowerCase())
+        tag.toLowerCase().includes(activeCategory.toLowerCase()),
       );
     return matchesSearch && matchesCategory;
   });

@@ -13,12 +13,12 @@ const projects = [
             <p><strong>Jigsudo</strong> es una experiencia única de acertijos lógicos diarios. No es solo un juego, es un viaje a través de seis desafíos interconectados donde tu progreso en una etapa afecta directamente a la siguiente.</p>
             <h3>🎮 Las Seis Etapas</h3>
             <ul>
-                <li><strong>Memoria:</strong> Encuentra bloques de Sudoku para desbloquear piezas.</li>
-                <li><strong>Rompecabezas:</strong> Arma el tablero con las piezas recolectadas.</li>
-                <li><strong>Sudoku Central:</strong> Resuelve el puzzle sobre tu tablero personalizado.</li>
-                <li><strong>Picos y Valles:</strong> Domina las secuencias numéricas.</li>
-                <li><strong>Sopa de Números:</strong> Encuentra patrones en la cuadrícula.</li>
-                <li><strong>El Código:</strong> Descifra la secuencia final para ganar.</li>
+                <li><strong>Memoria:</strong> Comienza con el tablero vacío. Encuentra pares de bloques sudoku para desbloquear las 9 piezas. Al encontrar la pieza central, esta se fija automáticamente.</li>
+                <li><strong>Rompecabezas:</strong> Coloca las 8 piezas restantes de tu colección en el tablero para habilitar el siguiente desafío.</li>
+                <li><strong>Sudoku:</strong> Resuelve el Sudoku completando la cuadrícula con números del 1 al 9 sin repetirlos.</li>
+                <li><strong>Picos y Valles:</strong> Identifica los Picos (mayores que sus vecinos) y Valles (menores). Al encontrarlos, las celdas se bloquean.</li>
+                <li><strong>Sopa de Números:</strong> Encuentra secuencias numéricas ocultas serpenteando por el tablero, evitando las celdas ya bloqueadas.</li>
+                <li><strong>El Código:</strong> Memoriza y repite la secuencia que parpadea en las últimas 4 celdas libres, aumentando su dificultad en cada turno.</li>
             </ul>
             <h3>🚀 Características Clave</h3>
             <ul>

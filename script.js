@@ -1,248 +1,23 @@
-// LISTA DE PROYECTOS CON DETALLES
-const projects = [
-  {
-    title: "Jigsudo",
-    description:
-      "Experiencia de acertijos lógicos diarios. Seis desafíos interconectados (Memoria, Rompecabezas, Sudoku, Secuencias, Búsqueda, Código) en un solo tablero.",
-    tags: ["JavaScript", "Firebase", "Web", "Logic Game", "Full Stack"],
-    demo: "https://jigsudo.com/",
-    demoLabel: "Ver Beta",
-    github: "https://github.com/ryakimovicz/jigsudo",
-    details: `
-            <h3>🧩 Descripción</h3>
-            <p><strong>Jigsudo</strong> es una experiencia única de acertijos lógicos diarios. No es solo un juego, es un viaje a través de seis desafíos interconectados donde tu progreso en una etapa afecta directamente a la siguiente.</p>
-            <h3>🎮 Las Seis Etapas</h3>
-            <ul>
-                <li><strong>Memoria:</strong> Comienza con el tablero vacío. Encuentra pares de bloques sudoku para desbloquear las 9 piezas. Al encontrar la pieza central, esta se fija automáticamente.</li>
-                <li><strong>Rompecabezas:</strong> Coloca las 8 piezas restantes de tu colección en el tablero para habilitar el siguiente desafío.</li>
-                <li><strong>Sudoku:</strong> Resuelve el Sudoku completando la cuadrícula con números del 1 al 9 sin repetirlos.</li>
-                <li><strong>Picos y Valles:</strong> Identifica los Picos (mayores que sus vecinos) y Valles (menores). Al encontrarlos, las celdas se bloquean.</li>
-                <li><strong>Sopa de Números:</strong> Encuentra secuencias numéricas ocultas serpenteando por el tablero, evitando las celdas ya bloqueadas.</li>
-                <li><strong>El Código:</strong> Memoriza y repite la secuencia que parpadea en las últimas 4 celdas libres, aumentando su dificultad en cada turno.</li>
-            </ul>
-            <h3>🚀 Características Clave</h3>
-            <ul>
-                <li><strong>Desafíos Diarios:</strong> Un puzzle nuevo, generado de forma única, cada día.</li>
-                <li><strong>Clasificación Global:</strong> Compite por los mejores tiempos (Diario, Mensual e Histórico).</li>
-                <li><strong>Sistema de Progresión:</strong> Gana RP (Puntos de Rango) y sube a través de 15 rangos únicos.</li>
-                <li><strong>Interfaz Dinámica:</strong> UI tipo glassmorphism con soporte para Modo Oscuro/Claro.</li>
-            </ul>
-            <h3>🛠️ Tecnologías</h3>
-            <p>Vanilla JavaScript (Módulos ES), HTML5, CSS3, Firebase (Auth & Firestore), GitHub Actions (CI/CD).</p>
-        `,
-  },
-  {
-    title: "Decoparque Rework",
-    description:
-      "Rediseño moderno del sitio web de Decoparque. Enfoque en performance, SEO y buenas prácticas de desarrollo responsivo.",
-    tags: ["HTML5", "CSS3", "JavaScript", "Web", "Frontend"],
-    demo: "https://ryakimovicz.github.io/decoparque-rework/",
-    github: "https://github.com/ryakimovicz/decoparque-rework",
-    details: `
-            <h3>🎨 Descripción</h3>
-            <p>Versión optimizada y modernizada del sitio web de Decoparque. Este proyecto personal busca mejorar la experiencia de usuario y la identidad visual de la marca utilizando tecnologías web nativas.</p>
-            <h3>✨ Características Clave</h3>
-            <ul>
-                <li><strong>UI/UX Moderno:</strong> Interfaz limpia y atractiva diseñada desde cero.</li>
-                <li><strong>Responsive Design:</strong> Adaptación fluida a móviles y escritorio sin frameworks pesados.</li>
-                <li><strong>Optimización:</strong> Mejores tiempos de carga y estructura semántica para SEO.</li>
-            </ul>
-            <h3>📸 Stack</h3>
-            <p>HTML5, CSS3 y JavaScript puro.</p>
-        `,
-  },
-  {
-    title: "Flask Expense Tracker",
-    description:
-      "Aplicación Web Full Stack para gestión de gastos. Dashboard con gráficos interactivos (Chart.js), presupuestos y exportación a CSV.",
-    tags: ["Web", "Python", "Flask", "SQL", "Chart.js", "Full Stack"],
-    github: "https://github.com/ryakimovicz/flask-expense-tracker",
-    details: `
-            <h3>📊 Descripción</h3>
-            <p>Una aplicación web completa que lleva el análisis de finanzas al navegador. A diferencia de los scripts de consola, este proyecto ofrece una interfaz gráfica interactiva donde el usuario puede administrar su economía en tiempo real.</p>
-            <h3>✨ Características Clave</h3>
-            <ul>
-                <li><strong>Dashboard Visual:</strong> Gráficos dinámicos con <code>Chart.js</code> que reaccionan a los datos.</li>
-                <li><strong>Presupuestos:</strong> Lógica de negocio para calcular metas mensuales y alertas visuales de gasto.</li>
-                <li><strong>Persistencia:</strong> Uso de <strong>SQLAlchemy</strong> y SQLite para guardar datos y configuraciones.</li>
-                <li><strong>Reportes:</strong> Filtrado por fecha y descarga de datos en CSV.</li>
-            </ul>
-            <h3>📸 Demo</h3>
-            <p><em>Vista del Dashboard con Presupuesto y Gráficos:</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/flask-expense-tracker/main/img/dashboard.png" alt="Dashboard Flask">
-        `,
-  },
-  {
-    title: "Personal Finance Analyzer",
-    description:
-      "Herramienta de Data Science que procesa CSVs de gastos, genera estadísticas y exporta reportes PDF.",
-    tags: ["Python", "Pandas", "Matplotlib", "Data Analysis"],
-    github: "https://github.com/ryakimovicz/finance-analyzer",
-    details: `
-            <h3>📊 Descripción</h3>
-            <p>Una herramienta de análisis de datos desarrollada en Python que procesa archivos de gastos (CSV), realiza cálculos estadísticos y genera automáticamente un reporte financiero en formato PDF con gráficos visuales.</p>
-            <h3>✨ Características</h3>
-            <ul>
-                <li><strong>Procesamiento:</strong> Limpieza de datos crudos utilizando <code>Pandas</code>.</li>
-                <li><strong>Visualización:</strong> Gráficos de torta (Pie Charts) automáticos con <code>Matplotlib</code>.</li>
-                <li><strong>Reporte:</strong> Generación de PDF listo para imprimir con <code>FPDF</code>.</li>
-            </ul>
-            <h3>📸 Demostración</h3>
-            <p><em>Output en consola y Reporte PDF generado:</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/finance-analyzer/main/img/pdf_preview.png" alt="Reporte PDF">
-        `,
-  },
-  {
-    title: "MercadoLibre Price Tracker",
-    description:
-      "Bot de monitoreo de precios en tiempo real. Web scraping automatizado y alertas por email.",
-    tags: ["Python", "Web Scraping", "Automation", "SMTP"],
-    github: "https://github.com/ryakimovicz/ml-price-tracker",
-    details: `
-            <h3>📉 Descripción</h3>
-            <p>Script de automatización que monitorea el precio de productos en MercadoLibre Argentina. Extrae la información del producto y envía una notificación por correo electrónico si el precio baja del objetivo establecido.</p>
-            <h3>✨ Características</h3>
-            <ul>
-                <li><strong>Scraping:</strong> Extracción precisa con <code>BeautifulSoup4</code>.</li>
-                <li><strong>Anti-Bloqueo:</strong> Headers rotativos para evitar errores 429.</li>
-                <li><strong>Alertas:</strong> Emails automáticos vía SMTP de Gmail.</li>
-            </ul>
-            <h3>📸 Funcionamiento</h3>
-            <p><em>Detección en consola y Alerta real recibida por Email:</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/ml-price-tracker/main/img/console_output.png" alt="Consola">
-            <img src="https://raw.githubusercontent.com/ryakimovicz/ml-price-tracker/main/img/email_alert.png" alt="Email" style="margin-top:10px">
-        `,
-  },
-  {
-    title: "URL Shortener API",
-    description:
-      "Servicio de acortamiento de URLs con Python. Redirección eficiente y base de datos SQLite.",
-    tags: ["Python", "FastAPI", "SQLite", "Backend"],
-    github: "https://github.com/ryakimovicz/url-shortener",
-    details: `
-            <h3>🚀 Descripción</h3>
-            <p>Sistema completo de acortamiento de URLs con arquitectura Cliente-Servidor. Incluye una REST API robusta con <strong>FastAPI</strong> y un cliente CLI interactivo.</p>
-            <h3>✨ Características</h3>
-            <ul>
-                <li><strong>API RESTful:</strong> Endpoints CRUD definidos.</li>
-                <li><strong>Métricas:</strong> Conteo automático de clicks.</li>
-                <li><strong>Persistencia:</strong> Base de datos SQLite nativa.</li>
-            </ul>
-            <h3>📸 Capturas</h3>
-            <p><em>Cliente de Consola (CLI):</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/consola.png" alt="CLI">
-            <p style="margin-top:15px"><em>Documentación Automática (Swagger UI):</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/swagger_response.png" alt="Swagger">
-        `,
-  },
-  {
-    title: "Portfolio Personal (Web SPA)",
-    description:
-      "Single Page Application desarrollada desde cero. Diseño totalmente responsivo, modo oscuro y renderizado dinámico con JavaScript.",
-    tags: ["JavaScript", "CSS3", "HTML5", "Web", "Frontend"],
-    github: "https://github.com/ryakimovicz/portfolio",
-    details: `
-            <h3>🎨 Descripción</h3>
-            <p>Este mismo sitio web es un proyecto técnico. Fue diseñado como una <strong>SPA (Single Page Application)</strong> sin dependencias externas (No Bootstrap, No jQuery) para demostrar dominio de los estándares web modernos.</p>
-            <h3>✨ Características Técnicas</h3>
-            <ul>
-                <li><strong>Arquitectura:</strong> Renderizado dinámico de proyectos mediante inyección de DOM con JavaScript (JSON).</li>
-                <li><strong>UX/UI:</strong> Diseño <em>Dark Mode</em> nativo con variables CSS (<code>:root</code>) y animaciones fluidas.</li>
-                <li><strong>Responsive:</strong> Maquetado adaptable utilizando <strong>CSS Grid</strong> y <strong>Flexbox</strong>.</li>
-                <li><strong>Performance:</strong> Carga optimizada y puntaje alto en Lighthouse al no utilizar librerías pesadas.</li>
-            </ul>
-            <h3>🛠️ Stack</h3>
-            <p>HTML5 Semántico, CSS3 Moderno, JavaScript ES6+.</p>
-        `,
-  },
-  {
-    title: "Inventory Management API",
-    description:
-      "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite.",
-    tags: ["C#", ".NET Core", "API REST", "SQL", "Entity Framework"],
-    github: "https://github.com/ryakimovicz/inventory-api",
-    details: `
-            <h3>📦 Descripción</h3>
-            <p>Una API RESTful profesional diseñada para la gestión eficiente de productos. Implementa patrones de diseño modernos, validaciones de negocio y una arquitectura limpia separada en capas (Controllers, Services, Repositories).</p>
-            <h3>✨ Características Clave</h3>
-            <ul>
-                <li><strong>CRUD Completo:</strong> Gestión total de productos con verbos HTTP correctos.</li>
-                <li><strong>Arquitectura Sólida:</strong> Uso de <strong>DTOs</strong> para seguridad y desacoplamiento.</li>
-                <li><strong>Búsqueda Avanzada:</strong> Filtrado dinámico con LINQ (Case Insensitive).</li>
-                <li><strong>Base de Datos:</strong> Persistencia con <strong>SQLite</strong> y migraciones de EF Core.</li>
-            </ul>
-            <h3>📸 Demostración</h3>
-            <p><em>Documentación interactiva con Swagger UI:</em></p>
-            <p style="margin-top:10px"><em>Ejemplo de petición <code>GET</code> estándar recuperando todo el inventario disponible.</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_demo.png" alt="Swagger Response">
-            <p style="margin-top:10px"><em>Ejemplo consultando <code>/api/Products?search=laptop</code>.</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_search_demo.png" alt="Swagger Search">
-        `,
-  },
-  {
-    title: "Foro Hub (API REST)",
-    description:
-      "Backend para un foro con autenticación JWT, CRUD de tópicos y persistencia en MySQL.",
-    tags: ["Java", "Spring Boot", "JWT", "API REST", "MySQL"],
-    github: "https://github.com/ryakimovicz/foro-hub-ONE",
-    details: `
-            <h3>🚀 Descripción</h3>
-            <p>API REST que simula un foro de discusión. Gestiona tópicos, usuarios y respuestas, asegurando el acceso mediante tokens JWT.</p>
-            <h3>✨ Funcionalidades</h3>
-            <ul>
-                <li><strong>Seguridad:</strong> Autenticación vía <code>Spring Security</code> y JWT.</li>
-                <li><strong>Persistencia:</strong> MySQL con migraciones Flyway.</li>
-                <li><strong>Validaciones:</strong> Reglas de negocio para evitar duplicados.</li>
-            </ul>
-            <h3>⚙️ Endpoints Principales</h3>
-            <table class="modal-table">
-                <thead><tr><th>Verbo</th><th>Endpoint</th><th>Acceso</th></tr></thead>
-                <tbody>
-                    <tr><td>POST</td><td>/login</td><td>Público</td></tr>
-                    <tr><td>POST</td><td>/topicos</td><td>Protegido</td></tr>
-                    <tr><td>GET</td><td>/topicos</td><td>Protegido</td></tr>
-                    <tr><td>DELETE</td><td>/topicos/{id}</td><td>Protegido</td></tr>
-                </tbody>
-            </table>
-        `,
-  },
-  {
-    title: "Literalura: Catálogo",
-    description:
-      "Aplicación de consola que consume la API de Gutendex y guarda libros en PostgreSQL.",
-    tags: ["Java", "Spring Data JPA", "PostgreSQL", "API Integration"],
-    github: "https://github.com/ryakimovicz/literalura-ONE",
-    details: `
-            <h3>📚 Descripción</h3>
-            <p>Catálogo de libros interactivo que consume la API de <strong>Gutendex</strong>. Permite buscar libros, listar autores y filtrar por idiomas, persistiendo todo en PostgreSQL.</p>
-            <h3>✨ Funcionalidades</h3>
-            <ul>
-                <li><strong>Búsqueda:</strong> Consulta a API externa y guardado local.</li>
-                <li><strong>Estadísticas:</strong> Listado de autores vivos en determinado año.</li>
-                <li><strong>Filtros:</strong> Búsqueda por idioma (ES, EN, FR, PT).</li>
-            </ul>
-        `,
-  },
-  {
-    title: "Conversor de Monedas",
-    description:
-      "Conversión de divisas en tiempo real consumiendo Exchange Rate API.",
-    tags: ["Java", "API Integration", "JSON"],
-    github: "https://github.com/ryakimovicz/conversor-monedas-java-ONE",
-    details: `
-            <h3>💱 Descripción</h3>
-            <p>Proyecto de consola que permite convertir montos entre diferentes monedas (USD, ARS, BRL) utilizando tasas de cambio en tiempo real.</p>
-            <h3>⚙️ Tecnologías</h3>
-            <ul>
-                <li><strong>API:</strong> Consumo de <code>ExchangeRate-API</code>.</li>
-                <li><strong>Http Client:</strong> Uso de <code>Java.net.http</code>.</li>
-                <li><strong>JSON:</strong> Parseo de respuestas con <code>Gson</code>.</li>
-            </ul>
-        `,
-  },
-];
-
 // LÓGICA DEL DOM
+const projects = window.portfolioProjects || [];
+
+// Generador de códigos de barras únicos basados en el título
+function generateBarcode(title) {
+    let hash = 0;
+    for (let i = 0; i < title.length; i++) {
+        hash = ((hash << 5) - hash) + title.charCodeAt(i);
+        hash |= 0;
+    }
+    let seed = Math.abs(hash);
+    let result = "||";
+    const blocks = ["|", "||", "|||", "| |"];
+    for (let i = 0; i < 6; i++) {
+        result += " " + blocks[seed % blocks.length];
+        seed = Math.floor(seed / blocks.length);
+    }
+    return result + " ||";
+}
+
 const projectsGrid = document.getElementById("projectsGrid");
 const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll(".filter-tag");
@@ -260,18 +35,32 @@ function renderProjects(data) {
     return;
   }
 
+  // Obtenemos el índice real del proyecto buscando en el array original
+  // para que el número de "Issue" no cambie si se filtra.
   data.forEach((project) => {
+    const originalIndex = window.portfolioProjects.indexOf(project) + 1;
+    const issueNumber = originalIndex.toString().padStart(2, '0');
+
     const tagsHtml = project.tags
       .map((tag) => `<span class="tech-tag">${tag}</span>`)
       .join("");
 
     const card = document.createElement("div");
-    card.className = "project-card";
+    card.className = "project-card comic-cover";
     card.style.cursor = "pointer";
+    if (project.backCover) {
+        card.style.backgroundImage = `url('${project.backCover}')`;
+        card.style.backgroundSize = "cover";
+        card.style.backgroundPosition = "center";
+    }
     card.onclick = () => openModal(project);
 
     card.innerHTML = `
-            <div class="card-header">
+        <div class="comic-header">
+            <span class="comic-brand">RY COMICS</span>
+        </div>
+        <div class="card-body">
+            <div class="card-icons">
                 <i class="far fa-folder"></i>
                 <div class="links">
                     ${
@@ -284,56 +73,281 @@ function renderProjects(data) {
             <h3 class="project-title">${project.title}</h3>
             <p class="project-desc">${project.description}</p>
             <div class="project-tags">${tagsHtml}</div>
-        `;
+        </div>
+        <div class="comic-footer">
+            <div class="barcode">${generateBarcode(project.title)}</div>
+        </div>
+    `;
     projectsGrid.appendChild(card);
   });
 }
 
+// --- ESTADO DE PAGINACIÓN DEL MODAL ---
+let pageFlipInstance = null;
+
 function openModal(project) {
-  const content = `
-        <div class="modal-header">
-            <h2>${project.title}</h2>
-            <div class="project-tags" style="margin-bottom: 15px;">
-                <!-- CAMBIO: Quitamos el '#' y el style inline, ahora usa el CSS global -->
-                ${project.tags
-                  .map((tag) => `<span class="tech-tag">${tag}</span>`)
-                  .join("")}
+  const modal = document.getElementById("projectModal");
+  const modalBody = document.getElementById("modalBody");
+  
+  // 1. Calcular dimensiones exactas primero
+  let vh = window.innerHeight;
+  let vw = window.innerWidth;
+  let expectedHeight = vh * 0.50; 
+  let expectedWidth = expectedHeight * 1.3;
+  
+  if (expectedWidth > vw * 0.90) {
+      expectedWidth = vw * 0.90;
+      expectedHeight = expectedWidth / 1.3; 
+  }
+  
+  const pageWidth = Math.floor(expectedWidth / 2);
+  const containerHeight = Math.floor(expectedHeight);
+  const pageLimitHeight = containerHeight * 0.92; // Aumentado para aprovechar mejor el espacio
+  // 2. Crear un medidor invisible ajustado
+  const measureDiv = document.createElement('div');
+  measureDiv.style.width = `${pageWidth}px`;
+  measureDiv.style.height = 'auto'; // CRUCIAL: 'auto' para medir el contenido real
+  measureDiv.style.position = 'absolute';
+  measureDiv.style.visibility = 'hidden';
+  measureDiv.style.display = 'flex'; 
+  measureDiv.style.flexDirection = 'column';
+  measureDiv.style.alignItems = 'start';
+  measureDiv.className = 'page-content inner-page'; 
+  measureDiv.style.setProperty('--book-height', `${containerHeight}px`);
+  document.body.appendChild(measureDiv);
+
+  const pages = [];
+  let currentPageHtml = "";
+  let pendingTitle = "";
+  const projectBarcode = generateBarcode(project.title);
+
+  function pushPage() {
+      if (currentPageHtml.trim() !== "") {
+          pages.push(`
+            <div class="page">
+                <div class="page-content inner-page">
+                    ${currentPageHtml}
+                </div>
+            </div>`);
+          currentPageHtml = "";
+          measureDiv.innerHTML = "";
+          // Opcional: Al cambiar de página, podemos querer resetear el título si ya se usó
+          pendingTitle = ""; 
+      }
+  }
+
+  const tempContainer = document.createElement('div');
+  tempContainer.innerHTML = project.details;
+
+  let lastColorIndex = -1;
+  Array.from(tempContainer.children).forEach(child => {
+      if (child.tagName === 'H3') {
+          pendingTitle = `<h3 class="panel-narrator">${child.innerHTML}</h3>`;
+          return;
+      }
+
+      if (child.tagName === 'HR' && child.classList.contains('page-break')) {
+          pushPage();
+          return;
+      }
+
+      if (child.tagName === 'UL') {
+          const lis = Array.from(child.children);
+          let currentListItems = "";
+          
+          lis.forEach(li => {
+              const topMargin = (currentPageHtml.trim() !== "" && pendingTitle !== "") ? `margin-top: calc(var(--book-height) * 0.04);` : "";
+              const testHtml = `<div class="panel-content w-6" style="${topMargin}">${pendingTitle}<ul>${currentListItems}${li.outerHTML}</ul></div>`;
+              measureDiv.innerHTML = currentPageHtml + testHtml;
+
+              if (measureDiv.scrollHeight > pageLimitHeight && currentListItems !== "") {
+                  // Lo que ya teníamos se queda en la página actual
+                  currentPageHtml += `<div class="panel-content w-6" style="${topMargin}">${pendingTitle}<ul>${currentListItems}</ul></div>`;
+                  pushPage();
+                  // El nuevo ítem empieza página nueva, sin margen superior de título
+                  currentListItems = li.outerHTML;
+              } else {
+                  currentListItems += li.outerHTML;
+              }
+          });
+
+          if (currentListItems !== "") {
+              const topMargin = (currentPageHtml.trim() !== "" && pendingTitle !== "") ? `margin-top: calc(var(--book-height) * 0.04);` : "";
+              currentPageHtml += `<div class="panel-content w-6" style="${topMargin}">${pendingTitle}<ul>${currentListItems}</ul></div>`;
+              pendingTitle = "";
+          }
+      } else {
+          // Párrafos o imágenes: Maquetación por filas elásticas
+          const panelColors = [
+              'rgba(25, 35, 65, 0.95)', // Azul vibrante
+              'rgba(55, 25, 60, 0.95)', // Púrpura intenso
+              'rgba(20, 55, 45, 0.95)', // Verde bosque
+              'rgba(65, 25, 25, 0.95)', // Rojo óxido
+              'rgba(45, 45, 20, 0.95)'  // Ocre / Oliva
+          ];
+          
+          let colorIndex;
+          do {
+              colorIndex = Math.floor(Math.random() * panelColors.length);
+          } while (colorIndex === lastColorIndex);
+          lastColorIndex = colorIndex;
+          
+          const randomColor = panelColors[colorIndex];
+          
+          // Solo aplicar margen si NO es la primera viñeta de la página
+          const topMargin = (currentPageHtml.trim() !== "" && pendingTitle !== "") ? `margin-top: calc(var(--book-height) * 0.04);` : "";
+          
+          let panelHtml = `<div class="panel-content" style="background-color: ${randomColor}; ${topMargin}">${pendingTitle}${child.outerHTML}</div>`;
+          let rowHtml = `<div class="comic-row">${panelHtml}</div>`;
+          
+          measureDiv.innerHTML = currentPageHtml + rowHtml;
+
+          if (measureDiv.scrollHeight > pageLimitHeight && currentPageHtml !== "") {
+              pushPage();
+              // Al ser nueva página, la viñeta ya no necesita el margen superior del título
+              panelHtml = `<div class="panel-content" style="background-color: ${randomColor};">${pendingTitle}${child.outerHTML}</div>`;
+              rowHtml = `<div class="comic-row">${panelHtml}</div>`;
+              measureDiv.innerHTML = rowHtml;
+          }
+          
+          currentPageHtml += rowHtml;
+          pendingTitle = "";
+      }
+  });
+
+  pushPage();
+  document.body.removeChild(measureDiv);
+
+  // 4. Generar el HTML final del libro
+  let html = `
+    <div id="book-container">
+        <div id="comic-book" style="opacity: 0; transition: opacity 0.4s ease;">
+            <div class="page cover-page-wrapper">
+                <div class="faux-page"></div>
+                <div class="page-content front-cover" style="background-image: url('${project.cover || ''}'); background-size: cover; background-position: center;">
+                    <div class="cover-overlay"></div>
+                    <div class="masthead">
+                        <div class="brand-box">
+                            <div class="brand-name">RY</div>
+                            <div class="brand-sub">COMICS</div>
+                        </div>
+                    </div>
+                    <h2 class="book-title">${project.title}</h2>
+
+                </div>
+            </div>
+            <div class="page">
+                <div class="page-content legal-page">
+                    <div class="legal-header">
+                        <h1 class="legal-title">${project.title}</h1>
+                        <p class="legal-line"><strong>AUTOR:</strong> Roman Yakimovicz</p>
+                        <p class="legal-line"><strong>FECHA:</strong> ${project.date || "2024 - 2025"}</p>
+                        <p class="legal-line"><strong>EDICIÓN:</strong> RY Comics</p>
+                    </div>
+
+                    <div class="legal-footer">
+                        <div class="legal-barcode">${projectBarcode}</div>
+                    </div>
+                </div>
+            </div>
+            ${pages.join("")}
+            ${pages.length % 2 !== 0 ? `
+            <div class="page">
+                <div class="page-content inner-page"></div>
+            </div>` : ""}
+            <div class="page">
+                <div class="page-content inner-page" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                    <div class="panel-content" style="width: 80%; text-align: center; display: flex; flex-direction: column; gap: calc(var(--book-height) * 0.03); padding: calc(var(--book-height) * 0.08) calc(var(--book-height) * 0.04);">
+                        <h3 class="panel-narrator">ENLACES OFICIALES</h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            ${project.demo ? `<a href="${project.demo}" target="_blank" class="comic-btn btn-blue" style="text-decoration:none;"><i class="fas fa-external-link-alt"></i> ${project.demoLabel || "SITIO OFICIAL"}</a>` : ""}
+                            ${project.itch ? `<a href="${project.itch}" target="_blank" class="comic-btn btn-red" style="text-decoration:none;"><i class="fab fa-itch-io"></i> PROBAR EDICIÓN BÁSICA</a>` : ""}
+                            <a href="${project.github}" target="_blank" class="comic-btn btn-orange" style="text-decoration:none;"><i class="fab fa-github"></i> GITHUB</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page">
+                <div class="page-content back-cover" style="background-image: url('${project.backCover || ''}'); background-size: cover; background-position: center; position: relative; padding: 0; display: flex; flex-direction: column;">
+                    <div class="cover-overlay" style="background: rgba(15, 23, 42, 0.85); z-index: 1;"></div>
+                    <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column;">
+                        <div class="comic-header" style="justify-content: flex-start;">
+                            <span class="comic-brand">RY COMICS</span>
+                        </div>
+                        <div class="card-body" style="flex-grow: 1; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
+                            <h3 class="project-title" style="margin-bottom: 20px; font-size: calc(var(--book-height) * 0.08);">${project.title}</h3>
+                            <p class="project-desc" style="max-width: 80%;">${project.description}</p>
+                            <div class="project-tags" style="justify-content: center; margin-top: 25px;">
+                                ${project.tags.map((tag) => `<span class="tech-tag">${tag}</span>`).join("")}
+                            </div>
+                        </div>
+                        <div class="comic-footer" style="justify-content: flex-end;">
+                            <div class="barcode">${projectBarcode}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="modal-body">
-            ${project.details}
-        </div>
-        <div style="margin-top: 30px; text-align: center; display: flex; justify-content: center; gap: 15px;">
-            ${
-              project.demo
-                ? `
-            <a href="${project.demo}" target="_blank" class="btn secondary">
-                <i class="fas fa-external-link-alt"></i> ${project.demoLabel || "Ver Demo"}
-            </a>`
-                : ""
-            }
-            <a href="${project.github}" target="_blank" class="btn primary">
-                <i class="fab fa-github"></i> Ver en GitHub
-            </a>
-        </div>
-    `;
-  modalBody.innerHTML = content;
-  modal.style.display = "block";
+    </div>`;
+
+  modalBody.innerHTML = html;
+  modal.style.display = "flex";
+  modal.style.opacity = "1";
   document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+      const bookEl = document.getElementById('comic-book');
+      document.documentElement.style.setProperty('--book-height', `${containerHeight}px`);
+
+      pageFlipInstance = new St.PageFlip(bookEl, {
+          width: pageWidth, 
+          height: containerHeight, 
+          size: "fixed",
+          showCover: true,
+          usePortrait: window.innerWidth < 768,
+          showPageCorners: false, /* Desactiva el pliegue dinámico que sigue al mouse */
+          drawShadow: false /* Elimina completamente las sombras 3D artificiales de la librería al pasar de página */
+      });
+      pageFlipInstance.loadFromHTML(document.querySelectorAll('.page'));
+      
+      bookEl.style.opacity = "1";
+      bookEl.setAttribute('data-state', 'read');
+      bookEl.setAttribute('data-current-page', '0');
+
+      pageFlipInstance.on('changeState', (e) => {
+          bookEl.setAttribute('data-state', e.data);
+      });
+      
+      pageFlipInstance.on('flip', (e) => {
+          bookEl.setAttribute('data-current-page', e.data.toString());
+      });
+      
+      modalBody.parentElement.classList.add('book-opening-anim');
+  }, 50);
 }
 
 function closeModal() {
   modal.style.display = "none";
+  modal.style.opacity = "0";
+  modalBody.parentElement.classList.remove('book-opening-anim');
   document.body.style.overflow = "auto";
+  if (pageFlipInstance) {
+      pageFlipInstance.destroy();
+      pageFlipInstance = null;
+  }
 }
 
 closeBtn.onclick = closeModal;
 
-window.onclick = function (event) {
-  if (event.target == modal) {
+modal.addEventListener('mousedown', function (event) {
+  // Cerramos si el click es en el fondo negro (modal),
+  // en el contenedor externo (modal-content) o en el wrapper del libro (book-container)
+  if (event.target === modal || 
+      event.target.classList.contains('modal-content') || 
+      event.target.id === 'book-container') {
     closeModal();
   }
-};
+});
 
 function filterProjects() {
   const searchText = searchInput.value.toLowerCase();
@@ -406,7 +420,7 @@ function deletingEffect() {
       typingEffect();
       return false;
     }
-    timer = setTimeout(loopDeleting, 50);
+    timer = setTimeout(deletingEffect, 50);
   };
   loopDeleting();
 }
@@ -436,5 +450,27 @@ window.addEventListener("scroll", function () {
 
   lastScrollTop = scrollTop;
 });
+
+/* =========================================
+   SCROLL REVEAL (ANIMACIONES DE ENTRADA)
+   ========================================= */
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealCallback = (entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+const revealOptions = {
+  threshold: 0.15,
+  rootMargin: "0px 0px -50px 0px",
+};
+
+const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+revealElements.forEach((el) => revealObserver.observe(el));
 
 renderProjects(projects);

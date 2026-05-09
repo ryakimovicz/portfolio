@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Román Yakimovicz - Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -24,22 +24,27 @@
     </nav>
 
     <header class="hero">
-        <div class="container">
-            <span class="badge">Full Stack Developer</span>
-            
-            <h2 class="animate-text">Hola, soy <span class="gradient-text">Román Yakimovicz</span></h2>
-            
-            <p class="typewriter-container">
-                Técnico Universitario en Programación<br>
-                Construyendo soluciones con <span id="typewriter" class="accent"></span><span class="cursor">|</span>
-            </p>
-            <div class="hero-btns">
-                <a href="#proyectos" class="btn secondary">Ver Proyectos</a>
-                <a href="cv_roman_yakimovicz.pdf" target="_blank" class="btn primary">
-                    <i class="fas fa-file-alt"></i> Ver CV
-                </a>
-                <a href="https://github.com/ryakimovicz" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/ryakimovicz/" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <div class="container hero-container">
+            <div class="hero-avatar">
+                <img src="avatar.png" alt="Román Yakimovicz - Avatar" />
+            </div>
+            <div class="hero-content">
+                <span class="badge">Full Stack Developer</span>
+                
+                <h2 class="animate-text">Hola, soy <span class="gradient-text">Román</span></h2>
+                
+                <p class="typewriter-container">
+                    Técnico Universitario en Programación<br>
+                    Construyendo soluciones con <span id="typewriter" class="accent"></span><span class="cursor">|</span>
+                </p>
+                <div class="hero-btns">
+                    <a href="#proyectos" class="btn secondary">Ver Proyectos</a>
+                    <a href="cv_roman_yakimovicz.pdf" target="_blank" class="btn primary">
+                        <i class="fas fa-file-alt"></i> Ver CV
+                    </a>
+                    <a href="https://github.com/ryakimovicz" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/ryakimovicz/" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
             </div>
         </div>
     </header>
@@ -47,15 +52,44 @@
     <section id="sobre-mi" class="about-section">
         <div class="container about-content">
             <h3 class="section-title">Sobre Mí</h3>
-            <p>Soy un apasionado por la tecnología y la ingeniería de software. Recientemente graduado de la <strong>UTN Facultad Regional Delta</strong>, poseo un perfil integral que combina lógica de servidor con interfaces de usuario.</p>
+            <div class="about-intro">
+                <p class="lead-text">Soy <strong>Román Yakimovicz</strong>, programador Full Stack con una sólida base en ingeniería de Backend. Me apasiona que las cosas funcionen mejor y uso la tecnología para transformar desafíos en soluciones eficientes.</p>
+            </div>
             
-            <p>Mi enfoque es <strong>Full Stack</strong>: disfruto diseñando arquitecturas robustas en el Backend (Python/Java/C#) y conectándolas con experiencias Web funcionales utilizando estándares modernos.</p>
-            
-            <div class="tech-stack">
-                <span>Python</span> <span>Java</span> <span>C# .NET</span> <span>JavaScript</span> <span>HTML5 & CSS3</span> <span>SQL</span> <span>Git</span>
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <div class="card-icon"><i class="fas fa-tools"></i></div>
+                    <h4>Enfoque Solucionador</h4>
+                    <p>Graduado de la <strong>UTN Delta (Promedio 8.83)</strong>, mi enfoque es construir aplicaciones de punta a punta. Desde digitalizar procesos operativos con un <strong>CRM a medida</strong> hasta desarrollar <strong>Jigsudo</strong>, un juego de puzzles con lógica compleja, siempre busco que el software sea robusto y útil.</p>
+                </div>
+
+                <div class="about-card reveal">
+                    <div class="card-icon"><i class="fas fa-server"></i></div>
+                    <h4>Rigor Técnico</h4>
+                    <p>Especialista en arquitecturas escalables. Cuento con formación intensiva en el ecosistema <strong>Java (Spring Boot)</strong> y <strong>APIs REST</strong>, además de dominar <strong>Python, C# .NET y SQL</strong>. Entiendo el ciclo completo: desde el análisis UML hasta el despliegue final.</p>
+                </div>
+
+                <div class="about-card reveal">
+                    <div class="card-icon"><i class="fas fa-palette"></i></div>
+                    <h4>Creatividad y Disciplina</h4>
+                    <p>Mi formación en <strong>Diseño Audiovisual (FADU)</strong> me brindó el criterio estético que aplico hoy al código. Disfruto de la narrativa en los <strong>cómics</strong>, la música y el cine. Mi cable a tierra es el entrenamiento físico, donde forjo la disciplina que aplico en cada desarrollo.</p>
+                </div>
+            </div>
+
+            <div class="tech-stack-container">
+                <h5>Mi Stack Principal</h5>
+                <div class="tech-stack">
+                    <span>JavaScript</span> <span>Node.js</span> <span>HTML5 & CSS3</span> <span>Python</span> <span>Java / Spring Boot</span> <span>C# .NET</span> <span>SQL</span> <span>Git</span>
+                </div>
             </div>
         </div>
     </section>
+
+    <div class="dev-banner">
+        <div class="container">
+            <p>PORTFOLIO EN DESARROLLO</p>
+        </div>
+    </div>
 
     <section id="proyectos" class="projects-section">
         <div class="container">
@@ -95,6 +129,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

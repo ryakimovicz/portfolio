@@ -1,14 +1,32 @@
 :root {
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
+    --bg-color: #0a0f1a;
+    --card-bg: #151d2d;
     --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --accent: #38bdf8;
-    --tag-bg: #334155;
+    --text-secondary: #cbd5e1;
+    --accent-blue: #3a88c9;
+    --accent-orange: #ffa726;
+    --line-color: #eee;
+    --panel-border: 3px solid var(--line-color);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-body { background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comic Neue', cursive; scroll-behavior: smooth; }
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-primary); 
+    line-height: 1.6; 
+    /* Halftone pattern */
+    background-image: 
+        radial-gradient(#151d2d 15%, transparent 16%), 
+        radial-gradient(#151d2d 15%, transparent 16%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+h1, h2, h3, .badge, .project-title {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1px;
+}
 
 /* Container base */
 .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
@@ -19,9 +37,9 @@ nav {
     padding: 10px 0; 
     position: sticky; 
     top: 0; 
-    background: rgba(15, 23, 42, 0.95); 
+    background: var(--bg-color); 
     z-index: 100; 
-    border-bottom: 1px solid #334155;
+    border-bottom: var(--panel-border);
     transition: transform 0.3s ease-in-out;
 }
 
@@ -30,59 +48,83 @@ nav {
 }
 
 .nav-content { display: flex; justify-content: space-between; align-items: center; }
-.logo { color: var(--accent); font-weight: 700; font-size: 1.5rem; }
-.nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
+.logo { color: var(--accent-orange); font-weight: 700; font-size: 2rem; font-family: 'Bangers', cursive; text-shadow: 2px 2px 0px var(--accent-blue); }
+.nav-links { list-style: none; display: flex; gap: 20px; align-items: center; font-weight: bold; font-size: 1.1rem; }
 .nav-links a:hover {
-    color: var(--accent);
+    color: var(--accent-orange);
 }
 .btn-contact {
-    border: 1px solid var(--accent);
+    border: 2px solid var(--line-color);
     padding: 5px 15px;
     border-radius: 5px;
-    color: var(--accent);
+    color: var(--text-primary);
+    background-color: var(--accent-blue);
+    box-shadow: 3px 3px 0px var(--accent-orange);
     transition: 0.3s;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
 }
 .nav-links .btn-contact:hover {
-    background-color: var(--accent) !important; /* Fuerza el fondo celeste */
-    color: var(--bg-color) !important;          /* Fuerza el texto oscuro */
-    font-weight: 600;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--accent-orange);
 }
 
 /* Hero */
-.hero { padding: 80px 0; text-align: center; }
-.badge { background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+.hero { padding: 80px 0; }
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: var(--card-bg);
+    border: var(--panel-border);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 10px 10px 0px var(--accent-blue);
+    position: relative;
+}
+.hero-avatar img {
+    max-width: 200px;
+    border: var(--panel-border);
+    border-radius: 50%;
+    box-shadow: 6px 6px 0px var(--accent-orange);
+    background: var(--bg-color);
+}
+.hero-content {
+    flex: 1;
+}
 
-/* El título principal se ajusta dinámicamente */
+.badge { 
+    background: var(--accent-orange); 
+    color: #000; 
+    padding: 5px 12px; 
+    border-radius: 4px; 
+    font-size: 1.2rem; 
+    border: 2px solid var(--line-color);
+    box-shadow: 2px 2px 0px var(--bg-color);
+}
+
 .hero h2 { 
-    font-size: 3rem; 
+    font-size: 3.5rem; 
     margin: 20px 0; 
-    line-height: 1.2;
+    line-height: 1.1;
+    color: var(--text-primary);
+    text-shadow: 3px 3px 0px var(--accent-blue);
 }
 
-/* Efectos visuales */
 .gradient-text {
-    background: linear-gradient(45deg, #38bdf8, #818cf8, #38bdf8);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: shine 3s linear infinite;
-}
-
-@keyframes shine {
-    to { background-position: 200% center; }
+    color: var(--accent-orange);
 }
 
 .typewriter-container {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     min-height: 1.6em;
     color: var(--text-secondary);
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 #typewriter {
-    font-weight: bold;
-    color: var(--accent);
+    color: var(--accent-blue);
 }
 
 .cursor {
@@ -98,62 +140,490 @@ nav {
     50% { opacity: 0; }
 }
 
-.accent { color: var(--accent); }
-.hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
-.hero-btns { display: flex; gap: 15px; justify-content: center; }
-.btn { padding: 10px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
-.primary { background: var(--accent); color: var(--bg-color); }
-.primary:hover { opacity: 0.9; }
-.secondary { background: var(--tag-bg); }
-.secondary:hover { background: #475569; }
+.hero p { color: var(--text-secondary); margin: 0 0 30px; font-size: 1.2rem; font-weight: bold; }
+.hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+.btn { 
+    padding: 10px 24px; 
+    border-radius: 6px; 
+    font-weight: normal; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    justify-content: center; 
+    border: var(--panel-border);
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
 
-/* Sobre Mi */
-.about-section { padding: 60px 0; background: #162032; text-align: center; }
-.about-content h3 { font-size: 2rem; margin-bottom: 20px; }
-.tech-stack { margin-top: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-.tech-stack span { background: var(--tag-bg); padding: 5px 12px; border-radius: 4px; font-size: 0.9rem; border: 1px solid #475569; }
+.primary { 
+    background: var(--accent-orange); 
+    color: #000; 
+    box-shadow: 4px 4px 0px var(--accent-blue);
+}
+.primary:hover { 
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--accent-blue);
+}
+
+.secondary { 
+    background: var(--accent-blue); 
+    color: #fff; 
+    box-shadow: 4px 4px 0px var(--accent-orange);
+}
+.secondary:hover { 
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--accent-orange);
+}
+
+/* SECCIÓN SOBRE MÍ */
+.about-section {
+    padding: 80px 0;
+    background: var(--bg-color);
+    border-top: var(--panel-border);
+    border-bottom: var(--panel-border);
+    position: relative;
+}
+
+.about-intro {
+    max-width: 850px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.lead-text {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    font-weight: bold;
+    /* Estilo de narrador de cómic */
+    background: rgba(21, 29, 45, 0.8);
+    padding: 20px;
+    border: 2px solid var(--accent-blue);
+    border-radius: 5px;
+    box-shadow: 5px 5px 0px var(--accent-blue);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.about-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border: var(--panel-border);
+    box-shadow: 6px 6px 0px var(--accent-orange);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+
+
+
+.card-icon {
+    font-size: 2rem;
+    color: var(--accent-orange);
+    background: var(--bg-color);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--line-color);
+    margin-bottom: 5px;
+}
+
+.about-card h4 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    letter-spacing: 1px;
+}
+
+.about-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-weight: bold;
+    color: var(--text-secondary);
+}
+
+/* STACK PRINCIPAL */
+.tech-stack-container {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px dashed var(--line-color);
+}
+
+.tech-stack-container h5 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.tech-stack span {
+    background: var(--card-bg);
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid var(--line-color);
+    color: var(--accent-orange);
+    box-shadow: 3px 3px 0px var(--accent-blue);
+    transition: all 0.2s ease;
+}
+
+.tech-stack span:hover {
+    transform: scale(1.1) rotate(2deg);
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ANIMACIONES REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-card.active {
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.about-card:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px var(--accent-blue) !important;
+}
+
+/* BANNER DE DESARROLLO */
+.dev-banner {
+    background-color: var(--accent-blue);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    border-top: var(--panel-border);
+    border-bottom: var(--panel-border);
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.dev-banner p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* FILTRO DE PROYECTOS */
 
 /* Proyectos */
 .projects-section { padding: 60px 0; }
-.section-title { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+.section-title { font-size: 2.5rem; margin-bottom: 30px; text-align: center; text-shadow: 2px 2px 0px var(--accent-blue); }
 
 /* Buscador y Filtros */
 .filter-container { margin-bottom: 40px; text-align: center; }
-.search-bar { width: 100%; max-width: 400px; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: var(--card-bg); color: white; margin-bottom: 20px; font-size: 1rem; }
+.search-bar { 
+    width: 100%; 
+    max-width: 400px; 
+    padding: 12px; 
+    border-radius: 8px; 
+    border: var(--panel-border); 
+    background: var(--card-bg); 
+    color: white; 
+    margin-bottom: 20px; 
+    font-size: 1.1rem; 
+    font-weight: bold;
+    box-shadow: 4px 4px 0px var(--accent-blue);
+}
 .tags-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.filter-tag { background: transparent; border: 1px solid #334155; color: var(--text-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
-.filter-tag:hover, .filter-tag.active { background: var(--accent); color: var(--bg-color); border-color: var(--accent); font-weight: 600; }
+.filter-tag { 
+    background: var(--card-bg); 
+    border: 2px solid var(--line-color); 
+    color: var(--text-primary); 
+    padding: 8px 16px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    box-shadow: 3px 3px 0px var(--accent-blue);
+    transition: 0.2s; 
+}
+.filter-tag:hover, .filter-tag.active { 
+    background: var(--accent-orange); 
+    color: #000; 
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--accent-blue);
+}
 
-/* Cards */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-.project-card { background: var(--card-bg); border-radius: 12px; padding: 25px; border: 1px solid #334155; transition: transform 0.3s; display: flex; flex-direction: column; }
-.project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-.card-header { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 1.5rem; color: var(--accent); }
-.project-title { font-size: 1.25rem; margin-bottom: 10px; }
-.project-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-.links a { color: var(--text-secondary); margin-left: 10px; font-size: 1.2rem; }
-.links a:hover { color: white; }
+/* Cards (Comic Covers) */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.project-card.comic-cover { 
+    background: var(--card-bg); 
+    border-radius: 2px; /* Comic books don't have rounded corners */
+    padding: 0; /* Removing padding to allow full-width headers/footers */
+    border: var(--panel-border); 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    display: flex; 
+    flex-direction: column; 
+    box-shadow: 6px 6px 0px var(--accent-blue);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.project-card.comic-cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.85); /* Overlay profundo para legibilidad */
+    z-index: -1;
+}
+.project-card.comic-cover:hover { 
+    transform: translate(-4px, -4px); 
+    box-shadow: 10px 10px 0px var(--accent-orange);
+}
+
+.comic-header {
+    background: var(--line-color);
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    border-bottom: var(--panel-border);
+}
+.comic-brand {
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    padding: 5px 15px;
+    background: var(--accent-orange);
+    color: #000;
+    border-right: var(--panel-border);
+    letter-spacing: 1px;
+}
+.comic-issue {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    font-family: 'Bangers', cursive;
+    line-height: 1;
+}
+.comic-issue span { font-size: 0.7rem; letter-spacing: 1px; }
+.comic-issue strong { font-size: 1.2rem; }
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    text-align: center;
+}
+.card-icons { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 15px; 
+    font-size: 1.8rem; 
+    color: var(--accent-orange); 
+    text-shadow: 1px 1px 0px #000;
+    width: 100%;
+}
+.project-title { font-size: 2.2rem; margin-bottom: 10px; color: var(--text-primary); text-transform: uppercase; line-height: 1; text-shadow: 2px 2px 0px var(--accent-blue); }
+.project-desc { color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; flex-grow: 1; font-weight: bold; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; justify-content: center; }
+.links a { color: var(--line-color); margin-left: 10px; font-size: 1.5rem; transition: color 0.2s; }
+.links a:hover { color: var(--accent-orange); }
+
+/* Evitar que el borde blanco rígido se quede estático detrás */
+.cover-page-wrapper .page-content {
+    border: none !important;
+}
+
+/* Wrapper de la Portada */
+.cover-page-wrapper {
+    position: relative;
+    background-color: #1a2235; /* Fondo sólido para que las sombras del motor no se transparenten */
+}
+
+/* Página falsa que se revela debajo de la tapa al abrirse */
+.faux-page {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #1a2235;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border: calc(var(--book-height) * 0.0035) solid #000;
+    box-sizing: border-box;
+}
+
+/* Tapa del Cómic Real */
+.front-cover {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: calc(var(--book-height) * 0.05);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s;
+    transform-origin: left center; /* Ancla el lomo */
+}
+
+/* Transición ultra rápida al arrastrar para que la tapa se "pegue" al dedo suavemente sin saltos bruscos.
+   El box-shadow se apaga de golpe para que no se mezcle con las sombras 3D reales de la librería. */
+#comic-book:not([data-state="read"]) .front-cover {
+    transition: transform 0.15s ease-out !important;
+    box-shadow: none !important;
+}
+
+/* Hover: Gira en 3D muy sutilmente. 
+   Perspectiva alta (4000px) y ángulo bajo (5deg) eliminan el error visual de "agrandamiento" */
+#comic-book[data-state="read"][data-current-page="0"]:hover .front-cover {
+    transform: perspective(4000px) rotateY(-5deg);
+    box-shadow: 8px 4px 15px rgba(0,0,0,0.5);
+}
+
+
+.cover-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+    z-index: 1;
+}
+
+/* Cabecera (Masthead) */
+.masthead {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: calc(var(--book-height) * 0.03);
+    z-index: 5;
+}
+
+.brand-box {
+    background: var(--accent-orange);
+    color: #000;
+    padding: 2px 10px;
+    border: 3px solid #000;
+    text-align: center;
+    transform: rotate(-1deg);
+    box-shadow: 3px 3px 0px #000;
+}
+.brand-name { font-family: 'Bangers', cursive; font-size: 2rem; line-height: 1; }
+.brand-sub { font-size: 0.7rem; font-weight: bold; letter-spacing: 2px; }
+
+.issue-box {
+    background: #fff;
+    color: #000;
+    border: 3px solid #000;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.issue-num { font-size: 1.2rem; }
+.issue-price { font-size: 0.6rem; border-top: 1px solid #000; }
+
+.front-cover .book-title {
+    font-family: 'Bangers', cursive;
+    font-size: calc(var(--book-height) * 0.12);
+    color: #fff;
+    text-shadow: 4px 4px 0px #000, -2px -2px 0px var(--accent-orange);
+    margin: 0;
+    z-index: 5;
+    line-height: 1;
+    transform: skew(-5deg);
+}
+
+.front-cover .book-tags {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    z-index: 5;
+}
+
+.front-cover .tech-tag {
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 2px solid #000;
+}
+
+.comic-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: var(--panel-border);
+    background: var(--bg-color);
+}
+.barcode {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    letter-spacing: -2px; /* to look like a barcode */
+    transform: scaleY(1.5);
+}
+.comic-price {
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
 
 /* Estilo para los Tags */
 .tech-tag {
-    font-size: 0.75rem;
-    color: var(--accent);
-    font-family: 'Inter', sans-serif;
-    border: 1px solid var(--accent);
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #000;
+    border: 2px solid var(--line-color);
     padding: 3px 10px;
-    border-radius: 15px;
-    background-color: rgba(56, 189, 248, 0.1);
+    border-radius: 4px;
+    background-color: var(--accent-blue);
     display: inline-block;
     cursor: default;
+    box-shadow: 2px 2px 0px #000;
 }
 
 /* Footer */
-footer { padding: 50px 0; text-align: center; border-top: 1px solid #334155; }
-.email-link { font-size: 1.2rem; color: var(--accent); font-weight: bold; }
+footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); background: var(--card-bg); }
+.email-link { font-size: 2rem; color: var(--accent-orange); font-family: 'Bangers', cursive; letter-spacing: 1px; text-shadow: 2px 2px 0px var(--accent-blue); }
+.copyright { font-weight: bold; margin-top: 10px; }
 
 #sobre-mi, #proyectos, #contacto {
-    scroll-margin-top: 80px; /* Aumentado para compensar el header */
+    scroll-margin-top: 80px;
 }
 
 /* =========================================
@@ -167,97 +637,410 @@ footer { padding: 50px 0; text-align: center; border-top: 1px solid #334155; }
     top: 0;
     width: 100%; 
     height: 100%; 
-    overflow: auto;
-    background-color: rgba(15, 23, 42, 0.85);
+    overflow: hidden; /* Prohibido el scroll en el modal */
+    background-color: rgba(10, 15, 26, 0.85);
     backdrop-filter: blur(5px);
 }
 
+/* --- MODAL Y FLIPBOOK 3D --- */
 .modal-content {
-    background-color: var(--card-bg);
-    margin: 5% auto;
-    padding: 30px;
-    border: 1px solid var(--accent);
-    border-radius: 12px;
-    width: 90%; 
-    max-width: 800px;
+    background: transparent;
+    width: 100vw;
+    height: 100vh;
     position: relative;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    animation: fadeIn 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Animación de apertura */
+@keyframes bookPop {
+    0% { transform: scale(0.8) translateY(50px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
+.book-opening-anim {
+    animation: bookPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Botón Cerrar */
 .close-btn {
-    color: var(--text-secondary);
-    float: right;
-    font-size: 28px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--accent-orange);
+    font-size: 50px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 1001;
     transition: 0.3s;
+    text-shadow: 2px 2px 0px #000;
+}
+.close-btn:hover { color: var(--accent-blue); transform: scale(1.1); }
+
+/* Contenedores del Libro */
+#modalBody {
+    width: 100%;
+    height: 100%;
 }
 
-.close-btn:hover { color: var(--accent); }
+#book-container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex; /* Añadido para permitir centrado vertical */
+    justify-content: center;
+    align-items: center;
+}
 
-.modal-header h2 { color: var(--accent); margin-bottom: 10px; }
-.modal-body h3 { color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
-.modal-body p { margin-bottom: 10px; color: var(--text-secondary); }
-.modal-body ul { margin-left: 20px; margin-bottom: 15px; color: var(--text-secondary); }
-.modal-body li { margin-bottom: 5px; }
-.modal-body img { width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #334155; }
-.modal-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; }
-.modal-table th, .modal-table td { border: 1px solid #334155; padding: 8px; text-align: left; }
-.modal-table th { background-color: var(--tag-bg); color: var(--accent); }
-.modal-table td { color: var(--text-secondary); }
+#comic-book {
+    margin: auto; /* Centrado perfecto por Flexbox */
+    /* El ancho y alto los controlará StPageFlip matemáticamente en JS (size: fixed) */
+    perspective: 1500px;
+}
+
+/* Estilos de las páginas del FlipBook */
+.page {
+    background-color: #1a2235; /* Papel oscuro Midnight */
+    color: var(--text-primary);
+    overflow: hidden;
+    /* Los bordes se movieron a .page-content para no romper el cálculo 3D */
+}
+.page-hard {
+    background-color: var(--bg-color); /* Tapas duras oscuras */
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--book-height) * 0.04); /* Escala con el libro */
+    box-sizing: border-box;
+    border: var(--panel-border);
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.page-hard .page-content {
+    border: calc(var(--book-height) * 0.006) solid #fff;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+}
+
+/* Portada y Contraportada */
+.front-cover {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--bg-color),
+        var(--bg-color) 10px,
+        #111a2c 10px,
+        #111a2c 20px
+    );
+    overflow-y: hidden;
+}
+.book-brand {
+    font-family: 'Bangers', cursive;
+    font-size: calc(var(--book-height) * 0.045);
+    background: var(--accent-orange);
+    color: #000;
+    padding: calc(var(--book-height) * 0.008) calc(var(--book-height) * 0.03);
+    border: calc(var(--book-height) * 0.005) solid #000;
+    transform: rotate(-5deg);
+    margin-bottom: calc(var(--book-height) * 0.04);
+}
+.book-title {
+    font-size: calc(var(--book-height) * 0.07);
+    color: var(--text-primary);
+    text-shadow: 2px 2px 0px var(--accent-blue), -1px -1px 0px var(--accent-orange);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: calc(var(--book-height) * 0.04);
+}
+
+.book-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(var(--book-height) * 0.015);
+}
+
+.back-cover {
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-color);
+    overflow-y: hidden;
+    padding: calc(var(--book-height) * 0.06);
+}
+
+.back-cover h3 {
+    font-family: 'Bangers', cursive;
+    font-size: calc(var(--book-height) * 0.07);
+    color: var(--text-secondary);
+    margin-top: calc(var(--book-height) * 0.08);
+}
+
+/* Páginas Interiores (Dynamic Comic Grid) */
+.inner-page {
+    font-size: calc(var(--book-height) * 0.028); 
+    line-height: 1.5;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--book-height) * 0.015);
+    padding: calc(var(--book-height) * 0.05) !important;
+    overflow: hidden;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.comic-row {
+    display: flex;
+    gap: calc(var(--book-height) * 0.015);
+    flex: 0 0 auto; /* No crece, ocupa solo lo necesario */
+    min-height: 0;
+}
+
+.panel-content {
+    flex: 0 1 auto; /* No crece por defecto para evitar estiramientos verticales locos */
+    background-color: var(--card-bg);
+    border: calc(var(--book-height) * 0.0035) solid #000;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+    padding: calc(var(--book-height) * 0.035);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.comic-row .panel-content {
+    flex: 1; /* Solo crece para llenar el ancho dentro de una fila */
+}
+
+.panel-content:hover {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+/* Tamaños de Viñeta */
+.w-2 { grid-column: span 2; }
+.w-3 { grid-column: span 3; }
+.w-4 { grid-column: span 4; }
+.w-6 { grid-column: span 6; }
+.h-1 { grid-row: span 1; }
+.h-2 { grid-row: span 2; }
+
+/* Viñetas del Cómic */
+.inner-page .panel-content {
+    background-color: var(--card-bg);
+    border: calc(var(--book-height) * 0.0035) solid #000;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+    padding: calc(var(--book-height) * 0.035) calc(var(--book-height) * 0.02) calc(var(--book-height) * 0.02) calc(var(--book-height) * 0.02);
+    font-weight: bold;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: visible !important; /* CRUCIAL para el título */
+}
+
+.inner-page .panel-content:hover {
+    transform: scale(1.02) rotate(0.5deg);
+    z-index: 30;
+}
+
+/* Solapamiento Suavizado */
+.panel-content:nth-child(even) {
+    margin-top: calc(var(--book-height) * 0.01); /* Ya no es negativo para evitar tapar títulos */
+}
+
+/* Ajustes interiores de la viñeta */
+.inner-page .panel-content p { margin-bottom: calc(var(--book-height) * 0.015); }
+.inner-page .panel-content p:last-child { margin-bottom: 0; }
+.inner-page .panel-content ul { 
+    margin-left: calc(var(--book-height) * 0.03); 
+    margin-bottom: 0;
+    width: 90%; /* Evita que la lista toque el borde del clip-path */
+}
+.inner-page .panel-content li { 
+    margin-bottom: calc(var(--book-height) * 0.015);
+    word-break: break-word; /* Crucial para que palabras largas no se corten */
+}
+
+/* Título estilo Caja del Narrador */
+.panel-narrator {
+    font-family: 'Bangers', cursive;
+    font-size: calc(var(--book-height) * 0.032);
+    color: #000;
+    background: var(--accent-orange);
+    border: calc(var(--book-height) * 0.004) solid #000;
+    padding: 1px 6px;
+    position: absolute;
+    top: calc(var(--book-height) * -0.03);
+    left: calc(var(--book-height) * -0.01);
+    transform: rotate(-2deg);
+    box-shadow: 2px 2px 0px #000;
+    z-index: 10; 
+    margin: 0;
+    white-space: nowrap;
+}
+
+.inner-page .panel-content img {
+    width: 100%;
+    border: calc(var(--book-height) * 0.004) solid #000;
+    margin-top: calc(var(--book-height) * 0.008);
+    display: block;
+}
+
+/* Tabla en páginas interiores */
+.inner-page .modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: calc(var(--book-height) * 0.03) 0;
+    border: calc(var(--book-height) * 0.004) solid #000;
+    font-size: calc(var(--book-height) * 0.025);
+}
+.inner-page .modal-table th, .inner-page .modal-table td {
+    border: calc(var(--book-height) * 0.002) solid #000;
+    padding: calc(var(--book-height) * 0.015);
+}
+.inner-page .modal-table th {
+    background-color: var(--accent-blue);
+    color: #fff;
+    font-family: 'Bangers', cursive;
+    font-size: calc(var(--book-height) * 0.035);
+}
 
 /* =========================================
    RESPONSIVE DESIGN (CELULARES)
    ========================================= */
 @media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
     }
-
+    .hero-btns {
+        justify-content: center;
+    }
+    
     .nav-content {
-        flex-direction: row; /* Forzamos la fila */
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
     
     .nav-links {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         gap: 10px; 
     }
-
-    .typewriter-container {
-        font-size: 1.2rem;
+    .nav-links .btn-contact {
+        font-size: 1rem;
+        padding: 3px 10px;
     }
 
     .hero h2 {
         font-size: clamp(2rem, 9vw, 2.5rem);
     }
     
-    .hero p {
-        font-size: 1rem;
-        padding: 0;
-    }
-
-    .hero-btns {
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-        max-width: 100%;
-    }
-
     .btn { width: 100%; }
 
-    /* Ajuste de modal para móvil */
     .modal-content {
         margin: 10% auto;
         width: 95%;
         padding: 20px;
+        box-shadow: 6px 6px 0px var(--accent-orange);
     }
     .modal-table { display: block; overflow-x: auto; }
+}
+/* Pagina Legal/Creditos (Al inicio) */
+.legal-page {
+    background-color: var(--card-bg);
+    color: var(--text-secondary);
+    padding: calc(var(--book-height) * 0.1) calc(var(--book-height) * 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: calc(var(--book-height) * 0.024);
+    line-height: 1.5;
+}
+
+.legal-title {
+    font-family: 'Bangers', cursive;
+    font-size: calc(var(--book-height) * 0.07);
+    color: var(--accent-orange);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.legal-line { margin: 5px 0; }
+.legal-divider { 
+    height: 1px; 
+    background: rgba(255,255,255,0.1); 
+    margin: 30px 0; 
+    width: 60%;
+}
+
+.legal-body p { margin-bottom: 15px; font-style: italic; opacity: 0.8; }
+
+.legal-footer {
+    margin-top: auto;
+    opacity: 0.5;
+}
+
+.legal-isbn { font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; }
+.legal-barcode { font-size: 1.5rem; letter-spacing: -2px; }
+
+/* Botones estilo Cómic para Enlaces */
+.comic-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    font-family: 'Bangers', cursive;
+    font-size: calc(var(--book-height) * 0.035);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: calc(var(--book-height) * 0.005) solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #fff !important;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+    width: 100%;
+}
+
+.btn-blue {
+    background: var(--accent-blue);
+    box-shadow: 4px 4px 0px #000;
+}
+.btn-orange {
+    background: var(--accent-orange);
+    color: #000 !important;
+    text-shadow: none;
+    box-shadow: 4px 4px 0px #000;
+}
+.btn-red {
+    background: #fa5c5c; /* Color Itch.io */
+    box-shadow: 4px 4px 0px #000;
+}
+
+.comic-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+.comic-btn:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0px #000;
 }

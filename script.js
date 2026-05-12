@@ -26,6 +26,9 @@ const filterButtons = document.querySelectorAll(".filter-tag");
 const modal = document.getElementById("projectModal");
 const modalBody = document.getElementById("modalBody");
 const closeBtn = document.querySelector(".close-btn");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxClose = document.querySelector(".lightbox-close");
 
 function renderProjects(data) {
   projectsGrid.innerHTML = "";
@@ -85,34 +88,64 @@ function renderProjects(data) {
 // --- ESTADO DE PAGINACIÓN DEL MODAL ---
 let pageFlipInstance = null;
 
-function openModal(project) {
+async function openModal(project) {
   const modal = document.getElementById("projectModal");
   const modalBody = document.getElementById("modalBody");
   
   // 1. Calcular dimensiones exactas primero
   let vh = window.innerHeight;
   let vw = window.innerWidth;
-  let expectedHeight = vh * 0.50; 
-  let expectedWidth = expectedHeight * 1.3;
+  const isMobile = vw < 768;
   
-  if (expectedWidth > vw * 0.90) {
-      expectedWidth = vw * 0.90;
-      expectedHeight = expectedWidth / 1.3; 
+  let expectedWidth, expectedHeight;
+
+  if (isMobile) {
+      expectedWidth = vw * 0.92; 
+      expectedHeight = expectedWidth * 1.4; 
+      if (expectedHeight > vh * 0.8) {
+          expectedHeight = vh * 0.8;
+          expectedWidth = expectedHeight / 1.4;
+      }
+  } else {
+      expectedHeight = vh * 0.65;
+      expectedWidth = expectedHeight * 1.4; 
+      if (expectedWidth > vw * 0.85) {
+          expectedWidth = vw * 0.85;
+          expectedHeight = expectedWidth / 1.4; 
+      }
   }
   
-  const pageWidth = Math.floor(expectedWidth / 2);
+  const pageWidth = isMobile ? Math.floor(expectedWidth) : Math.floor(expectedWidth / 2);
   const containerHeight = Math.floor(expectedHeight);
-  const pageLimitHeight = containerHeight * 0.92; // Aumentado para aprovechar mejor el espacio
-  // 2. Crear un medidor invisible ajustado
+  const pageLimitHeight = containerHeight * 0.96;
+
+  // 2. Precargar imágenes y esperar fuentes para una medición exacta
+  const tempContainer = document.createElement('div');
+  tempContainer.innerHTML = project.details;
+  const imgs = tempContainer.querySelectorAll('img');
+  const loadPromises = Array.from(imgs).map(img => {
+      return new Promise(resolve => {
+          if (img.complete) resolve();
+          else {
+              img.onload = resolve;
+              img.onerror = resolve;
+          }
+      });
+  });
+  await Promise.all([...loadPromises, document.fonts.ready]);
+
   const measureDiv = document.createElement('div');
+  measureDiv.className = 'page-content inner-page';
   measureDiv.style.width = `${pageWidth}px`;
-  measureDiv.style.height = 'auto'; // CRUCIAL: 'auto' para medir el contenido real
-  measureDiv.style.position = 'absolute';
+  measureDiv.style.height = 'auto';
+  measureDiv.style.position = 'fixed';
+  measureDiv.style.top = '-9999px';
   measureDiv.style.visibility = 'hidden';
   measureDiv.style.display = 'flex'; 
   measureDiv.style.flexDirection = 'column';
   measureDiv.style.alignItems = 'start';
-  measureDiv.className = 'page-content inner-page'; 
+  measureDiv.style.boxSizing = 'border-box';
+  measureDiv.style.padding = 'calc(var(--book-height) * 0.04)';
   measureDiv.style.setProperty('--book-height', `${containerHeight}px`);
   document.body.appendChild(measureDiv);
 
@@ -131,15 +164,19 @@ function openModal(project) {
             </div>`);
           currentPageHtml = "";
           measureDiv.innerHTML = "";
-          // Opcional: Al cambiar de página, podemos querer resetear el título si ya se usó
           pendingTitle = ""; 
       }
   }
 
-  const tempContainer = document.createElement('div');
-  tempContainer.innerHTML = project.details;
+  const panelColors = [
+      'rgba(25, 35, 65, 0.95)', 
+      'rgba(55, 25, 60, 0.95)', 
+      'rgba(20, 55, 45, 0.95)', 
+      'rgba(65, 25, 25, 0.95)', 
+      'rgba(45, 45, 20, 0.95)'
+  ];
 
-  let lastColorIndex = -1;
+  let panelIndex = 0;
   Array.from(tempContainer.children).forEach(child => {
       if (child.tagName === 'H3') {
           pendingTitle = `<h3 class="panel-narrator">${child.innerHTML}</h3>`;
@@ -161,10 +198,8 @@ function openModal(project) {
               measureDiv.innerHTML = currentPageHtml + testHtml;
 
               if (measureDiv.scrollHeight > pageLimitHeight && currentListItems !== "") {
-                  // Lo que ya teníamos se queda en la página actual
                   currentPageHtml += `<div class="panel-content w-6" style="${topMargin}">${pendingTitle}<ul>${currentListItems}</ul></div>`;
                   pushPage();
-                  // El nuevo ítem empieza página nueva, sin margen superior de título
                   currentListItems = li.outerHTML;
               } else {
                   currentListItems += li.outerHTML;
@@ -177,24 +212,11 @@ function openModal(project) {
               pendingTitle = "";
           }
       } else {
-          // Párrafos o imágenes: Maquetación por filas elásticas
-          const panelColors = [
-              'rgba(25, 35, 65, 0.95)', // Azul vibrante
-              'rgba(55, 25, 60, 0.95)', // Púrpura intenso
-              'rgba(20, 55, 45, 0.95)', // Verde bosque
-              'rgba(65, 25, 25, 0.95)', // Rojo óxido
-              'rgba(45, 45, 20, 0.95)'  // Ocre / Oliva
-          ];
+          // Selección de color determinista basada en el título y el índice del panel
+          const hash = project.title.length + panelIndex;
+          const randomColor = panelColors[hash % panelColors.length];
+          panelIndex++;
           
-          let colorIndex;
-          do {
-              colorIndex = Math.floor(Math.random() * panelColors.length);
-          } while (colorIndex === lastColorIndex);
-          lastColorIndex = colorIndex;
-          
-          const randomColor = panelColors[colorIndex];
-          
-          // Solo aplicar margen si NO es la primera viñeta de la página
           const topMargin = (currentPageHtml.trim() !== "" && pendingTitle !== "") ? `margin-top: calc(var(--book-height) * 0.04);` : "";
           
           let panelHtml = `<div class="panel-content" style="background-color: ${randomColor}; ${topMargin}">${pendingTitle}${child.outerHTML}</div>`;
@@ -204,7 +226,6 @@ function openModal(project) {
 
           if (measureDiv.scrollHeight > pageLimitHeight && currentPageHtml !== "") {
               pushPage();
-              // Al ser nueva página, la viñeta ya no necesita el margen superior del título
               panelHtml = `<div class="panel-content" style="background-color: ${randomColor};">${pendingTitle}${child.outerHTML}</div>`;
               rowHtml = `<div class="comic-row">${panelHtml}</div>`;
               measureDiv.innerHTML = rowHtml;
@@ -218,12 +239,10 @@ function openModal(project) {
   pushPage();
   document.body.removeChild(measureDiv);
 
-  // 4. Generar el HTML final del libro
   let html = `
     <div id="book-container">
         <div id="comic-book" style="opacity: 0; transition: opacity 0.4s ease;">
-            <div class="page cover-page-wrapper">
-                <div class="faux-page"></div>
+            <div class="page">
                 <div class="page-content front-cover" style="background-image: url('${project.cover || ''}'); background-size: cover; background-position: center;">
                     <div class="cover-overlay"></div>
                     <div class="masthead">
@@ -233,9 +252,9 @@ function openModal(project) {
                         </div>
                     </div>
                     <h2 class="book-title">${project.title}</h2>
-
                 </div>
             </div>
+            
             <div class="page">
                 <div class="page-content legal-page">
                     <div class="legal-header">
@@ -294,9 +313,15 @@ function openModal(project) {
   modal.style.display = "flex";
   modal.style.opacity = "1";
   document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
 
   setTimeout(() => {
       const bookEl = document.getElementById('comic-book');
+      const isMobile = window.innerWidth < 768;
+      
+      bookEl.style.width = `${isMobile ? pageWidth : pageWidth * 2}px`;
+      bookEl.style.height = `${containerHeight}px`;
+      
       document.documentElement.style.setProperty('--book-height', `${containerHeight}px`);
 
       pageFlipInstance = new St.PageFlip(bookEl, {
@@ -305,8 +330,8 @@ function openModal(project) {
           size: "fixed",
           showCover: true,
           usePortrait: window.innerWidth < 768,
-          showPageCorners: false, /* Desactiva el pliegue dinámico que sigue al mouse */
-          drawShadow: false /* Elimina completamente las sombras 3D artificiales de la librería al pasar de página */
+          showPageCorners: false,
+          drawShadow: false 
       });
       pageFlipInstance.loadFromHTML(document.querySelectorAll('.page'));
       
@@ -323,14 +348,49 @@ function openModal(project) {
       });
       
       modalBody.parentElement.classList.add('book-opening-anim');
+
+      const preventFlip = (e) => {
+          if (e.target.tagName === 'IMG' && e.target.closest('.panel-content')) {
+              e.stopPropagation();
+              if (e.type === 'click') {
+                  openLightbox(e.target.src);
+              }
+          }
+      };
+
+      modalBody.addEventListener('click', preventFlip, true);
+      modalBody.addEventListener('mousedown', preventFlip, true);
+      modalBody.addEventListener('pointerdown', preventFlip, true);
+      modalBody.addEventListener('touchstart', preventFlip, {passive: true, capture: true});
   }, 50);
 }
+
+function openLightbox(src) {
+    lightboxImg.src = src;
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden"; // Mantener scroll bloqueado
+}
+
+function closeLightbox() {
+    lightbox.classList.remove("active");
+    // Solo restaurar scroll si el modal del proyecto NO está abierto
+    if (document.getElementById("projectModal").style.display === "none") {
+        document.body.style.overflow = "auto";
+        document.documentElement.style.overflow = "auto";
+    }
+}
+
+lightboxClose.onclick = closeLightbox;
+lightbox.onclick = (e) => {
+    if (e.target !== lightboxImg) closeLightbox();
+};
 
 function closeModal() {
   modal.style.display = "none";
   modal.style.opacity = "0";
   modalBody.parentElement.classList.remove('book-opening-anim');
   document.body.style.overflow = "auto";
+  document.documentElement.style.overflow = "auto";
   if (pageFlipInstance) {
       pageFlipInstance.destroy();
       pageFlipInstance = null;

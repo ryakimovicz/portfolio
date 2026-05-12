@@ -498,7 +498,7 @@ nav {
 /* Transición ultra rápida al arrastrar para que la tapa se "pegue" al dedo suavemente sin saltos bruscos.
    El box-shadow se apaga de golpe para que no se mezcle con las sombras 3D reales de la librería. */
 #comic-book:not([data-state="read"]) .front-cover {
-    transition: transform 0.15s ease-out !important;
+    transition: none !important;
     box-shadow: none !important;
 }
 
@@ -697,8 +697,11 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
 
 #comic-book {
     margin: auto; /* Centrado perfecto por Flexbox */
-    /* El ancho y alto los controlará StPageFlip matemáticamente en JS (size: fixed) */
     perspective: 1500px;
+    touch-action: none;
+    user-select: none;
+    will-change: transform; /* Ayuda al navegador a optimizar la animación */
+    position: relative;
 }
 
 /* Estilos de las páginas del FlipBook */
@@ -706,10 +709,9 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     background-color: #1a2235; /* Papel oscuro Midnight */
     color: var(--text-primary);
     overflow: hidden;
-    /* Los bordes se movieron a .page-content para no romper el cálculo 3D */
-}
-.page-hard {
-    background-color: var(--bg-color); /* Tapas duras oscuras */
+    position: relative;
+    transform-style: preserve-3d !important;
+    perspective: 1000px;
 }
 
 .page-content {
@@ -722,6 +724,27 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     border: var(--panel-border);
     box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
     overflow: hidden;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    position: relative;
+    z-index: 2;
+    transform: translateZ(1px);
+}
+
+/* El reverso que se ve al girar la hoja */
+.page::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #161e2e;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    z-index: 1;
+}
+
+.page-hard {
+    background-color: var(--bg-color); /* Tapas duras oscuras */
 }
 
 .page-hard .page-content {
@@ -852,6 +875,15 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     overflow: visible !important; /* CRUCIAL para el título */
 }
 
+/* Ajuste para que la viñeta abrace a la imagen si está sola */
+.inner-page .panel-content:has(img) {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    padding: calc(var(--book-height) * 0.015);
+}
+
 .inner-page .panel-content:hover {
     transform: scale(1.02) rotate(0.5deg);
     z-index: 30;
@@ -954,10 +986,28 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     .btn { width: 100%; }
 
     .modal-content {
-        margin: 10% auto;
-        width: 95%;
-        padding: 20px;
-        box-shadow: 6px 6px 0px var(--accent-orange);
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    #book-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Bloqueo agresivo del contenido en el reverso (clones de la librería) */
+    [class*="stPageFlip--back"] .page-content,
+    .stPageFlip--back .page-content,
+    .stPageFlip--flipping .page-content:nth-child(even) {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
     }
     .modal-table { display: block; overflow-x: auto; }
 }
@@ -1043,4 +1093,86 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
 .comic-btn:active {
     transform: translate(0, 0);
     box-shadow: 2px 2px 0px #000;
+}
+
+/* =========================================
+   LIGHTBOX (IMÁGENES A TAMAÑO COMPLETO)
+   ========================================= */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000; /* Por encima del modal del proyecto */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 3px solid #fff;
+    border-radius: 4px;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lightbox.active .lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--accent-orange);
+    transform: scale(1.1);
+}
+
+.panel-content img {
+    cursor: zoom-in;
+    transition: transform 0.2s, filter 0.2s;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    min-height: 50px; /* Evita que colapse a 0 mientras mide */
+    background: rgba(255,255,255,0.05); /* Placeholder visual */
+}
+
+.panel-content img:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Ocultar barra de scroll global cuando el modal está abierto */
+html[style*="overflow: hidden"], 
+body[style*="overflow: hidden"] {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html[style*="overflow: hidden"]::-webkit-scrollbar, 
+body[style*="overflow: hidden"]::-webkit-scrollbar {
+    display: none;
 }

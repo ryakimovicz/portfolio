@@ -44,6 +44,43 @@ window.portfolioProjects = [
         `,
   },
   {
+    title: "DecoParque CRM",
+    description:
+      "Sistema integral de gestión de clientes y monitoreo de WhatsApp en tiempo real. Sincronización híbrida con Google Sheets y persistencia en servidor para alto rendimiento.",
+    cover: "assets/covers/crm_cover.png",
+    backCover: "assets/covers/crm_bg.png",
+    tags: ["Node.js", "Socket.io", "SQLite", "Web", "Full Stack"],
+    github: "https://github.com/ryakimovicz/decoparque-app-public",
+    date: "Febrero 2026",
+    details: `
+            <h3>💼 Solución Empresarial Real</h3>
+            <p><strong>DecoParque CRM</strong> nació de la necesidad de centralizar la logística de una empresa de paisajismo. La aplicación permite gestionar clientes, obras y comunicaciones sin depender de múltiples plataformas dispersas.</p>
+            <img src="assets/proyectos/crm_inbox.png" alt="Inbox CRM">
+            <h3>🏗️ Arquitectura Híbrida y Sincronización</h3>
+            <p>El sistema utiliza una arquitectura avanzada para garantizar la integridad de los datos:</p>
+            <hr class="page-break">
+            <ul>
+                <li><strong>Nube (Google Sheets):</strong> Núcleo de persistencia principal, permitiendo la edición administrativa directa.</li>
+                <li><strong>Servidor (SQLite):</strong> Historial de chats y metadatos en el backend para búsquedas instantáneas y baja latencia.</li>
+                <li><strong>Gateway de WhatsApp:</strong> Integración nativa con <code>whatsapp-web.js</code> para captura de mensajes sin costos de API.</li>
+            </ul>
+            <h3>⚡ Comunicación en Tiempo Real</h3>
+            <p>Gracias a <strong>Socket.io</strong>, el sistema ofrece una experiencia multi-agente donde los mensajes entrantes se reflejan en todos los dispositivos al instante.</p>
+            <hr class="page-break">
+            <h3>📍 Logística y Geolocalización</h3>
+            <img src="assets/proyectos/crm_mapa.png" alt="Mapa CRM">
+            <ul>
+                <li><strong>Selector de Mapas:</strong> Ubicación precisa mediante Leaflet en zonas sin numeración estándar.</li>
+                <li><strong>Redirección GPS:</strong> Acceso directo a Google Maps y Waze desde el CRM.</li>
+                <li><strong>Orden Inteligente:</strong> Algoritmo de organización automática según visitas y contacto.</li>
+            </ul>
+            <hr class="page-break">
+            <h3>📱 Experiencia PWA</h3>
+            <p>Diseñada bajo la filosofía <strong>Mobile-First</strong>, la aplicación es instalable y cuenta con gestos táctiles para agilizar el trabajo operativo en campo.</p>
+            <img src="assets/proyectos/crm_movil.png" alt="PWA CRM" style="max-height: calc(var(--book-height) * 0.6); width: auto; border-radius: 5px;">
+        `,
+  },
+  {
     title: "Decoparque Rework",
     description:
       "Rediseño moderno del sitio web de Decoparque. Enfoque en UI limpia, optimización de carga y diseño responsive.",
@@ -53,7 +90,7 @@ window.portfolioProjects = [
     demo: "https://ryakimovicz.github.io/decoparque-rework/",
     demoLabel: "VER BETA",
     github: "https://github.com/ryakimovicz/decoparque-rework",
-    date: "Marzo 2024",
+    date: "Enero 2026",
     details: `
             <h3>🌿 El Paisajismo Moderno</h3>
             <p><strong>Decoparque</strong> se especializa en la transformación de espacios verdes, ofreciendo servicios premium de paisajismo, sistemas de riego automático y nivelación de terrenos en la Zona Norte de Buenos Aires.</p>
@@ -81,11 +118,13 @@ window.portfolioProjects = [
         `,
   },
   {
-    title: "Flask Expense Tracker",
+    title: "Flask Finance Tracker",
     description:
       "Aplicación Web Full Stack para gestión de gastos. Dashboard con gráficos interactivos (Chart.js), presupuestos y exportación a CSV.",
     tags: ["Web", "Python", "Flask", "SQL", "Chart.js", "Full Stack"],
     github: "https://github.com/ryakimovicz/flask-expense-tracker",
+    cover: "assets/covers/flask_cover.png",
+    backCover: "assets/covers/flask_bg.png",
     date: "Noviembre 2024",
     details: `
             <h3>📊 Descripción</h3>

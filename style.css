@@ -689,7 +689,7 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     height: 100%;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
     display: flex; /* Añadido para permitir centrado vertical */
     justify-content: center;
     align-items: center;
@@ -708,7 +708,7 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
 .page {
     background-color: #1a2235; /* Papel oscuro Midnight */
     color: var(--text-primary);
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     transform-style: preserve-3d !important;
     perspective: 1000px;

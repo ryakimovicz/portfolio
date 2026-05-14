@@ -1,6 +1,14 @@
 // LÓGICA DEL DOM
 const projects = window.portfolioProjects || [];
 
+// Normaliza strings para búsqueda (quita tildes y pasa a minúsculas)
+function normalizeString(str) {
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 // Generador de códigos de barras únicos basados en el título
 function generateBarcode(title) {
     let hash = 0;
@@ -410,20 +418,29 @@ modal.addEventListener('mousedown', function (event) {
 });
 
 function filterProjects() {
-  const searchText = searchInput.value.toLowerCase();
+  const searchText = normalizeString(searchInput.value);
   const activeCategory = document
     .querySelector(".filter-tag.active")
     .getAttribute("data-filter");
 
   const filtered = projects.filter((p) => {
+    const title = normalizeString(p.title);
+    const desc = normalizeString(p.description);
+    const details = p.details ? normalizeString(p.details) : "";
+    
     const matchesSearch =
-      p.title.toLowerCase().includes(searchText) ||
-      p.tags.some((t) => t.toLowerCase().includes(searchText));
+      title.includes(searchText) ||
+      desc.includes(searchText) ||
+      details.includes(searchText) ||
+      p.tags.some((tag) => normalizeString(tag).includes(searchText));
+
     const matchesCategory =
       activeCategory === "all" ||
-      p.tags.some((tag) =>
-        tag.toLowerCase().includes(activeCategory.toLowerCase()),
-      );
+      p.tags.some((tag) => {
+        const t = tag.toLowerCase();
+        const cat = activeCategory.toLowerCase();
+        return cat === "java" ? t === "java" : t.includes(cat);
+      });
     return matchesSearch && matchesCategory;
   });
   renderProjects(filtered);
@@ -442,10 +459,10 @@ filterButtons.forEach((btn) => {
    EFECTO TYPEWRITER
    ==================== */
 const words = [
+  "HTML, CSS y JS",
   "Python y FastAPI",
   "Java Spring Boot",
   "C# .NET Core",
-  "HTML, CSS y JS",
   "SQL y Datos",
 ];
 let i = 0;

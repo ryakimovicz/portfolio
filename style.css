@@ -381,7 +381,12 @@ nav {
 }
 
 /* Cards (Comic Covers) */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.projects-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, 300px); 
+    justify-content: center; 
+    gap: 30px; 
+}
 .project-card.comic-cover { 
     background: var(--card-bg); 
     border-radius: 2px; /* Comic books don't have rounded corners */
@@ -489,8 +494,7 @@ nav {
     flex-direction: column;
     justify-content: flex-end;
     padding: calc(var(--book-height) * 0.05);
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    width: 100%; height: 100%;
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s;
     transform-origin: left center; /* Ancla el lomo */
 }
@@ -706,12 +710,12 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
 
 /* Estilos de las páginas del FlipBook */
 .page {
-    background-color: #1a2235; /* Papel oscuro Midnight */
+    background-color: transparent;
     color: var(--text-primary);
     overflow: visible;
     position: relative;
     transform-style: preserve-3d !important;
-    perspective: 1000px;
+    perspective: 1500px;
 }
 
 .page-content {
@@ -719,29 +723,16 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: calc(var(--book-height) * 0.04); /* Escala con el libro */
+    padding: calc(var(--book-height) * 0.04);
     box-sizing: border-box;
     border: var(--panel-border);
     box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
-    overflow: hidden;
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
+    background-color: #1a2235;
     position: relative;
-    z-index: 2;
-    transform: translateZ(1px);
+    z-index: 5;
 }
 
-/* El reverso que se ve al girar la hoja */
-.page::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: #161e2e;
-    transform: rotateY(180deg);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    z-index: 1;
-}
+    /* El reverso es gestionado automáticamente por la librería St.PageFlip usando la siguiente página del DOM */
 
 .page-hard {
     background-color: var(--bg-color); /* Tapas duras oscuras */
@@ -1001,14 +992,6 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
         align-items: center;
     }
 
-    /* Bloqueo agresivo del contenido en el reverso (clones de la librería) */
-    [class*="stPageFlip--back"] .page-content,
-    .stPageFlip--back .page-content,
-    .stPageFlip--flipping .page-content:nth-child(even) {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-    }
     .modal-table { display: block; overflow-x: auto; }
 }
 /* Pagina Legal/Creditos (Al inicio) */

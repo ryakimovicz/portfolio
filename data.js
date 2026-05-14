@@ -36,8 +36,7 @@ window.portfolioProjects = [
             <p>Se desarrolló íntegramente con <strong>Vanilla HTML, CSS y JavaScript</strong>. Se priorizó una arquitectura sin frameworks pesados para lograr tiempos de carga instantáneos y una ejecución fluida incluso en dispositivos de gama baja. La lógica de juego se basa en un motor de estados personalizado que gestiona las transiciones entre las 6 etapas sin necesidad de recargar la página.</p>
             <h3>🏆 Logros y Métricas</h3>
             <ul>
-                <li><strong>Rendimiento:</strong> Puntaje de 100/100 en Google Lighthouse (Performance, SEO, Best Practices).</li>
-                <li><strong>Escalabilidad:</strong> Capacidad para soportar miles de usuarios simultáneos gracias a la arquitectura Serverless de Firebase.</li>
+                <li><strong>Gestión de Datos:</strong> Sincronización de progreso y autenticación de usuarios en tiempo real mediante Firebase (Auth y Firestore).</li>
                 <li><strong>Accesibilidad:</strong> Diseño adaptable que garantiza que el puzzle sea jugable con mouse, teclado o pantallas táctiles.</li>
                 <li><strong>Cero Dependencias:</strong> 0% de librerías externas en el frontend, reduciendo el peso de la descarga al mínimo absoluto.</li>
             </ul>
@@ -213,7 +212,7 @@ window.portfolioProjects = [
       "Single Page Application desarrollada desde cero. Diseño totalmente responsivo, modo oscuro y renderizado dinámico con JavaScript.",
     tags: ["JavaScript", "CSS3", "HTML5", "Web", "Frontend"],
     github: "https://github.com/ryakimovicz/portfolio",
-    date: "2024 - 2025",
+    date: "Mayo 2026",
     details: `
             <h3>🎨 Descripción</h3>
             <p>Este mismo sitio web es un proyecto técnico. Fue diseñado como una <strong>SPA (Single Page Application)</strong> sin dependencias externas (No Bootstrap, No jQuery) para demostrar dominio de los estándares web modernos.</p>

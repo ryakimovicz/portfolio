@@ -95,6 +95,7 @@ function renderProjects(data) {
 
 // --- ESTADO DE PAGINACIÓN DEL MODAL ---
 let pageFlipInstance = null;
+let isModalOpen = false;
 
 async function openModal(project) {
   const modal = document.getElementById("projectModal");
@@ -278,7 +279,7 @@ async function openModal(project) {
                 </div>
             </div>
             ${pages.join("")}
-            ${pages.length % 2 !== 0 ? `
+            ${(!isMobile && pages.length % 2 !== 0) ? `
             <div class="page">
                 <div class="page-content inner-page"></div>
             </div>` : ""}
@@ -320,8 +321,13 @@ async function openModal(project) {
   modalBody.innerHTML = html;
   modal.style.display = "flex";
   modal.style.opacity = "1";
-  document.body.style.overflow = "hidden";
-  document.documentElement.style.overflow = "hidden";
+  
+  isModalOpen = true;
+  // Scroll Lock a prueba de balas para no romper el 'position: sticky' del navbar
+  const scrollY = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.width = '100%';
 
   setTimeout(() => {
       const bookEl = document.getElementById('comic-book');
@@ -339,7 +345,8 @@ async function openModal(project) {
           showCover: true,
           usePortrait: window.innerWidth < 768,
           showPageCorners: false,
-          drawShadow: false 
+          drawShadow: false,
+          flippingTime: 650 // Animación de giro intermedia (650ms)
       });
       pageFlipInstance.loadFromHTML(document.querySelectorAll('.page'));
       
@@ -397,8 +404,19 @@ function closeModal() {
   modal.style.display = "none";
   modal.style.opacity = "0";
   modalBody.parentElement.classList.remove('book-opening-anim');
-  document.body.style.overflow = "auto";
-  document.documentElement.style.overflow = "auto";
+  // Restaurar el scroll original sin animaciones
+  const scrollY = document.body.style.top;
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  
+  document.documentElement.style.scrollBehavior = 'auto'; // Apagar smooth scroll temporalmente
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  
+  isModalOpen = false;
+  setTimeout(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }, 50);
   if (pageFlipInstance) {
       pageFlipInstance.destroy();
       pageFlipInstance = null;
@@ -513,15 +531,29 @@ let lastScrollTop = 0;
 const navbar = document.querySelector("nav");
 
 window.addEventListener("scroll", function () {
+  if (isModalOpen) return; // No hacer nada si el modal está abierto para evitar bugs visuales
+
   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+  // Evitar fallos por el efecto "bounce" (overscroll) en iOS/Android
+  if (scrollTop < 0) {
+    navbar.classList.remove("nav-hidden");
+    return;
+  }
+
+  // Pequeño umbral para ignorar micro-movimientos del dedo
+  if (Math.abs(lastScrollTop - scrollTop) <= 5) return;
+
   if (window.innerWidth <= 768) {
+    // Si scrollea hacia abajo y pasa los 80px, ocultar
     if (scrollTop > lastScrollTop && scrollTop > 80) {
       navbar.classList.add("nav-hidden");
     } else {
+      // Si scrollea hacia arriba, mostrar siempre
       navbar.classList.remove("nav-hidden");
     }
   } else {
+    // Desktop siempre visible
     navbar.classList.remove("nav-hidden");
   }
 

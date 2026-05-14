@@ -950,6 +950,7 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
         flex-direction: column;
         text-align: center;
         padding: 30px 20px;
+        margin: 0 15px; /* Margen para separar el panel de los bordes del celular */
     }
     .hero-btns {
         justify-content: center;
@@ -972,6 +973,10 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
 
     .hero h2 {
         font-size: clamp(2rem, 9vw, 2.5rem);
+    }
+    
+    .typewriter-container {
+        min-height: 4.8em; /* Reserva espacio para 3 líneas y evita saltos de diseño cuando el texto hace wrap */
     }
     
     .btn { width: 100%; }

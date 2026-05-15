@@ -306,7 +306,7 @@ async function openModal(project) {
     <div id="book-container">
         <div id="comic-book" style="opacity: 0; transition: opacity 0.4s ease;">
             <div class="page">
-                <div class="page-content front-cover" style="background-image: url('${project.cover || ''}'); background-size: cover; background-position: center;">
+                <div class="page-content front-cover" style="background-image: url('${project.cover || ''}'); background-size: cover; background-position: center; background-color: var(--card-bg);">
                     <div class="cover-overlay"></div>
                     <div class="masthead">
                         <div class="brand-box">
@@ -353,24 +353,25 @@ async function openModal(project) {
                 </div>
             </div>
             <div class="page">
-                <div class="page-content back-cover" style="background-image: url('${project.backCover || ''}'); background-size: cover; background-position: center; position: relative; padding: 0; display: flex; flex-direction: column;">
+                <div class="page-content back-cover" style="background-image: url('${project.backCover || ''}'); background-size: cover; background-position: center; position: relative; padding: 0; display: flex; flex-direction: column; align-items: stretch; overflow: hidden;">
                     <div class="cover-overlay" style="background: rgba(15, 23, 42, 0.85); z-index: 1;"></div>
-                    <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column;">
-                        <div class="comic-header" style="justify-content: flex-start;">
-                            <span class="comic-brand">RY COMICS</span>
-                        </div>
-                        <div class="card-body" style="flex-grow: 1; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
-                            <h3 class="project-title" style="margin-bottom: 20px; font-size: calc(var(--book-height) * 0.08);">${project.title}</h3>
-                            <p class="project-desc" style="max-width: 80%;">${project.description}</p>
-                            <div class="project-tags" style="justify-content: center; margin-top: 25px;">
-                                ${project.tags.map((tag) => `<span class="tech-tag">${tag}</span>`).join("")}
-                            </div>
-                            ${HINT_ARROW_HTML}
-                        </div>
-                        <div class="comic-footer" style="justify-content: flex-end;">
-                            <div class="barcode">${projectBarcode}</div>
+                    
+                    <div class="comic-header" style="position: relative; z-index: 2; flex-shrink: 0; display: flex; justify-content: flex-start;">
+                        <span class="comic-brand">RY COMICS</span>
+                    </div>
+
+                    <div class="card-body" style="position: relative; z-index: 2; flex-grow: 1; display: flex; flex-direction: column; align-items: center; padding: 15px; text-align: center;">
+                        <h3 class="project-title" style="font-size: calc(var(--book-height) * 0.09); margin-bottom: 8px; text-shadow: 3px 3px 0px #000, -1px -1px 0px var(--accent-orange);">${project.title}</h3>
+                        <p class="project-desc" style="flex-grow: 1; color: var(--text-secondary); font-size: calc(var(--book-height) * 0.032); font-weight: bold; max-width: 90%; line-height: 1.3;">${project.description}</p>
+                        <div class="project-tags" style="margin-top: auto; justify-content: center; display: flex; flex-wrap: wrap; gap: 10px; max-width: 95%;">
+                            ${project.tags.map((tag) => `<span class="tech-tag" style="font-size: calc(var(--book-height) * 0.02); padding: 3px 10px;">${tag}</span>`).join("")}
                         </div>
                     </div>
+
+                    <div class="comic-footer" style="position: relative; z-index: 2; flex-shrink: 0; display: flex; justify-content: flex-end; align-items: center; background: var(--bg-color); width: 100%; min-height: 50px; padding: 5px 20px; border-top: var(--panel-border);">
+                        <div class="barcode" style="font-size: calc(var(--book-height) * 0.025);">${projectBarcode}</div>
+                    </div>
+                    ${HINT_ARROW_HTML}
                 </div>
             </div>
         </div>
@@ -436,6 +437,7 @@ async function openModal(project) {
       });
       
       pageFlipInstance.on('flip', (e) => {
+          if (!pageFlipInstance) return; // Evitar error si el modal se cierra durante la animación
           clearHint();
           bookEl.setAttribute('data-current-page', e.data.toString());
           
@@ -497,16 +499,24 @@ function closeModal() {
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.width = '';
-  document.body.style.overflow = 'auto'; // FIX: Restaurar overflow
-  document.documentElement.style.overflow = 'auto'; // FIX: Restaurar overflow
+  document.body.style.overflow = ''; // FIX: Usar '' para restaurar el comportamiento CSS original
+  document.documentElement.style.overflow = ''; // FIX: Usar '' para restaurar el comportamiento CSS original
   
   document.documentElement.style.scrollBehavior = 'auto'; // Apagar smooth scroll temporalmente
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  const targetScroll = parseInt(scrollY || '0') * -1;
+  window.scrollTo(0, targetScroll);
   
-  isModalOpen = false;
+  // Asegurar que el navbar sea visible al cerrar
+  navbar.classList.remove("nav-hidden");
+  
   setTimeout(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
-  }, 50);
+    // FIX: Sincronización final y forzada con la posición REAL del scroll para evitar detecciones falsas
+    lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    navbar.classList.remove("nav-hidden");
+    isModalOpen = false; // Liberar el scroll listener solo después de restaurar posición
+  }, 100); // Delay aumentado para asegurar estabilidad del scroll
+
   if (pageFlipInstance) {
       pageFlipInstance.destroy();
       pageFlipInstance = null;
@@ -621,7 +631,13 @@ let lastScrollTop = 0;
 const navbar = document.querySelector("nav");
 
 window.addEventListener("scroll", function () {
-  if (isModalOpen) return; // No hacer nada si el modal está abierto para evitar bugs visuales
+  if (isModalOpen) return; 
+
+  // En Desktop (> 768px), el navbar SIEMPRE debe estar visible
+  if (window.innerWidth > 768) {
+    navbar.classList.remove("nav-hidden");
+    return;
+  }
 
   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -634,16 +650,10 @@ window.addEventListener("scroll", function () {
   // Pequeño umbral para ignorar micro-movimientos del dedo
   if (Math.abs(lastScrollTop - scrollTop) <= 5) return;
 
-  if (window.innerWidth <= 768) {
-    // Si scrollea hacia abajo y pasa los 80px, ocultar
-    if (scrollTop > lastScrollTop && scrollTop > 80) {
-      navbar.classList.add("nav-hidden");
-    } else {
-      // Si scrollea hacia arriba, mostrar siempre
-      navbar.classList.remove("nav-hidden");
-    }
+  // Lógica solo para móviles (ya filtramos desktop arriba)
+  if (scrollTop > lastScrollTop && scrollTop > 80) {
+    navbar.classList.add("nav-hidden");
   } else {
-    // Desktop siempre visible
     navbar.classList.remove("nav-hidden");
   }
 
@@ -671,5 +681,20 @@ const revealOptions = {
 
 const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
 revealElements.forEach((el) => revealObserver.observe(el));
+
+/* =========================================
+   CONTROL POR TECLADO (TECLA ESC)
+   ========================================= */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        // Primero intentar cerrar el lightbox si está activo
+        if (lightbox.classList.contains('active')) {
+            closeLightbox();
+        } else if (isModalOpen) {
+            // Si no hay lightbox pero el comic está abierto, cerrar comic
+            closeModal();
+        }
+    }
+});
 
 renderProjects(projects);

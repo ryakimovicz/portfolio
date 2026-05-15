@@ -43,6 +43,12 @@ nav {
     transition: transform 0.3s ease-in-out;
 }
 
+@media (min-width: 769px) {
+    nav {
+        transform: none !important; /* Fuerza visibilidad en Desktop sin importar clases */
+    }
+}
+
 .nav-hidden {
     transform: translateY(-100%);
 }
@@ -117,10 +123,11 @@ nav {
 
 .typewriter-container {
     font-size: 1.3rem;
-    min-height: 1.6em;
+    min-height: 7rem; /* Espacio extra generoso para evitar CUALQUIER salto en móviles pequeños */
     color: var(--text-secondary);
     font-weight: bold;
     margin-bottom: 20px;
+    display: block;
 }
 
 #typewriter {
@@ -462,6 +469,7 @@ nav {
     height: 100%;
     width: 100%;
     overflow: hidden; /* Evitar que animaciones como la flecha generen scrollbars */
+    background-color: var(--bg-color); /* Fondo base para evitar transparencias */
 }
 
 @keyframes burst-float {
@@ -578,6 +586,13 @@ nav {
     z-index: 5;
 }
 
+.front-cover, .back-cover {
+    background-color: var(--card-bg);
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
 .brand-box {
     background: var(--accent-orange);
     color: #000;
@@ -657,7 +672,7 @@ nav {
     font-family: monospace;
     font-size: 0.9rem;
     font-weight: bold;
-    color: var(--text-secondary);
+    color: var(--text-primary); /* Más visible sobre fondo oscuro */
     letter-spacing: -1px;
     transform: scaleY(1.3);
     text-align: right;
@@ -1041,7 +1056,11 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     }
     
     .typewriter-container {
-        min-height: 4.8em; /* Reserva espacio para 3 líneas y evita saltos de diseño cuando el texto hace wrap */
+        font-size: 1.1rem;
+        min-height: 90px;
+        text-align: center;
+        margin-bottom: 15px;
+        display: block; /* Volver a block para que el texto fluya natural */
     }
     
     .btn { width: 100%; }

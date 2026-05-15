@@ -491,11 +491,14 @@ function closeModal() {
   modal.style.opacity = "0";
   modalBody.parentElement.classList.remove('book-opening-anim');
   clearTimeout(hintTimer);
-  // Restaurar el scroll original sin animaciones
+  
+  // Restaurar el scroll original
   const scrollY = document.body.style.top;
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.width = '';
+  document.body.style.overflow = 'auto'; // FIX: Restaurar overflow
+  document.documentElement.style.overflow = 'auto'; // FIX: Restaurar overflow
   
   document.documentElement.style.scrollBehavior = 'auto'; // Apagar smooth scroll temporalmente
   window.scrollTo(0, parseInt(scrollY || '0') * -1);

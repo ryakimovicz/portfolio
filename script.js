@@ -59,51 +59,44 @@ function renderProjects(data) {
     const card = document.createElement("div");
     card.className = "project-card comic-cover";
     card.style.cursor = "pointer";
-    if (project.backCover) {
-        card.style.backgroundImage = `url('${project.backCover}')`;
-        card.style.backgroundSize = "cover";
-        card.style.backgroundPosition = "center";
-    }
     card.onclick = () => openModal(project);
+    
+    // Generar el código de barras para el footer de la tarjeta
+    const projectBarcode = generateBarcode(project.title);
 
     card.innerHTML = `
-        <div class="comic-header">
-            <span class="comic-brand">RY COMICS</span>
-            <div class="floating-leer">
-                <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="halftone-burst" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-                            <circle cx="1" cy="1" r="1" fill="black" opacity="0.3"/>
-                        </pattern>
-                    </defs>
-                    <!-- Sombra Halftone -->
-                    <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="url(#halftone-burst)" transform="translate(6, 6)" />
-                    <!-- Borde Negro (Grosor extra) -->
-                    <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="black" stroke="black" stroke-width="8" stroke-linejoin="round" />
-                    <!-- Fondo Naranja -->
-                    <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="var(--accent-orange)" />
-                    <!-- Líneas de Acción -->
-                    <line x1="5" y1="35" x2="-10" y2="30" stroke="black" stroke-width="2" />
-                    <line x1="130" y1="45" x2="150" y2="45" stroke="black" stroke-width="2" />
-                    <line x1="65" y1="5" x2="65" y2="-15" stroke="black" stroke-width="2" />
-                </svg>
-                <span class="burst-text">ABRIR</span>
+        <div class="comic-front" style="background-image: url('${project.backCover || ''}'); background-size: cover; background-position: center;">
+            <div class="comic-header">
+                <span class="comic-brand">RY COMICS</span>
+                <div class="floating-leer">
+                    <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="halftone-burst-${originalIndex}" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                                <circle cx="1" cy="1" r="1" fill="black" opacity="0.3"/>
+                            </pattern>
+                        </defs>
+                        <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="url(#halftone-burst-${originalIndex})" transform="translate(6, 6)" />
+                        <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="black" stroke="black" stroke-width="8" stroke-linejoin="round" />
+                        <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="var(--accent-orange)" />
+                    </svg>
+                    <span class="burst-text">LEER</span>
+                </div>
             </div>
-        </div>
-        <div class="card-body">
-            <h3 class="project-title">${project.title}</h3>
-            <p class="project-desc">${project.description}</p>
-            <div class="project-tags">${tagsHtml}</div>
-        </div>
-        <div class="comic-footer">
-            <div class="footer-links">
-                ${
-                    project.github !== "#"
-                    ? `<a href="${project.github}" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
-                    : ""
-                }
+            <div class="card-body">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-desc">${project.description}</p>
+                <div class="project-tags">${tagsHtml}</div>
             </div>
-            <div class="barcode">${generateBarcode(project.title)}</div>
+            <div class="comic-footer">
+                <div class="footer-links">
+                    ${
+                        project.github !== "#"
+                        ? `<a href="${project.github}" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
+                        : ""
+                    }
+                </div>
+                <div class="barcode">${projectBarcode}</div>
+            </div>
         </div>
     `;
     projectsGrid.appendChild(card);
@@ -669,13 +662,26 @@ const revealCallback = (entries, observer) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("active");
+      
+      // Si es la sección de proyectos, activamos el "peek" en el primer comic
+      if (entry.target.id === 'proyectos') {
+          setTimeout(() => {
+              const firstCardFront = entry.target.querySelector('.project-card .comic-front');
+              if (firstCardFront) {
+                  firstCardFront.classList.add('peek-animation');
+                  // Quitarla después para no interferir con el hover real
+                  setTimeout(() => firstCardFront.classList.remove('peek-animation'), 2500);
+              }
+          }, 800);
+      }
+      
       observer.unobserve(entry.target);
     }
   });
 };
 
 const revealOptions = {
-  threshold: 0.15,
+  threshold: 0.05, // Umbral más bajo para que secciones largas en móvil se activen fácil
   rootMargin: "0px 0px -50px 0px",
 };
 

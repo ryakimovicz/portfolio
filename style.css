@@ -396,7 +396,7 @@ nav {
     display: flex; 
     flex-direction: column; 
     box-shadow: 6px 6px 0px var(--accent-blue);
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     z-index: 1;
 }
@@ -411,6 +411,62 @@ nav {
 .project-card.comic-cover:hover { 
     transform: translate(-4px, -4px); 
     box-shadow: 10px 10px 0px var(--accent-orange);
+}
+
+/* Cartel Flotante "ABRIR" (Estilo Explosión Cómic Refinado) */
+.floating-leer {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 140px;
+    height: 100px;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0) rotate(10deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-leer svg {
+    width: 100%;
+    height: 100%;
+}
+
+.burst-text {
+    position: absolute;
+    top: 48%; /* Un poco más arriba del centro matemático */
+    left: 46%;
+    transform: translate(-50%, -50%); /* Sin rotación extra, hereda la del padre */
+    font-family: 'Bangers', cursive;
+    font-size: 1.6rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 21;
+    pointer-events: none;
+    -webkit-text-stroke: 0.5px rgba(0,0,0,0.1);
+}
+
+.project-card:hover .floating-leer,
+.project-card.in-focus .floating-leer {
+    opacity: 1;
+    transform: scale(1) rotate(-5deg);
+    animation: burst-float 2s infinite alternate ease-in-out;
+}
+
+.page-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Evitar que animaciones como la flecha generen scrollbars */
+}
+
+@keyframes burst-float {
+    from { transform: scale(1) rotate(-5deg) translateY(0); }
+    to { transform: scale(1.1) rotate(-2deg) translateY(-10px); }
 }
 
 .comic-header {
@@ -450,20 +506,11 @@ nav {
     align-items: center;
     text-align: center;
 }
-.card-icons { 
-    display: flex; 
-    justify-content: space-between; 
-    margin-bottom: 15px; 
-    font-size: 1.8rem; 
-    color: var(--accent-orange); 
-    text-shadow: 1px 1px 0px #000;
-    width: 100%;
-}
+
 .project-title { font-size: 2.2rem; margin-bottom: 10px; color: var(--text-primary); text-transform: uppercase; line-height: 1; text-shadow: 2px 2px 0px var(--accent-blue); }
 .project-desc { color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; flex-grow: 1; font-weight: bold; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; justify-content: center; }
-.links a { color: var(--line-color); margin-left: 10px; font-size: 1.5rem; transition: color 0.2s; }
-.links a:hover { color: var(--accent-orange); }
+
 
 /* Evitar que el borde blanco rígido se quede estático detrás */
 .cover-page-wrapper .page-content {
@@ -584,19 +631,37 @@ nav {
 
 .comic-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     border-top: var(--panel-border);
     background: var(--bg-color);
+    min-height: 60px;
 }
+
+.footer-links a {
+    color: var(--line-color); /* Blanco por defecto */
+    font-size: 1.8rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(2px 2px 0px #000);
+}
+
+.footer-links a:hover {
+    transform: scale(1.2) rotate(-5deg);
+    color: var(--accent-orange); /* Naranja al hacer hover */
+}
+
 .barcode {
     font-family: monospace;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     color: var(--text-secondary);
-    letter-spacing: -2px; /* to look like a barcode */
-    transform: scaleY(1.5);
+    letter-spacing: -1px;
+    transform: scaleY(1.3);
+    text-align: right;
+    line-height: 1;
 }
 .comic-price {
     font-family: 'Bangers', cursive;
@@ -997,6 +1062,8 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
         align-items: center;
     }
 
+
+
     .modal-table { display: block; overflow-x: auto; }
 }
 /* Pagina Legal/Creditos (Al inicio) */
@@ -1153,11 +1220,85 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     filter: brightness(1.1);
 }
 
-/* Ocultar barra de scroll global cuando el modal está abierto */
-html[style*="overflow: hidden"], 
-body[style*="overflow: hidden"] {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+html[style*="overflow: hidden"]::-webkit-scrollbar, 
+body[style*="overflow: hidden"]::-webkit-scrollbar {
+    display: none;
+}
+
+/* Flecha indicadora para abrir el cómic (Estilo Cómic Real) */
+.hint-arrow {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 50px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: scale(0) rotate(5deg);
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hint-arrow svg {
+    width: 100%;
+    height: auto;
+    color: var(--accent-orange); /* Naranja de la marca */
+    filter: drop-shadow(5px 5px 0px #000);
+}
+
+.hint-arrow.visible {
+    opacity: 0.6;
+    visibility: visible;
+    animation: comic-bounce-inner 0.4s infinite alternate ease-in-out;
+}
+
+/* La flecha de la TAPA debe ser opaca y estar en su posición original */
+.front-cover .hint-arrow {
+    bottom: 30px;
+    right: 30px;
+}
+.front-cover .hint-arrow.visible {
+    opacity: 1;
+    animation: comic-bounce-cover 0.4s infinite alternate ease-in-out;
+}
+
+/* En escritorio, ocultar la flecha en las páginas de la izquierda (pares) para no duplicar */
+@media (min-width: 768px) {
+    .page:nth-child(even) .hint-arrow {
+        display: none !important;
+    }
+}
+
+@keyframes comic-bounce-cover {
+    from { transform: scale(1) rotate(-5deg) translateX(0); }
+    to { transform: scale(1.1) rotate(-2deg) translateX(15px); }
+}
+
+@keyframes comic-bounce-inner {
+    from { transform: scale(0.8) rotate(-5deg) translateX(0); }
+    to { transform: scale(0.9) rotate(-2deg) translateX(10px); }
+}
+
+/* Efecto de puntos (Halftone) sobre la flecha */
+.hint-arrow::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-image: radial-gradient(rgba(0,0,0,0.1) 15%, transparent 20%);
+    background-size: 4px 4px;
+    pointer-events: none;
+    mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M10,25 Q15,22 40,25 L40,10 Q42,8 45,10 L90,30 Q92,32 90,34 L45,54 Q42,56 40,54 L40,39 Q15,42 10,39 Q8,37 10,25 Z" fill="black"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M10,25 Q15,22 40,25 L40,10 Q42,8 45,10 L90,30 Q92,32 90,34 L45,54 Q42,56 40,54 L40,39 Q15,42 10,39 Q8,37 10,25 Z" fill="black"/></svg>');
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
 }
 
 html[style*="overflow: hidden"]::-webkit-scrollbar, 

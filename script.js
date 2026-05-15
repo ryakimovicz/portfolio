@@ -69,33 +69,86 @@ function renderProjects(data) {
     card.innerHTML = `
         <div class="comic-header">
             <span class="comic-brand">RY COMICS</span>
+            <div class="floating-leer">
+                <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="halftone-burst" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                            <circle cx="1" cy="1" r="1" fill="black" opacity="0.3"/>
+                        </pattern>
+                    </defs>
+                    <!-- Sombra Halftone -->
+                    <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="url(#halftone-burst)" transform="translate(6, 6)" />
+                    <!-- Borde Negro (Grosor extra) -->
+                    <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="black" stroke="black" stroke-width="8" stroke-linejoin="round" />
+                    <!-- Fondo Naranja -->
+                    <path d="M15,45 L10,25 L35,30 L45,10 L65,25 L90,10 L100,30 L120,25 L115,45 L120,65 L100,60 L90,80 L65,65 L45,80 L35,60 L10,65 Z" fill="var(--accent-orange)" />
+                    <!-- Líneas de Acción -->
+                    <line x1="5" y1="35" x2="-10" y2="30" stroke="black" stroke-width="2" />
+                    <line x1="130" y1="45" x2="150" y2="45" stroke="black" stroke-width="2" />
+                    <line x1="65" y1="5" x2="65" y2="-15" stroke="black" stroke-width="2" />
+                </svg>
+                <span class="burst-text">ABRIR</span>
+            </div>
         </div>
         <div class="card-body">
-            <div class="card-icons">
-                <i class="far fa-folder"></i>
-                <div class="links">
-                    ${
-                      project.github !== "#"
-                        ? `<a href="${project.github}" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
-                        : ""
-                    }
-                </div>
-            </div>
             <h3 class="project-title">${project.title}</h3>
             <p class="project-desc">${project.description}</p>
             <div class="project-tags">${tagsHtml}</div>
         </div>
         <div class="comic-footer">
+            <div class="footer-links">
+                ${
+                    project.github !== "#"
+                    ? `<a href="${project.github}" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
+                    : ""
+                }
+            </div>
             <div class="barcode">${generateBarcode(project.title)}</div>
         </div>
     `;
     projectsGrid.appendChild(card);
   });
+
+  // Configurar Observer para dispositivos táctiles (móviles y tablets)
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if ('IntersectionObserver' in window && isTouchDevice) {
+    const observerOptions = {
+        root: null,
+        // Usamos un margen que solo detecta el centro de la pantalla (franja del 30%)
+        // para que en tablets con varios proyectos solo se active el que está más centrado
+        rootMargin: '-35% 0px -35% 0px', 
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-focus');
+            } else {
+                entry.target.classList.remove('in-focus');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card').forEach(card => {
+        observer.observe(card);
+    });
+  }
 }
 
 // --- ESTADO DE PAGINACIÓN DEL MODAL ---
 let pageFlipInstance = null;
 let isModalOpen = false;
+let hintTimer = null;
+
+const HINT_ARROW_HTML = `
+    <div class="hint-arrow">
+        <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10,25 Q15,22 40,25 L40,10 Q42,8 45,10 L90,30 Q92,32 90,34 L45,54 Q42,56 40,54 L40,39 Q15,42 10,39 Q8,37 10,25 Z" fill="currentColor" stroke="black" stroke-width="4" stroke-linejoin="round" />
+        </svg>
+    </div>
+`;
 
 async function openModal(project) {
   const modal = document.getElementById("projectModal");
@@ -169,6 +222,7 @@ async function openModal(project) {
             <div class="page">
                 <div class="page-content inner-page">
                     ${currentPageHtml}
+                    ${HINT_ARROW_HTML}
                 </div>
             </div>`);
           currentPageHtml = "";
@@ -261,6 +315,7 @@ async function openModal(project) {
                         </div>
                     </div>
                     <h2 class="book-title">${project.title}</h2>
+                    ${HINT_ARROW_HTML}
                 </div>
             </div>
             
@@ -276,6 +331,7 @@ async function openModal(project) {
                     <div class="legal-footer">
                         <div class="legal-barcode">${projectBarcode}</div>
                     </div>
+                    ${HINT_ARROW_HTML}
                 </div>
             </div>
             ${pages.join("")}
@@ -293,6 +349,7 @@ async function openModal(project) {
                             <a href="${project.github}" target="_blank" class="comic-btn btn-orange" style="text-decoration:none;"><i class="fab fa-github"></i> GITHUB</a>
                         </div>
                     </div>
+                    ${HINT_ARROW_HTML}
                 </div>
             </div>
             <div class="page">
@@ -308,6 +365,7 @@ async function openModal(project) {
                             <div class="project-tags" style="justify-content: center; margin-top: 25px;">
                                 ${project.tags.map((tag) => `<span class="tech-tag">${tag}</span>`).join("")}
                             </div>
+                            ${HINT_ARROW_HTML}
                         </div>
                         <div class="comic-footer" style="justify-content: flex-end;">
                             <div class="barcode">${projectBarcode}</div>
@@ -338,6 +396,20 @@ async function openModal(project) {
       
       document.documentElement.style.setProperty('--book-height', `${containerHeight}px`);
 
+      const startHintTimer = (delay = 3000) => {
+          clearTimeout(hintTimer);
+          hintTimer = setTimeout(() => {
+              const arrows = document.querySelectorAll('.hint-arrow');
+              arrows.forEach(arrow => arrow.classList.add('visible'));
+          }, delay);
+      };
+
+      const clearHint = () => {
+          clearTimeout(hintTimer);
+          const arrows = document.querySelectorAll('.hint-arrow');
+          arrows.forEach(arrow => arrow.classList.remove('visible'));
+      };
+
       pageFlipInstance = new St.PageFlip(bookEl, {
           width: pageWidth, 
           height: containerHeight, 
@@ -354,12 +426,26 @@ async function openModal(project) {
       bookEl.setAttribute('data-state', 'read');
       bookEl.setAttribute('data-current-page', '0');
 
+      startHintTimer();
+
       pageFlipInstance.on('changeState', (e) => {
+          if (e.data === 'flipping' || e.data === 'user_fold') {
+              clearHint();
+          }
           bookEl.setAttribute('data-state', e.data);
       });
       
       pageFlipInstance.on('flip', (e) => {
+          clearHint();
           bookEl.setAttribute('data-current-page', e.data.toString());
+          
+          // No mostrar flecha si es la última página
+          const totalPages = pageFlipInstance.getPageCount();
+          if (e.data < totalPages - 1) {
+              // 3s en tapa (0), 30s en el resto
+              const delay = e.data === 0 ? 3000 : 30000;
+              startHintTimer(delay);
+          }
       });
       
       modalBody.parentElement.classList.add('book-opening-anim');
@@ -404,6 +490,7 @@ function closeModal() {
   modal.style.display = "none";
   modal.style.opacity = "0";
   modalBody.parentElement.classList.remove('book-opening-anim');
+  clearTimeout(hintTimer);
   // Restaurar el scroll original sin animaciones
   const scrollY = document.body.style.top;
   document.body.style.position = '';

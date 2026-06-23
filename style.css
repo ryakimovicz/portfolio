@@ -408,6 +408,7 @@ nav {
     z-index: 1;
     perspective: 1500px;
     min-height: 480px; /* Altura aumentada para asegurar visibilidad del footer */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
 }
 
 .comic-front {
@@ -1065,6 +1066,13 @@ footer { padding: 50px 0; text-align: center; border-top: var(--panel-border); b
     border: calc(var(--book-height) * 0.004) solid #000;
     margin-top: calc(var(--book-height) * 0.008);
     display: block;
+}
+.inner-page .panel-content img.cropped-comic-img {
+    max-height: calc(var(--book-height) * 0.3);
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
 }
 
 /* Tabla en páginas interiores */

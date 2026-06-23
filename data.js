@@ -11,7 +11,7 @@ window.portfolioProjects = [
     demoLabel: "Sitio Oficial",
     itch: "https://corolado.itch.io/jigsudo",
     github: "https://github.com/ryakimovicz/jigsudo",
-    date: "Abril 2026",
+    date: "v1.0 Abril 2026 | En desarrollo",
     backCover: "assets/covers/jigsudo_bg.png",
     details: `
             <h3>🧩 El Origen</h3>
@@ -50,7 +50,7 @@ window.portfolioProjects = [
     backCover: "assets/covers/crm_bg.png",
     tags: ["Node.js", "Socket.io", "SQLite", "Web", "Full Stack"],
     github: "https://github.com/ryakimovicz/decoparque-app-public",
-    date: "Febrero 2026",
+    date: "Abril 2026",
     details: `
             <h3>💼 Solución Empresarial Real</h3>
             <p><strong>DecoParque CRM</strong> nació de la necesidad de centralizar la logística de una empresa de paisajismo. La aplicación permite gestionar clientes, obras y comunicaciones sin depender de múltiples plataformas dispersas.</p>
@@ -124,7 +124,7 @@ window.portfolioProjects = [
     github: "https://github.com/ryakimovicz/flask-expense-tracker",
     cover: "assets/covers/flask_cover.png",
     backCover: "assets/covers/flask_bg.png",
-    date: "Noviembre 2024",
+    date: "Diciembre 2025",
     details: `
             <h3>📊 Descripción</h3>
             <p>Una aplicación web completa que lleva el análisis de finanzas al navegador. A diferencia de los scripts de consola, este proyecto ofrece una interfaz gráfica interactiva donde se puede administrar la economía en tiempo real.</p>
@@ -144,9 +144,11 @@ window.portfolioProjects = [
     title: "Personal Finance Analyzer",
     description:
       "Herramienta de Data Science que procesa CSVs de gastos, genera estadísticas y exporta reportes PDF.",
+    cover: "assets/covers/finance_cover.png",
+    backCover: "assets/covers/finance_bg.png",
     tags: ["Python", "Pandas", "Matplotlib", "Data Analysis"],
     github: "https://github.com/ryakimovicz/finance-analyzer",
-    date: "Diciembre 2024",
+    date: "Noviembre 2025",
     details: `
             <h3>📊 Descripción</h3>
             <p>Una herramienta de análisis de datos desarrollada en Python que procesa archivos de gastos (CSV), realiza cálculos estadísticos y genera automáticamente un reporte financiero en formato PDF con gráficos visuales.</p>
@@ -156,6 +158,7 @@ window.portfolioProjects = [
                 <li><strong>Visualización:</strong> Gráficos de torta (Pie Charts) automáticos con <code>Matplotlib</code>.</li>
                 <li><strong>Reporte:</strong> Generación de PDF listo para imprimir con <code>FPDF</code>.</li>
             </ul>
+            <hr class="page-break">
             <h3>📸 Demostración</h3>
             <p><em>Output en consola y Reporte PDF generado:</em></p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/finance-analyzer/main/img/pdf_preview.png" alt="Reporte PDF">
@@ -165,21 +168,27 @@ window.portfolioProjects = [
     title: "MercadoLibre Price Tracker",
     description:
       "Bot de monitoreo de precios en tiempo real. Web scraping automatizado y alertas por email.",
+    cover: "assets/covers/ml_tracker_cover.png",
+    backCover: "assets/covers/ml_tracker_bg.png",
     tags: ["Python", "Web Scraping", "Automation", "SMTP"],
     github: "https://github.com/ryakimovicz/ml-price-tracker",
-    date: "Enero 2025",
+    date: "Noviembre 2025",
     details: `
             <h3>📉 Descripción</h3>
-            <p>Script de automatización que monitorea el precio de productos en MercadoLibre Argentina. Extrae la información del producto y envía una notificación por correo electrónico si el precio baja del objetivo establecido.</p>
+            <p>Un script de automatización en Python que monitorea productos en MercadoLibre Argentina. Extrae precios en tiempo real y alerta de inmediato si bajan de la meta establecida, demostrando habilidades en scraping seguro y automatización limpia.</p>
             <h3>✨ Características</h3>
             <ul>
-                <li><strong>Scraping:</strong> Extracción precisa con <code>BeautifulSoup4</code>.</li>
-                <li><strong>Anti-Bloqueo:</strong> Headers rotativos para evitar errores 429.</li>
-                <li><strong>Alertas:</strong> Emails automáticos vía SMTP de Gmail.</li>
+                <li><strong>Scraping Eficiente:</strong> Extracción precisa de título y precio utilizando <code>BeautifulSoup4</code>.</li>
+                <li><strong>Evasión de Bloqueos:</strong> Headers HTTP rotativos y User-Agents para prevenir bloqueos por error 429.</li>
+                <li><strong>Lógica de Negocio:</strong> Comparación automática entre el costo de lista y el presupuesto objetivo.</li>
+                <li><strong>Sistema de Alertas:</strong> Envío de correos SMTP con codificación UTF-8 para caracteres especiales.</li>
+                <li><strong>Seguridad:</strong> Credenciales sensibles protegidas fuera del código mediante variables de entorno (<code>.env</code>).</li>
             </ul>
             <h3>📸 Funcionamiento</h3>
-            <p><em>Detección en consola y Alerta real recibida por Email:</em></p>
+            <p><strong>1. Detección en Consola (CLI):</strong> El script analiza el HTML, limpia la moneda y detecta la oportunidad de compra en segundos. (Primera prueba con TARGET_PRICE = 1200000 y la segunda con TARGET_PRICE = 1700000)</p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/ml-price-tracker/main/img/console_output.png" alt="Consola">
+            <hr class="page-break">
+            <p><strong>2. Alerta de Compra (Email):</strong> Si el valor actual es menor que tu objetivo, se despacha un correo directo a tu casilla con el enlace directo del artículo.</p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/ml-price-tracker/main/img/email_alert.png" alt="Email" style="margin-top:10px">
         `,
   },
@@ -187,68 +196,119 @@ window.portfolioProjects = [
     title: "URL Shortener API",
     description:
       "Servicio de acortamiento de URLs con Python. Redirección eficiente y base de datos SQLite.",
+    cover: "assets/covers/url_shortener_cover.png",
+    backCover: "assets/covers/url_shortener_bg.png",
     tags: ["Python", "FastAPI", "SQLite", "Backend"],
     github: "https://github.com/ryakimovicz/url-shortener",
-    date: "Febrero 2025",
+    date: "Noviembre 2025",
     details: `
             <h3>🚀 Descripción</h3>
-            <p>Sistema completo de acortamiento de URLs con arquitectura Cliente-Servidor. Incluye una REST API robusta con <strong>FastAPI</strong> y un cliente CLI interactivo.</p>
+            <p>Un sistema completo de acortamiento de URLs desarrollado en Python con arquitectura Cliente-Servidor. Cuenta con una REST API robusta construida con <strong>FastAPI</strong> y un cliente CLI interactivo de consola, prescindiendo de dependencias de frontend complejas.</p>
             <h3>✨ Características</h3>
             <ul>
-                <li><strong>API RESTful:</strong> Endpoints CRUD definidos.</li>
-                <li><strong>Métricas:</strong> Conteo automático de clicks.</li>
-                <li><strong>Persistencia:</strong> Base de datos SQLite nativa.</li>
+                <li><strong>API RESTful:</strong> Endpoints bien definidos para operaciones CRUD tradicionales.</li>
+                <li><strong>Métricas Automáticas:</strong> Conteo e historial de clicks al redirigir enlaces.</li>
+                <li><strong>Persistencia Local:</strong> Base de datos SQLite integrada para un almacenamiento ágil.</li>
+                <li><strong>Redirecciones Reales:</strong> Manejo nativo de códigos HTTP 307 y 302 hacia la URL de destino.</li>
+                <li><strong>Validación Estricta:</strong> Integridad de esquemas garantizada con <code>Pydantic</code>.</li>
             </ul>
-            <h3>📸 Capturas</h3>
-            <p><em>Cliente de Consola (CLI):</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/consola.png" alt="CLI">
-            <p style="margin-top:15px"><em>Documentación Automática (Swagger UI):</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/swagger_response.png" alt="Swagger">
+            <hr class="page-break">
+            <h3>📡 Endpoints Disponibles</h3>
+            <table class="modal-table">
+                <thead>
+                    <tr><th>Método</th><th>Endpoint</th><th>Descripción</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>POST</td><td>/shorten</td><td>Genera y almacena el código corto de una URL.</td></tr>
+                    <tr><td>GET</td><td>/{short_code}</td><td>Redirecciona a la URL de destino y suma +1 click.</td></tr>
+                    <tr><td>GET</td><td>/api/links</td><td>Retorna el listado de URLs y sus estadísticas de uso.</td></tr>
+                    <tr><td>DELETE</td><td>/api/delete/{code}</td><td>Remueve de forma permanente un enlace.</td></tr>
+                </tbody>
+            </table>
+            <hr class="page-break">
+            <h3>🧠 Conceptos Aplicados</h3>
+            <ul>
+                <li><strong>Separación de Capas:</strong> Cliente CLI y Servidor API totalmente desacoplados.</li>
+                <li><strong>SQL Raw:</strong> Consultas manuales escritas a mano para comprender el ciclo de vida de los datos.</li>
+            </ul>
+            <h3>📸 Captura (Consola)</h3>
+            <p><strong>Menú Interactivo (CLI):</strong> Interfaz amigable para gestionar los enlaces desde la terminal sin recurrir a Postman o al navegador.</p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/consola.png" alt="CLI" class="cropped-comic-img">
+            <hr class="page-break">
+            <h3>📸 Documentación de API (FastAPI)</h3>
+            <p><strong>Petición y Respuesta en Swagger:</strong> Interfaz gráfica interactiva que documenta y permite testear los endpoints al instante.</p>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/swagger_request.png" alt="Swagger Request">
+                <img src="https://raw.githubusercontent.com/ryakimovicz/url-shortener/main/img/swagger_response.png" alt="Swagger Response">
+            </div>
         `,
   },
   {
     title: "Portfolio Personal (Web SPA)",
     description:
       "Single Page Application desarrollada desde cero. Diseño totalmente responsivo, modo oscuro y renderizado dinámico con JavaScript.",
+    cover: "assets/covers/portfolio_cover.png",
+    backCover: "assets/covers/portfolio_bg.png",
     tags: ["JavaScript", "CSS3", "HTML5", "Web", "Frontend"],
     github: "https://github.com/ryakimovicz/portfolio",
-    date: "Mayo 2026",
+    date: "En desarrollo",
     details: `
-            <h3>🎨 Descripción</h3>
-            <p>Este mismo sitio web es un proyecto técnico. Fue diseñado como una <strong>SPA (Single Page Application)</strong> sin dependencias externas (No Bootstrap, No jQuery) para demostrar dominio de los estándares web modernos.</p>
-            <h3>✨ Características Técnicas</h3>
+            <h3>🎨 El Concepto</h3>
+            <p>Este mismo sitio web es un proyecto de ingeniería frontend diseñado para emular la experiencia física de abrir y leer un cómic. Fue programado de forma <strong>100% nativa (Vanilla JS)</strong> sin frameworks pesados, garantizando un rendimiento óptimo e interactividad fluida.</p>
+            <h3>⚙️ Motor de Paginación Dinámico</h3>
+            <p>Uno de los mayores desafíos fue maquetar los textos en páginas cerradas "tipo libro". Para resolverlo, se programó un sistema en <code>script.js</code> que:</p>
             <ul>
-                <li><strong>Arquitectura:</strong> Renderizado dinámico de proyectos mediante inyección de DOM con JavaScript (JSON).</li>
-                <li><strong>UX/UI:</strong> Diseño <em>Dark Mode</em> nativo con variables CSS (<code>:root</code>) y animaciones fluidas.</li>
-                <li><strong>Responsive:</strong> Maquetado adaptable utilizando <strong>CSS Grid</strong> y <strong>Flexbox</strong>.</li>
-                <li><strong>Performance:</strong> Carga optimizada y puntaje alto en Lighthouse al no utilizar librerías pesadas.</li>
+                <li><strong>Medición en Tiempo Real:</strong> Clona el contenido en un contenedor oculto con el ancho exacto del lector.</li>
+                <li><strong>Cálculo de Desbordamiento:</strong> Evalúa el <code>scrollHeight</code> frente a la altura disponible para determinar dinámicamente cuándo insertar un salto de página.</li>
+                <li><strong>Salto Inteligente de Listas:</strong> Si un elemento de lista (<code>&lt;li&gt;</code>) excede el tamaño de la página, el sistema fragmenta el bloque y lo continúa en la siguiente página.</li>
+                <li><strong>Soporte para Imágenes:</strong> Espera asincrónicamente la carga de imágenes y fuentes del sistema antes de procesar la paginación para evitar desajustes visuales.</li>
             </ul>
-            <h3>🛠️ Stack</h3>
-            <p>HTML5 Semántico, CSS3 Moderno, JavaScript ES6+.</p>
+            <hr class="page-break">
+            <h3>✨ Características de la Experiencia</h3>
+            <ul>
+                <li><strong>Diseño Cómic Retro:</strong> Paletas oscuras y contrastantes con acentos naranjas, bordes gruesos dibujados en CSS, fuentes temáticas (<i>Bangers</i> y <i>Comic Neue</i>) y patrones vectoriales Halftone.</li>
+                <li><strong>Generador de Códigos de Barras:</strong> Algoritmo hash personalizado que convierte el nombre del proyecto en un código de barras único para las contraportadas.</li>
+                <li><strong>Scroll Lock Robusto:</strong> Bloqueo limpio del fondo del sitio al abrir un cómic, memorizando la posición del usuario y previniendo saltos visuales al cerrarlo.</li>
+                <li><strong>Accesibilidad y Control:</strong> Cierre intuitivo mediante atajos de teclado (tecla <code>Esc</code>) y gestos táctiles optimizados para móviles y tablets.</li>
+            </ul>
         `,
   },
   {
     title: "Inventory Management API",
     description:
       "API RESTful robusta para gestión de inventario con ASP.NET Core 8, Entity Framework y SQLite.",
+    cover: "assets/covers/inventory_cover.png",
+    backCover: "assets/covers/inventory_bg.png",
     tags: ["C#", ".NET Core", "API REST", "SQL", "Entity Framework"],
     github: "https://github.com/ryakimovicz/inventory-api",
-    date: "2024",
+    date: "Diciembre 2025",
     details: `
-            <h3>📦 Descripción</h3>
-            <p>Una API RESTful profesional diseñada para la gestión eficiente de productos. Implementa patrones de diseño modernos, validaciones de negocio y una arquitectura limpia separada en capas (Controllers, Services, Repositories).</p>
-            <h3>✨ Características Clave</h3>
+            <h3>📦 Arquitectura y Buenas Prácticas</h3>
+            <p><strong>Inventory Management API</strong> es una solución construida con <strong>C# 12</strong> y <strong>.NET 8 (LTS)</strong>. El proyecto implementa una arquitectura desacoplada en capas para garantizar la separación de responsabilidades y facilidad de mantenimiento.</p>
+            <h3>📂 Estructura y Capas</h3>
             <ul>
-                <li><strong>CRUD Completo:</strong> Gestión total de productos con verbos HTTP correctos.</li>
-                <li><strong>Arquitectura Sólida:</strong> Uso de <strong>DTOs</strong> para seguridad y desacoplamiento.</li>
-                <li><strong>Búsqueda Avanzada:</strong> Filtrado dinámico con LINQ (Case Insensitive).</li>
-                <li><strong>Base de Datos:</strong> Persistencia con <strong>SQLite</strong> y migraciones de EF Core.</li>
+                <li><strong>Controllers:</strong> Manejan las peticiones HTTP mediante <code>ProductsController.cs</code>.</li>
+                <li><strong>DTOs:</strong> Protegen el modelo interno desacoplándolo de la API pública y aplicando validaciones de campos (precios, stock y longitud de caracteres).</li>
+                <li><strong>Data & ORM:</strong> Persistencia administrada mediante <strong>Entity Framework Core 8</strong> y base de datos relacional ligera <strong>SQLite</strong>.</li>
             </ul>
-            <h3>📸 Demostración</h3>
-            <p><em>Documentación interactiva con Swagger UI:</em></p>
-            <p style="margin-top:10px"><em>Ejemplo de petición <code>GET</code> estándar recuperando todo el inventario disponible.</em></p>
-            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_demo.png" alt="Swagger Response">
-            <p style="margin-top:10px"><em>Ejemplo consultando <code>/api/Products?search=laptop</code>.</em></p>
+            <hr class="page-break">
+            <h3>⚙️ Instalación y Ejecución</h3>
+            <p>El proyecto es totalmente portable y fácil de iniciar localmente mediante la terminal:</p>
+            <div style="background:#111b30; color:#e2e8f0; padding: calc(var(--book-height) * 0.02) calc(var(--book-height) * 0.03); border-radius: 6px; font-family: monospace; font-size: calc(var(--book-height) * 0.024); border: calc(var(--book-height) * 0.004) solid #000; margin: 10px 0; line-height: 1.4;">
+                # Restaurar paquetes NuGet<br>
+                dotnet restore<br><br>
+                # Aplicar migraciones y base SQLite<br>
+                dotnet ef database update<br><br>
+                # Correr servidor API<br>
+                dotnet run --project Inventory.API
+            </div>
+            <p>La documentación interactiva de <strong>Swagger UI</strong> se inicia automáticamente en <code>/swagger</code>.</p>
+            <hr class="page-break">
+            <h3>📸 Demostración de Endpoints</h3>
+            <p><strong>1. Listado General (GET):</strong> Petición estándar recuperando todo el catálogo de productos disponible en la base de datos.</p>
+            <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_demo.png" alt="Swagger Demo">
+            <hr class="page-break">
+            <p><strong>2. Filtro de Búsqueda (GET /api/Products?search=laptop):</strong> Búsqueda dinámica Case-Insensitive mapeada mediante LINQ.</p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_search_demo.png" alt="Swagger Search">
         `,
   },
@@ -258,7 +318,7 @@ window.portfolioProjects = [
       "Backend para un foro con autenticación JWT, CRUD de tópicos y persistencia en MySQL.",
     tags: ["Java", "Spring Boot", "JWT", "API REST", "MySQL"],
     github: "https://github.com/ryakimovicz/foro-hub",
-    date: "2024",
+    date: "Julio 2025",
     details: `
             <h3>🚀 Descripción</h3>
             <p>API REST que simula un foro de discusión. Gestiona tópicos, usuarios y respuestas, asegurando el acceso mediante tokens JWT.</p>
@@ -286,7 +346,7 @@ window.portfolioProjects = [
       "Aplicación de consola que consume la API de Gutendex y guarda libros en PostgreSQL.",
     tags: ["Java", "Spring Data JPA", "PostgreSQL", "API Integration"],
     github: "https://github.com/ryakimovicz/literalura",
-    date: "2024",
+    date: "Julio 2025",
     details: `
             <h3>📚 Descripción</h3>
             <p>Catálogo de libros interactivo que consume la API de <strong>Gutendex</strong>. Permite buscar libros, listar autores y filtrar por idiomas, persistiendo todo en PostgreSQL.</p>
@@ -303,8 +363,8 @@ window.portfolioProjects = [
     description:
       "Conversión de divisas en tiempo real consumiendo Exchange Rate API.",
     tags: ["Java", "API Integration", "JSON"],
-    github: "https://github.com/ryakimovicz/conversor-monedas",
-    date: "2024",
+    github: "https://github.com/ryakimovicz/conversor-monedas-java-ONE",
+    date: "Mayo 2025",
     details: `
             <h3>💱 Descripción</h3>
             <p>Proyecto de consola que permite convertir montos entre diferentes monedas (USD, ARS, BRL) utilizando tasas de cambio en tiempo real.</p>

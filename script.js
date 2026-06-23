@@ -347,7 +347,6 @@ async function openModal(project) {
             </div>
             <div class="page">
                 <div class="page-content back-cover" style="background-image: url('${project.backCover || ''}'); background-size: cover; background-position: center; position: relative; padding: 0; display: flex; flex-direction: column; align-items: stretch; overflow: hidden;">
-                    <div class="cover-overlay" style="background: rgba(15, 23, 42, 0.85); z-index: 1;"></div>
                     
                     <div class="comic-header" style="position: relative; z-index: 2; flex-shrink: 0; display: flex; justify-content: flex-start;">
                         <span class="comic-brand">RY COMICS</span>

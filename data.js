@@ -251,7 +251,7 @@ window.portfolioProjects = [
     backCover: "assets/covers/portfolio_bg.png",
     tags: ["JavaScript", "CSS3", "HTML5", "Web", "Frontend"],
     github: "https://github.com/ryakimovicz/portfolio",
-    date: "En desarrollo",
+    date: "Junio 2026",
     details: `
             <h3>🎨 El Concepto</h3>
             <p>Este mismo sitio web es un proyecto de ingeniería frontend diseñado para emular la experiencia física de abrir y leer un cómic. Fue programado de forma <strong>100% nativa (Vanilla JS)</strong> sin frameworks pesados, garantizando un rendimiento óptimo e interactividad fluida.</p>
@@ -292,18 +292,6 @@ window.portfolioProjects = [
                 <li><strong>Data & ORM:</strong> Persistencia administrada mediante <strong>Entity Framework Core 8</strong> y base de datos relacional ligera <strong>SQLite</strong>.</li>
             </ul>
             <hr class="page-break">
-            <h3>⚙️ Instalación y Ejecución</h3>
-            <p>El proyecto es totalmente portable y fácil de iniciar localmente mediante la terminal:</p>
-            <div style="background:#111b30; color:#e2e8f0; padding: calc(var(--book-height) * 0.02) calc(var(--book-height) * 0.03); border-radius: 6px; font-family: monospace; font-size: calc(var(--book-height) * 0.024); border: calc(var(--book-height) * 0.004) solid #000; margin: 10px 0; line-height: 1.4;">
-                # Restaurar paquetes NuGet<br>
-                dotnet restore<br><br>
-                # Aplicar migraciones y base SQLite<br>
-                dotnet ef database update<br><br>
-                # Correr servidor API<br>
-                dotnet run --project Inventory.API
-            </div>
-            <p>La documentación interactiva de <strong>Swagger UI</strong> se inicia automáticamente en <code>/swagger</code>.</p>
-            <hr class="page-break">
             <h3>📸 Demostración de Endpoints</h3>
             <p><strong>1. Listado General (GET):</strong> Petición estándar recuperando todo el catálogo de productos disponible en la base de datos.</p>
             <img src="https://raw.githubusercontent.com/ryakimovicz/inventory-api/master/img/swagger_demo.png" alt="Swagger Demo">
@@ -316,45 +304,61 @@ window.portfolioProjects = [
     title: "Foro Hub (API REST)",
     description:
       "Backend para un foro con autenticación JWT, CRUD de tópicos y persistencia en MySQL.",
+    cover: "assets/covers/foro_hub_cover.png",
+    backCover: "assets/covers/foro_hub_bg.png",
     tags: ["Java", "Spring Boot", "JWT", "API REST", "MySQL"],
     github: "https://github.com/ryakimovicz/foro-hub",
     date: "Julio 2025",
     details: `
-            <h3>🚀 Descripción</h3>
-            <p>API REST que simula un foro de discusión. Gestiona tópicos, usuarios y respuestas, asegurando el acceso mediante tokens JWT.</p>
-            <h3>✨ Funcionalidades</h3>
+            <h3>🚀 Solución Challenge ONE</h3>
+            <p><strong>Foro Hub</strong> es una API REST robusta que emula un foro de discusión, desarrollada como parte del challenge de backend del programa <strong>Oracle Next Education (ONE)</strong>. Permite interactuar con hilos de conversación de forma segura y estructurada.</p>
+            <h3>⚙️ Seguridad y Persistencia</h3>
             <ul>
-                <li><strong>Seguridad:</strong> Autenticación vía <code>Spring Security</code> y JWT.</li>
-                <li><strong>Persistencia:</strong> MySQL con migraciones Flyway.</li>
-                <li><strong>Validaciones:</strong> Reglas de negocio para evitar duplicados.</li>
+                <li><strong>Autenticación JWT:</strong> Filtros de seguridad con <code>Spring Security</code> para validar tokens JSON Web Tokens (JWT) y proteger los endpoints.</li>
+                <li><strong>Persistencia de Datos:</strong> Mapeo objeto-relacional mediante Spring Data JPA conectado a una base de datos <strong>MySQL</strong>.</li>
+                <li><strong>Migración Automática:</strong> Integración de <strong>Flyway Migrations</strong> para controlar las versiones del esquema de base de datos automáticamente al iniciar.</li>
+                <li><strong>Validación de Negocio:</strong> Lógica de validación personalizada para evitar duplicidad de títulos y mensajes en el foro.</li>
             </ul>
-            <h3>⚙️ Endpoints Principales</h3>
+            <h3>📡 Endpoints de la API</h3>
             <table class="modal-table">
-                <thead><tr><th>Verbo</th><th>Endpoint</th><th>Acceso</th></tr></thead>
+                <thead><tr><th style="width: 18%;">Método</th><th style="width: 27%;">Endpoint</th><th style="width: 35%;">Descripción</th><th style="width: 20%;">Acceso</th></tr></thead>
                 <tbody>
-                    <tr><td>POST</td><td>/login</td><td>Público</td></tr>
-                    <tr><td>POST</td><td>/topicos</td><td>Protegido</td></tr>
-                    <tr><td>GET</td><td>/topicos</td><td>Protegido</td></tr>
-                    <tr><td>DELETE</td><td>/topicos/{id}</td><td>Protegido</td></tr>
+                    <tr><td>POST</td><td>/login</td><td>Genera token JWT de sesión.</td><td>Público</td></tr>
+                    <tr><td>POST</td><td>/topicos</td><td>Registra un nuevo tópico.</td><td>Protegido</td></tr>
+                    <tr><td>GET</td><td>/topicos</td><td>Retorna listado paginado.</td><td>Protegido</td></tr>
+                    <tr><td>GET</td><td>/topicos/{id}</td><td>Detalle de tópico por ID.</td><td>Protegido</td></tr>
+                    <tr><td>PUT</td><td>/topicos/{id}</td><td>Actualiza título/mensaje.</td><td>Protegido</td></tr>
+                    <tr><td>DELETE</td><td>/topicos/{id}</td><td>Elimina un tópico.</td><td>Protegido</td></tr>
                 </tbody>
             </table>
+
         `,
   },
   {
     title: "Literalura: Catálogo",
     description:
       "Aplicación de consola que consume la API de Gutendex y guarda libros en PostgreSQL.",
+    cover: "assets/covers/literalura_cover.png",
+    backCover: "assets/covers/literalura_bg.png",
     tags: ["Java", "Spring Data JPA", "PostgreSQL", "API Integration"],
     github: "https://github.com/ryakimovicz/literalura",
     date: "Julio 2025",
     details: `
-            <h3>📚 Descripción</h3>
-            <p>Catálogo de libros interactivo que consume la API de <strong>Gutendex</strong>. Permite buscar libros, listar autores y filtrar por idiomas, persistiendo todo en PostgreSQL.</p>
-            <h3>✨ Funcionalidades</h3>
+            <h3>📚 Catálogo Literario Inteligente</h3>
+            <p><strong>Literalura</strong> es una aplicación de consola desarrollada para el challenge de backend del programa <strong>Oracle Next Education (ONE)</strong>. El proyecto combina el consumo de APIs públicas y la persistencia de datos relacionales para construir un gestor bibliográfico dinámico.</p>
+            <h3>⚙️ Integración y Persistencia</h3>
             <ul>
-                <li><strong>Búsqueda:</strong> Consulta a API externa y guardado local.</li>
-                <li><strong>Estadísticas:</strong> Listado de autores vivos en determinado año.</li>
-                <li><strong>Filtros:</strong> Búsqueda por idioma (ES, EN, FR, PT).</li>
+                <li><strong>Consumo de API Gutendex:</strong> Consultas en tiempo real a la base de datos de Gutendex para recuperar información bibliográfica por título.</li>
+                <li><strong>Procesamiento JSON:</strong> Parseo y deserialización estructurada de respuestas JSON obtenidas del servidor mediante la biblioteca <strong>Jackson</strong>.</li>
+                <li><strong>Base de Datos Relacional:</strong> Mapeo objeto-relacional gestionado con <strong>Spring Data JPA</strong> y almacenamiento seguro en <strong>PostgreSQL</strong>.</li>
+            </ul>
+            <hr class="page-break">
+            <h3>✨ Características de la Consola</h3>
+            <ul>
+                <li><strong>Buscador de Libros:</strong> Localiza y registra automáticamente obras literarias en la base de datos local a través de su título.</li>
+                <li><strong>Registro de Autores:</strong> Listado unificado de escritores y autores indexados sin duplicados.</li>
+                <li><strong>Filtro Cronológico:</strong> Consulta inteligente de autores vivos en un año determinado según los periodos registrados.</li>
+                <li><strong>Clasificación por Idioma:</strong> Filtrado dinámico de obras según el idioma seleccionado (Español, Inglés, Francés, Portugués).</li>
             </ul>
         `,
   },
@@ -362,17 +366,21 @@ window.portfolioProjects = [
     title: "Conversor de Monedas",
     description:
       "Conversión de divisas en tiempo real consumiendo Exchange Rate API.",
+    cover: "assets/covers/currency_cover.png",
+    backCover: "assets/covers/currency_bg.png",
     tags: ["Java", "API Integration", "JSON"],
     github: "https://github.com/ryakimovicz/conversor-monedas-java-ONE",
     date: "Mayo 2025",
     details: `
-            <h3>💱 Descripción</h3>
-            <p>Proyecto de consola que permite convertir montos entre diferentes monedas (USD, ARS, BRL) utilizando tasas de cambio en tiempo real.</p>
-            <h3>⚙️ Tecnologías</h3>
+            <h3>💱 Conversión de Divisas en Tiempo Real</h3>
+            <p><strong>Conversor de Monedas</strong> es una aplicación interactiva de consola en <strong>Java 21</strong> desarrollada como challenge para Oracle + Alura Latam. Permite realizar conversiones rápidas entre USD, ARS y BRL utilizando datos financieros reales y actualizados.</p>
+            <h3>⚙️ Arquitectura Desacoplada</h3>
+            <p>La lógica de la aplicación se estructuró siguiendo buenas prácticas de diseño, organizándose en capas bien delimitadas:</p>
             <ul>
-                <li><strong>API:</strong> Consumo de <code>ExchangeRate-API</code>.</li>
-                <li><strong>Http Client:</strong> Uso de <code>Java.net.http</code>.</li>
-                <li><strong>JSON:</strong> Parseo de respuestas con <code>Gson</code>.</li>
+                <li><strong>API Client:</strong> Realiza consultas HTTP asíncronas hacia la API de tipo de cambio utilizando el cliente nativo <code>Java HttpClient</code>.</li>
+                <li><strong>Modelos:</strong> Contenedor (<code>ExchangeRateResponse</code>) que mapea y procesa las respuestas JSON obtenidas mediante la biblioteca <strong>Gson</strong>.</li>
+                <li><strong>Lógica de Negocio:</strong> Servicio especializado (<code>CurrencyConverter</code>) encargado de realizar los cálculos matemáticos de equivalencia entre las distintas divisas.</li>
+                <li><strong>UI (Consola):</strong> Interfaz de terminal interactiva (<code>Conversor</code>) que gestiona el menú de selección y captura las entradas del usuario.</li>
             </ul>
         `,
   },

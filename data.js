@@ -2,6 +2,43 @@
 // Para agregar un proyecto nuevo, simplemente añade un nuevo bloque al final de esta lista.
 window.portfolioProjects = [
   {
+    title: "Pathd",
+    description:
+      "Plataforma para el seguimiento de bibliotecas personales y consumo multimedia. Integra películas, series, juegos, libros y música en un solo lugar.",
+    cover: "assets/covers/pathd_cover.png",
+    backCover: "assets/covers/pathd_bg.png",
+    tags: ["React 19", "FastAPI", "TypeScript", "Python", "Web", "Full Stack"],
+    github: "https://github.com/ryakimovicz/tracker-lists",
+    date: "Julio 2026 | En desarrollo",
+    details: `
+            <h3>🌌 El Proyecto</h3>
+            <p><strong>Pathd</strong> es una plataforma para el seguimiento de bibliotecas personales y monitorización del consumo multimedia. Permite a los usuarios indexar, organizar y hacer seguimiento de su progreso en libros, mangas, cómics, películas, series, animes, videojuegos y música en una única interfaz cohesiva, complementada con guías y listas de la comunidad, y un feed social en tiempo real.</p>
+            <h3>🚀 Stack Tecnológico</h3>
+            <ul>
+                <li><strong>Backend:</strong> FastAPI (Python 3.11+), SQLite y PostgreSQL via SQLAlchemy, JWT + HttpOnly cookies.</li>
+                <li><strong>Frontend:</strong> React 19 + TypeScript + Vite, Estado Global mediante Contextos.</li>
+                <li><strong>Estilos:</strong> Vanilla CSS con sistema de diseño basado en variables (Soporte dark/light mode).</li>
+            </ul>
+            <hr class="page-break">
+            <h3>🌐 Integración de APIs Externas</h3>
+            <p>El sistema se nutre de 4 fuentes de datos masivas procesadas a través del backend:</p>
+            <ul>
+                <li><strong>TMDB:</strong> Películas, series, animes y detalle de episodios.</li>
+                <li><strong>IGDB:</strong> Videojuegos (autenticado via Twitch OAuth2).</li>
+                <li><strong>Google Books & Comic Vine:</strong> Libros, cómics y mangas.</li>
+            </ul>
+            <hr class="page-break">
+            <h3>📖 Secciones Clave</h3>
+            <ul>
+                <li><strong>Editor de Guías:</strong> Constructor de guías y listas con ordenamiento manual e importador de datos desde las APIs.</li>
+                <li><strong>Buscador Global:</strong> Motor unificado que conecta las 4 APIs desde un único campo de búsqueda.</li>
+                <li><strong>Estantería:</strong> Catálogo personal organizado por categorías y estados de progreso.</li>
+                <li><strong>Social:</strong> Timeline comunitaria con actividad de seguidos, interacciones, votos y comentarios.</li>
+                <li><strong>Modificaciones:</strong> Sistema para crear y adoptar bloques de adiciones a guías existentes de la comunidad.</li>
+            </ul>
+        `,
+  },
+  {
     title: "Jigsudo",
     description:
       "Experiencia de acertijos lógicos diarios. Seis desafíos interconectados (Juego de Memoria, Rompecabezas, Sudoku, Picos y Valles, Sopa de Números y El Código) en un solo tablero.",
